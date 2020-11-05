@@ -1,5 +1,7 @@
 var express = require("express");
 var app = express();
+var db=require("./models");
+
 var PORT = process.env.PORT || 8080;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -10,3 +12,10 @@ app.set("view engine", "handlebars");
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 })
+
+
+db.sequelize.sync({ force: true }).then(function() {
+    app.listen(PORT, function() {
+      console.log("App listening on PORT " + PORT);
+    });
+  });
