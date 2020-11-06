@@ -22,6 +22,7 @@ module.exports = function (sequelize, DataTypes) {
         isEmail: true
       }
     },
+
     zipcode: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -51,10 +52,3 @@ module.exports = function (sequelize, DataTypes) {
   });
   return User;
 };
-
- User.sync().then(() => {
-   console.log('New table created');
-}).finally(() => {
-   sequelize.close();
-})
-
