@@ -1,5 +1,12 @@
 /* USER PROFILE DATA */
 
+/* #body-background {
+
+    background-image: url(../images/black-brick.jpg);
+    padding-top: 25px;
+
+  } */
+
 #bookcase {
     box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45);
     border-top: 20px solid rgb(150,118,79);
@@ -142,36 +149,85 @@
     box-shadow: inset 0 4px 5px rgba(0,0,0,0.45);
     margin-right: 20px;
 }
-/* container {
+
+#bookshelf_container {
     margin-left: 20px;
     margin-right: 40px;
     border: 30px solid #987554;
-    width: 100%;
-    border-bottom: 0;
+    border-bottom: none;
+    border-top: 50px solid #987554;
+    margin: auto;
+    margin-top: 10px;
+    padding-top: 0px;
+
+    width: 72%;
     position: relative;
-    background: #664229;
-} */
-
-.sectionTitle {
-
-    font-weight: 700;
-    letter-spacing: 3px;
-    
-}
-.sectionTitle {
-    font-family: 'Fredericka the Great', cursive;
-    font-size: 25px;
+ 
     text-align: center;
-    background-color: #987554;
-    color: #664229 ;
+    background-color: #664229;
+
+     -webkit-box-shadow: 
+     0px 10px 30px 20px #000, 
+     inset 0 0 10px #000;
+    -moz-box-shadow: 
+     0px 0px 30px 20px #000, 
+     inset 0 0 10px #000;
+    -o-box-shadow: 
+     0px 0px 30px 20px #000, 
+     inset 0 0 10px #000;
+    box-shadow: 
+     0px 0px 20px #888888, 
+     inset 0 0 px  #361a00;
+
+     border-image:url("../images/wood.jpg") 50 50 stretch;
+     border: 15px solid transperant;
 }
- .carousel {
-     padding-top: 30px;
- }
+
+
+.text {
+    color:  #987554;
+    background-image: linear-gradient(#130000, #664229);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding: 10px 10px 0px 20px;
+    text-align: left;
+
+
+}
+
+#pre {
+    justify-content: left;
+}
+
+.carousel {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-bottom: 30px solid #987554;;
+	-webkit-box-shadow: 0 8px 6px -6px  #361a00;
+	-moz-box-shadow: 0 8px 6px -6px  #361a00;
+    box-shadow: 0 8px 6px -6px  #361a00;
+    border-image:url("../images/wood.jpg") 50 50 stretch;
+    border: 15px solid transperant;
+
+}
 
 img {
-    height: 50%;
+
 }
+
+.d-block {
+    box-shadow: 0px 0px 5px 5px  #361a00;
+    width: 100%;
+}
+
+.title-div {
+    padding-top: 60px;
+    padding-left: 240px;
+}
+
+
 .searchBtn {
   background-color: #473335;
   color: white;
@@ -186,9 +242,7 @@ nav {
   background-color: #998888 !important;
 }
 
-body {
-  background-color: #EFF1F3;
-}
+
 
 .navSection {
   background-color: #998888;
@@ -205,9 +259,7 @@ body {
   border-radius: 5px;
 }
 
-header {
-  margin: 20px;
-}
+
 
 
 /* ADD BOOK MODAL SECTION */
