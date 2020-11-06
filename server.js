@@ -4,6 +4,7 @@ var app = express();
 
 //Models
 var db=require("./models");
+sequelize.sync({force:true});
 
 //Server BS
 var PORT = process.env.PORT || 8080;
