@@ -1,29 +1,43 @@
-const { BOOLEAN } = require("sequelize/types");
+const Sequelize = require('sequelize') 
+const path = 'mysql://root:root2@localhost:3306/library';
+const sequelize = new Sequelize(path, {
+ operatorsAliases: false
+});
 
-module.exports = function(sequelize, DataTypes) {
-    var Books = sequelize.define("Books", {
+// module.exports = function(sequelize, DataTypes) {
+    let Books = sequelize.define("Books", {
       book_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
       },
       isbn: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+        type: DataTypes.STRING,
+        allowNull: false,
+          validate: {
+            len: [5, 100]
+          }
       },
       owner_id: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: false
       },
       lender_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
         },
       on_loan: {
-        type: DataTypes.BOOLEAN,
+        type: Sequelize.BOOLEAN,
         default: false
     }
     });
-    return Books;
-  };
+
+    Books.sync().then(() => {
+      console.log('New table created');
+    }).finally(() => {
+      sequelize.close();
+    })
+  
+
+    module.exports = Books
