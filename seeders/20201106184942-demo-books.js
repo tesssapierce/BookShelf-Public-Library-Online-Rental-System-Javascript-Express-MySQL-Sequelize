@@ -56,7 +56,9 @@ module.exports = {
         isbn: 9780441172719,
         owner_id: 2,
         lender_id: null,
-        on_loan: 0
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         isbn: 9780812550757,
