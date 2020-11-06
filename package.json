@@ -1,29 +1,19 @@
 {
-  "name": "Library",
+  "name": "books",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
+  "keywords": [],
+  "description": "",
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tesssapierce/Pub-Lib.git"
-  },
-  "bugs": {
-    "url": "https://github.com/tesssapierce/Pub-Lib/issues"
-  },
-  "homepage": "https://github.com/tesssapierce/Pub-Lib#readme"
+    "sequelize": "^6.3.5"
+  }
 }
