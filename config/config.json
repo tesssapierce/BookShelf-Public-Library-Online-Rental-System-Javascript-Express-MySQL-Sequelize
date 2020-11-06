@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "mysqlpassword",
+    "password": "casino123",
     "database": "library",
     "host": "localhost",
     "dialect": "mysql"
@@ -9,7 +9,7 @@
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
+    "database": "library",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

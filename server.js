@@ -26,7 +26,6 @@ app.set("view engine", "handlebars");
 //Routes
 require("./routes/html/htmlRoutes.js")(app);
 
-
 //Listener + Sequelize Sync
 db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
