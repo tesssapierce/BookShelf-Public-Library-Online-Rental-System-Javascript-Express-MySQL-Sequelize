@@ -8,4 +8,7 @@ module.exports = function(app){
     var username = req.params.username
     res.render("", {data: books})
   });
+  app.get("/login", function(req, res){
+    res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
+  })
 };
