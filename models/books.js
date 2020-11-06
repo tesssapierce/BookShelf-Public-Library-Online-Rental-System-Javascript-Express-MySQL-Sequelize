@@ -13,16 +13,11 @@ const sequelize = new Sequelize(path, {
         primaryKey: true
       },
       isbn: {
-
         type: DataTypes.STRING,
         allowNull: false,
           validate: {
             len: [5, 100]
           }
-
-        type: Sequelize.INTEGER,
-        allowNull: false
-
       },
       owner_id: {
       type: Sequelize.INTEGER,
