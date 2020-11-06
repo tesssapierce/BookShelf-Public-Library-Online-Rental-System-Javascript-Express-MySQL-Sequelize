@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     // API CALL TO RECIEVE BOOK NAME //
     $("#isbn-submit").on("click", function () {
-        var isbnNumber = $("#isbn-val").val()
+        var isbnNumber = $("#isbn-val").val().trim()
         var queryURl = "http://openlibrary.org/api/books?bibkeys=ISBN:" + isbnNumber + "&jscmd=details&format=json"
         $.ajax({
             url: queryURl,

@@ -8,7 +8,10 @@ module.exports = function(sequelize, DataTypes) {
       },
       isbn: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+          validate: {
+            len: [5, 100]
+          }
       },
       owner_id: {
       type: DataTypes.INTEGER,
