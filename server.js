@@ -1,6 +1,7 @@
 var express = require("express");
 var app = express();
 var db=require("./models");
+sequelize.sync({force:true});
 
 var PORT = process.env.PORT || 8080;
 app.use(express.static("public"));

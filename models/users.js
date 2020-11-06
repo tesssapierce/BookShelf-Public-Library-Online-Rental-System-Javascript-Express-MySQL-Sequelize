@@ -1,14 +1,23 @@
-module.exports = function(sequelize, DataTypes) {
-    var User = sequelize.define("User", {
+ const Sequelize = require('sequelize') 
+// const sequelize = require('../config/config.json') 
+// const User = require('./models/users') 
+ //sequelize.sync({force:true}); 
+ const path = 'mysql://root:root2@localhost:3306/library';
+ const sequelize = new Sequelize(path, {
+  operatorsAliases: false
+});
+
+// module.exports = function(sequelize, DataTypes) {
+    let User = sequelize.define("User", {
        user_id: {
-         type: DataTypes.INTEGER,
+         type: Sequelize.INTEGER,
          autoIncrement: true,
          allowNull: false,
          primaryKey: true
        },
      
       username: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true,
         validate: {
@@ -16,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
       email: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true,
         validate: {
@@ -25,25 +34,36 @@ module.exports = function(sequelize, DataTypes) {
       },
     
       zipcode: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         validate: {
           len: [5]
       }
     },
       about_me: {
-        type: DataTypes.STRING
+        type: Sequelize.STRING
     },
       password: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         validate: {
           len: [5,12]
       }
-    },
-    
+    },     
   });
-    return User;
-  
-    };
-  
+
+
+  User.sync().then(() => {
+    console.log('New table created');
+}).finally(() => {
+    sequelize.close();
+})
+
+
+
+
+
+
+  module.exports = User
+
+ 
