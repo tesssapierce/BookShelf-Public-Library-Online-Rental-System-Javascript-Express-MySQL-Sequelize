@@ -149,9 +149,15 @@
     box-shadow: inset 0 4px 5px rgba(0,0,0,0.45);
     margin-right: 20px;
 }
+<<<<<<< HEAD
 
 #bookshelf_container {
     
+=======
+/* container {
+    margin-left: 20px;
+    margin-right: 40px;
+>>>>>>> master
     border: 30px solid #987554;
     border-bottom: none;
     border-top: 50px solid #987554;
@@ -162,6 +168,7 @@
 
     width: 72%;
     position: relative;
+<<<<<<< HEAD
  
     text-align: center;
     background-color: #664229;
@@ -182,6 +189,10 @@
      border-image:url("../images/wood.jpg") 50 50 stretch;
      border: 15px solid transperant;
 }
+=======
+    background: #664229;
+} */
+>>>>>>> master
 
 .text {
     color:  #987554;
