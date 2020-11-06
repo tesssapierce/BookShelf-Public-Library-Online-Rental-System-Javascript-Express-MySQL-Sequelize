@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
         primaryKey: true
       },
       isbn: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
           validate: {
             len: [5, 100]
@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       lender_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
         },
       on_loan: {
         type: DataTypes.BOOLEAN,
