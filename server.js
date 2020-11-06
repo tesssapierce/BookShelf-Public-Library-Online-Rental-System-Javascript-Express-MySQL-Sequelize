@@ -4,6 +4,7 @@ var app = express();
 
 //Models
 var db=require("./models");
+sequelize.sync({force:true});
 
 //Server BS
 var PORT = process.env.PORT || 8080;
@@ -25,7 +26,6 @@ app.set("view engine", "handlebars");
 
 //Routes
 require("./routes/html/htmlRoutes.js")(app);
-
 
 //Listener + Sequelize Sync
 db.sequelize.sync({ force: true }).then(function() {
