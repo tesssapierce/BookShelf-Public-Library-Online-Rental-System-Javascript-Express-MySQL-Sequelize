@@ -53,7 +53,7 @@ module.exports = function (sequelize, DataTypes) {
   });
   return User;
 };
-=======
+
 const Sequelize = require('sequelize') 
 const path = 'mysql://root:root2@localhost:3306/library';
 const sequelize = new Sequelize(path, {
