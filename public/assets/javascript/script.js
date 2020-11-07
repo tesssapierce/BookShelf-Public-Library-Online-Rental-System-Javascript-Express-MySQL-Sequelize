@@ -4,16 +4,17 @@ $(document).ready(function () {
 
     $(".searchBtn").on("click", function(e){
         e.preventDefault();
-        var searchQuery = $("#searchVal").val()
+        var query = $("#searchVal").val()
+        var searchQuery = {search: query}
         console.log(searchQuery)
-        
-        $.ajax("/search/" + searchQuery, {
-            type: "POST",
-            data: searchQuery
-          }).then(function(){
-            location.reload();
-          })
+        search(searchQuery)   
     })
+
+    function search(searchQuery){
+        $.post("/api/search", searchQuery, function(){
+            // window.location.href = "/search/" + searchQuery
+        })
+    }
 
 
     // FEELING LUCKY BUTTON //
@@ -73,6 +74,8 @@ $(document).ready(function () {
     $("#add-book").on("click", function () {
         console.log("hello");
     })
+
+    //PROFILE PAGE
 
     
 })
