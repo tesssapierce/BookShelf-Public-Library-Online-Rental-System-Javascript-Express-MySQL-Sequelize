@@ -6,6 +6,13 @@ $(document).ready(function () {
         e.preventDefault();
         var searchQuery = $("#searchVal").val()
         console.log(searchQuery)
+        
+        $.ajax("/search/" + searchQuery, {
+            type: "POST",
+            data: searchQuery
+          }).then(function(){
+            location.reload();
+          })
     })
 
 

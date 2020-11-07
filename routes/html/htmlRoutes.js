@@ -19,7 +19,7 @@ module.exports = function(app){
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   })
 
-  app.get("/search/:value", function(req, res){
+  app.post("/search/:value", function(req, res){
     var searchVal = req.params.value
     console.log(searchVal)
   })
