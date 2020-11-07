@@ -12,17 +12,13 @@
         <div class="col-3">
             <h3 id="userName"> {{username}}</h3>
             <img id="userImage" class="profilePic" src="../images/profile-placeholder-pic.jpg">
-            <h3 id="userLocation">{{city}}</h3>
+            <h3 id="userLocation">{{zipcode}}</h3>
         </div>
         <div class="col-9">
-            <h3 id="bioHeadline"></h3>
-            <p id="userBio">{{bio}}</p>
-            <h3 id="favGenreHeadline">Favorite Genres</h3>
-                
-                {{#each favGenres}}
-                    {{> favGenres/favGenre-block}}
-                {{/each}}
 
+            <h3 id="bioHeadline"></h3>
+            <p id="userBio">{{about_me}}</p>
+    
         </div>
     </div>
 
@@ -41,7 +37,7 @@
 
                 {{!-- CAROUSEL 1 --}}
                 <div>
-                    {{#each booksOwned}}
+                    {{#each books_owned}}
                         {{> books/booksowned-block.handlebars}}
                     {{/each}}
                 </div>
@@ -57,8 +53,8 @@
                 
                 {{!-- CAROUSEL 2 --}}
                 <div>
-                    {{#each booksBorrowed}}
-                        {{> books/}}
+                    {{#each books_onloan}}
+                        {{> books/booksowned-block.handlebars}}
                     {{/each}}
                 </div>
 
