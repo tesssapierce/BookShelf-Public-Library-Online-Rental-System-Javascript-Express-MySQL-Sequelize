@@ -4,15 +4,8 @@ $(document).ready(function () {
 
     $(".searchBtn").on("click", function(e){
         e.preventDefault();
-
-        //For whatever reason, grabbing the val of the #searchVal on input didn't work
-        var searchVal = $(this)[0].previousElementSibling.value;
-        $.ajax({
-            url: "/search/" + searchVal,
-            method: "GET"
-        }).then((response) => {
-            console.log(response)
-        })
+        var searchQuery = $("#searchVal").val()
+        console.log(searchQuery)
     })
 
 
