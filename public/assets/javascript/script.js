@@ -2,6 +2,12 @@ $(document).ready(function () {
 
     // SEARCH BAR RESULT //
 
+    $(".searchBtn").on("click", function(e){
+        e.preventDefault();
+        var searchQuery = $("#searchVal").val()
+        console.log(searchQuery)
+    })
+
 
     // FEELING LUCKY BUTTON //
     $("#lucky").on("click", function () {
