@@ -1,4 +1,3 @@
-const { query } = require("express");
 var path = require("path");
 const db = require("../../models");
 
@@ -19,8 +18,8 @@ module.exports = function(app){
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   })
 
-  app.post("/search/:value", function(req, res){
+  app.get("/search/:value", function(req, res){
     var searchVal = req.params.value
-    console.log(searchVal)
+    res.render("search", {data: searchVal})
   })
 };
