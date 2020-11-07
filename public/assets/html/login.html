@@ -5,21 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add A Book</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
 <body>
 
     <!-- NAV BAR BOILER PLATE -->
-
     <header>
 
         <div class="container navSection">
             <div class="row">
-                <div class="col-12 mainHead">
+              <div class="col-12 mainHead">
                     BookSelf
                 </div>
             </div>
@@ -65,19 +63,44 @@
         </div>
     </header>
 
+    <h1></h1>
 
+    <div class="container">
+        <section class="row">
+            <div class="col-md-8 col-left">
+                <div class="form-group">
+            <h3>Login</h3>
+            <form class="login">             
+                <label for="InputEmail">Username</label>
+                <input type="email" class="form-control" id="email-input" style= "width: 300px;"placeholder="Username">
+                <br>
+                <label for="exampleInputPassword">Password</label>
+                <input type="password" class="form-control" id="password-input" style= "width: 300px;" placeholder="Password">
+                <br>
+                <div> <button type="submit" style= "background-color: #b0e0ec;">Submit</button></div>
+            </form>
+         </div>
+       </div>
 
+   
 
-    <h1> SIGN IN PAGE</h1>
-
-
-
-
-
-
-
-
-
+          <div class="col-md-4 col-right">
+            <h3>Sign Up!</h3>
+            <form class="signup">
+              <div class="form-group">
+                <label for="InputEmail">Email address</label>
+                <input type="email" class="form-control" id="email-input" placeholder="Enter your email">
+                <br>
+                <label for="InpuUsername">Username</label>
+                <input type="email" class="form-control" id="username-input" placeholder="Enter a username">
+                <br>
+                <label for="InputPassword">Password</label>
+                <input type="email" class="form-control" id="password-input" placeholder="Enter a password">
+                <br>
+                <div> <button type="submit" style= "background-color: #b0e0ec;">Submit</button></div>
+              </form>
+            </div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

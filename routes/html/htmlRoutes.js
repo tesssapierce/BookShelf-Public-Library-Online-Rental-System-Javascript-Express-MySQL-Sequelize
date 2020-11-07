@@ -16,6 +16,15 @@ module.exports = function(app){
     // res.render("profile", {data: books})
   });
   app.get("/login", function(req, res){
+    if (req.user) {
+      res.redirect("/profile");
+    }
+    res.sendFile(path.join(__dirname, "../public/login.html"));
+  
+  });
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
-  })
-};
+ 
+}
+
+//get users books
+db.sequelize.query("select books_owned")
