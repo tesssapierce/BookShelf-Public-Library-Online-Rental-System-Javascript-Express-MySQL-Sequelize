@@ -20,18 +20,17 @@ module.exports = function(app){
     console.log(dbUser.dataValues)
     console.log("ISBN: " + JSON.parse(dbUser.dataValues.books_owned))
 
-    // Create Array of Images for Empty Array Results
+    // Set Up Images - for Instances Where Array Are Empty
     let emptyCover = "../assets/images/emptycover-placeholder.jpg";
     let emptyArray = [emptyCover];
 
-    // Set Arrays for Books and Cover Image Code
+    // Set Up Arrays for Books and Cover Image Code - for Instances When Arrays Are Full
     let booksOwned = [];
     let ownedCoverImg =[];
     let booksBorrowed = [];
     let borrowedCoverImg = [];
 
-
-    // Format Cover Image Code
+    // Format Cover Image Code After Its Existence Is Confirmed
     function formatImageCode(){      
       console.log("Formatting image code")
       // Loop imageSrc Code with ISBN Number
@@ -42,26 +41,25 @@ module.exports = function(app){
       console.log("TEST: " + ownedCoverImg)
     }
 
-    // If User Owns No Books, Feed Placeholder Image
+      // If User Has No Owned Books, Feed Placeholder Image
       if (dbUser.dataValues.books_owned == ""){
         ownedCoverImg = emptyArray; 
       //   // return booksOnloan;
+      // Else, Send Owned Books to formatCodeImage()
       } else {
         booksOwned = JSON.parse(dbUser.dataValues.books_owned);
         formatImageCode();
       }
 
-    // If User Has No Borrowed Books, Feed Placeholder Image
+      // If User Has No Borrowed Books, Feed Placeholder Image
       if (dbUser.dataValues.books_onloan == ""){
         borrowedCoverImg = emptyArray; 
       //   // return booksOnloan;
+      // Else, Send Owned Books to formatCodeImage()
       } else {
         booksOnloan = JSON.parse(dbUser.dataValues.books_owned);
         formatImageCode();
       }
-
-    // console.log("ONLOAN: " + dbUser.dataValues.books_onloan)
-    // console.log("ONLOAN2: " + booksOnloan)
 
     // Reformat profilePage Object
     let profilePage = {
