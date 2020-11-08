@@ -26,30 +26,6 @@
     margin:10px;
 }
 
-/* ////////////////////// */
-/* PROFILE MODAL ELEMENTS */
-
-/* Profile Modal: Turns Modal On and Off from Javascript */
-#modalDisplay {
-    display: none;
-    color: black;
-}
-
-/* Profile Modal: Formats the Modal's shape, size and background */
-.profileModalFormat {
-    background-color: whitesmoke;
-    color: black;
-    height: 500px;
-    margin-top: 80px;
-    margin-left: 400px;
-    border-radius: 25px;
-}
-
-/* Profile: Modal: Resizes Image */
-#addImgFormat {
-    width:30px;
-}
-
 /* ////////////////////////// */
 /* PROFILE HANDLEBARS ENTRIES */
 
@@ -161,6 +137,67 @@
     margin-right: 20px;
 }
 
+/* ////////////////////// */
+/* PROFILE MODAL ELEMENTS */
+
+/* Profile Modal: Turns Modal On and Off from Javascript */
+#modalDisplay {
+    display: none;
+    position: fixed;
+    top:50%;
+    left:44%;
+    transform: translate(-50%,-50%);
+    
+}
+
+/* Profile Modal: Formats the Modal's shape, size and background */
+#profileModalFormat {
+    background-color: whitesmoke;
+    height: 500px;
+    width: 300px;
+    margin-top: 80px;
+    margin-left: 400px;
+    border-radius: 25px;
+}
+
+/* #add-book-area {
+    background-color: whitesmoke;
+    height: 500px;
+    margin-top: 80px;
+    margin-left: 400px;
+    border-radius: 25px;
+
+    #isbn-title {
+    margin-top: 30px;
+    margin-left: 30px;
+    font-family: 'Comfortaa', cursive; 
+}
+
+#isbn-val {
+    margin-top: 5px;
+    width: 300px;
+    font-family: 'Comfortaa', cursive;    
+    margin-left: 30px;
+}
+
+#isbn-submit {
+    font-family: 'Comfortaa', cursive;    
+    margin-left: 30px;
+    margin-top: 14px;
+    border-radius: 25px;
+    border-style: none;
+    background: #5B7B7A;
+    color: whitesmoke;
+    height: 30px;
+    width: 100px;
+}
+} */
+
+
+/* Profile: Modal: Resizes Image */
+#addImgFormat {
+    width:30px;
+}
 
 #bookshelf_container {
     margin-left: 20px;

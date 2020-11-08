@@ -31,6 +31,7 @@ $(document).ready(function () {
     //ADD BOOK OWNED ON PROFILE PAGE
     $(".addButton").click(function(){
         $("#modalDisplay").css("display", "block")
+        // $(".profileModalFormat").css("height", "500")
     })
         
 
