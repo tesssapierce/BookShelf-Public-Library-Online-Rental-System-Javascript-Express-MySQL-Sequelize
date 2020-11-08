@@ -2,6 +2,20 @@ $(document).ready(function () {
 
     // SEARCH BAR RESULT //
 
+    $(".searchBtn").on("click", function(e){
+        e.preventDefault();
+        var query = $("#searchVal").val()
+        var searchQuery = {search: query}
+        console.log(searchQuery)
+        search(searchQuery)   
+    })
+
+    function search(searchQuery){
+        $.post("/api/search", searchQuery, function(){
+            // window.location.href = "/search/" + searchQuery
+        })
+    }
+
 
     // FEELING LUCKY BUTTON //
     $("#lucky").on("click", function () {
@@ -60,6 +74,8 @@ $(document).ready(function () {
     $("#add-book").on("click", function () {
         console.log("hello");
     })
+
+    //PROFILE PAGE
 
     
 })
