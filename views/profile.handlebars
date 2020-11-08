@@ -10,14 +10,14 @@
     </div>
     <div id="userInfo" class="row">
         <div class="col-3">
-            <h3 id="userName"> {{User.username}}</h3>
-            <img id="userImage" class="profilePic" src="../images/profile-placeholder-pic.jpg">
-            <h3 id="userLocation">{{User.zipcode}}</h3>
+            <h3 id="userName"> {{username}}</h3>
+            <img id="userImage" class="profilePic" src="../assets/images/profile-placeholder-pic.jpg">
+            <h3 id="userLocation">{{zipcode}}</h3>
         </div>
         <div class="col-9">
 
             <h3 id="bioHeadline"></h3>
-            <p id="userBio">{{User.about_me}}</p>
+            <p id="userBio">{{about_me}}</p>
     
         </div>
     </div>
@@ -37,9 +37,16 @@
 
                 {{!-- CAROUSEL 1 --}}
                 <div>
-                    {{#each User.books_owned}}
-                        {{> books/booksowned-block.handlebars}}
-                    {{/each}}
+                    <table>
+                        <tr>
+                            {{#each books_owned}}
+                                <td>
+                                    <img class="bookCover" src="http://covers.openlibrary.org/b/isbn/{{this}}.jpg">
+                                </td>
+                            {{/each}}
+                        </tr>
+                    </table>
+                    
                 </div>
 
             </div>
@@ -53,8 +60,8 @@
                 
                 {{!-- CAROUSEL 2 --}}
                 <div>
-                    {{#each User.books_onloan}}
-                        {{> books/booksowned-block.handlebars}}
+                    {{#each books_onloan}}
+                        <img class="bookCover" src="http://covers.openlibrary.org/b/isbn/{{this}}.jpg">
                     {{/each}}
                 </div>
 
@@ -71,4 +78,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-<script src="../js/script.js"></script>
+<script src="../assets/javascript/script.js"></script>
