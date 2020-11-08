@@ -18,8 +18,8 @@ module.exports = function(app){
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   })
 
-  app.get("/search/:value", function(req, res){
-    var searchVal = req.params.value
+  app.get("/search", function(req, res){
+    var searchVal = []
     res.render("search", {data: searchVal})
   })
 };

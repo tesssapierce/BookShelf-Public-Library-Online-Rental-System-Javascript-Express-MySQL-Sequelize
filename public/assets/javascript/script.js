@@ -11,8 +11,16 @@ $(document).ready(function () {
     })
 
     function search(searchQuery){
-        $.post("/api/search", searchQuery, function(){
-            // window.location.href = "/search/" + searchQuery
+        $.post("/api/search", searchQuery, function(data){
+            searchDisplay(searchQuery, data)
+        })
+    }
+
+    function searchDisplay(searchQuery, data){
+        console.log(searchQuery)
+        console.log(data)
+        $.get("/search/", data, function(data){
+            window.location.href = "/search/";
         })
     }
 
