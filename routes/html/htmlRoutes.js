@@ -1,5 +1,6 @@
 const { query, response } = require("express");
 var path = require("path");
+const { json } = require("sequelize");
 const db = require("../../models");
 
 
@@ -10,15 +11,23 @@ module.exports = function (app) {
 
   app.get("/", function (req, res) {
 
-    db.Books.findAll({where: {isbn:"9780812550757"}}).then( function(dbBooks) {
-      console.log(dbBooks)
-      // res.json(dbBooks);
+    db.Books.findAll({where: {on_loan:"false"}, limit: 6}).then( function(data) {
+      // var isbnArr = [];
+      // data.forEach( book => isbnArr.push(book.isbn) )
+      var booksArr = [];
+      data.forEach( book => booksArr.push(book.isbn) )
+      console.log(booksArr)
+      var hbsObj = {
+        isbn: booksArr
+      }
+
+      res.render("index", hbsObj)
       // var booksObj = { 
       //   books: res
       // }
       // console.log(booksObj)
       // res.render("index", booksObj);
-    });
+    })
   });
 
 
