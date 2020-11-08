@@ -15,7 +15,7 @@
         </div>
         <div class="col-9">
 
-            <h3 id="bioHeadline"></h3>
+            <h3 id="bioHeadline">About Me</h3>
             <p id="userBio">{{about_me}}</p>
     
         </div>
@@ -26,17 +26,14 @@
     <div class="row">
         <div id="profileBookSection" class="col-12">
 
+            
+
             <!-- Owned Books -->
 
             <div class="booksToLoan">
                 <div id="booksToLoanHeadline">
                     <h3 style="display: inline;">Books Owned</h3>
                     <button class="addButton">+</button>
-                </div>
-
-                {{!-- Add Book Module --}}
-                <div id="modalDisplay">
-                    {{>addmodal-block}}
                 </div>
 
                 {{!-- CAROUSEL 1 --}}
@@ -72,6 +69,10 @@
 
             </div>
         </div>
+    </div>
+    {{!-- Add Book Module --}}
+    <div id="modalDisplay">
+        {{>addmodal-block}}
     </div>
 </div>
 
