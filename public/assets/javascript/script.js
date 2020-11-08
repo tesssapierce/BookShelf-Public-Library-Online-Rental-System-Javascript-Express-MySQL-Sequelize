@@ -4,9 +4,17 @@ $(document).ready(function () {
 
     $(".searchBtn").on("click", function(e){
         e.preventDefault();
-        var searchQuery = $("#searchVal").val()
+        var query = $("#searchVal").val()
+        var searchQuery = {search: query}
         console.log(searchQuery)
+        search(searchQuery)   
     })
+
+    function search(searchQuery){
+        $.post("/api/search", searchQuery, function(){
+            // window.location.href = "/search/" + searchQuery
+        })
+    }
 
 
     // FEELING LUCKY BUTTON //
@@ -20,7 +28,11 @@ $(document).ready(function () {
     // SIGN IN //
 
 
-
+    //ADD BOOK OWNED ON PROFILE PAGE
+    $(".addButton").click(function(){
+        $("#modalDisplay").css("display", "block")
+    })
+        
 
     // API CALL TO RECIEVE BOOK NAME //
     $("#isbn-submit").on("click", function () {
@@ -66,6 +78,8 @@ $(document).ready(function () {
     $("#add-book").on("click", function () {
         console.log("hello");
     })
+
+    //PROFILE PAGE
 
     
 })

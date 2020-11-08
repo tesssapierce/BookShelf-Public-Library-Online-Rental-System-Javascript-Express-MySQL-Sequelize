@@ -13,6 +13,13 @@ module.exports = function(sequelize, DataTypes) {
             len: [5, 100]
           }
       },
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+          validate: {
+            isLowercase: true
+          }
+      },
       owner_id: {
       type: DataTypes.INTEGER,
       allowNull: false
