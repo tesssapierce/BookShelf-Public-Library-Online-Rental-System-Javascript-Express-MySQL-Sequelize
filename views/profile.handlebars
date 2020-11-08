@@ -10,14 +10,14 @@
     </div>
     <div id="userInfo" class="row">
         <div class="col-3">
-            <h3 id="userName"> {{username}}</h3>
+            <h3 id="userName"> {{User.username}}</h3>
             <img id="userImage" class="profilePic" src="../images/profile-placeholder-pic.jpg">
-            <h3 id="userLocation">{{zipcode}}</h3>
+            <h3 id="userLocation">{{User.zipcode}}</h3>
         </div>
         <div class="col-9">
 
             <h3 id="bioHeadline"></h3>
-            <p id="userBio">{{about_me}}</p>
+            <p id="userBio">{{User.about_me}}</p>
     
         </div>
     </div>
@@ -37,7 +37,7 @@
 
                 {{!-- CAROUSEL 1 --}}
                 <div>
-                    {{#each books_owned}}
+                    {{#each User.books_owned}}
                         {{> books/booksowned-block.handlebars}}
                     {{/each}}
                 </div>
@@ -53,7 +53,7 @@
                 
                 {{!-- CAROUSEL 2 --}}
                 <div>
-                    {{#each books_onloan}}
+                    {{#each User.books_onloan}}
                         {{> books/booksowned-block.handlebars}}
                     {{/each}}
                 </div>

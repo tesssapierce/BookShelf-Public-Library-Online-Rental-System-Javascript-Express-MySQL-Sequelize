@@ -13,9 +13,10 @@ module.exports = function(app){
 
     db.User.findAll({where: {username:username}}).then(function(dbUser){
     console.log(dbUser)
+
+    res.render("profile", {data: dbUser})
     })
 
-    // res.render("profile", {data: books})
   });
 
   
