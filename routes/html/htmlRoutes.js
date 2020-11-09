@@ -71,19 +71,8 @@ module.exports = function (app) {
       // res.render("index", booksObj);
     })
   });
-  // app.get("/user/:username", function(req, res) {
-  //   var username = req.params.username
-  //   db.User.findAll().then(function(dbUser){
-  //   console.log(dbUser)
-  //   })
-    // res.render("profile", {data: books})
-  // });
-  // app.get("/login", function(req, res){
-  //   res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
-  // })
 
 
-  
   ///////////////////////////////////////
   // GET ROUTE: PROFILE PAGE FORMATTER //
   ///////////////////////////////////////
@@ -142,13 +131,19 @@ module.exports = function (app) {
       res.render("profile", profilePage)
     })
   });
+
   app.get("/login", function (req, res) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   })
+
   app.get("/search", function (req, res) {
     var searchObj = req.body
     console.log(searchObj)
     res.render("search", { data: searchObj })
+  })
+
+  app.get("/view-all", function(req,res){
+    res.render("viewall", {data : data })
   })
 
 };

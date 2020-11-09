@@ -206,9 +206,8 @@
     border-bottom: none;
     border-top: 50px solid #987554;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 25px;
     padding-top: 0px;
-
     width: 72%;
     position: relative;
  
@@ -240,8 +239,6 @@
     padding-bottom: 10px;
     padding: 10px 10px 0px 20px;
     text-align: left;
-
-
 }
 
 #pre {
@@ -259,10 +256,6 @@
     box-shadow: 0 8px 6px -6px  #361a00;
     border-image:url("../images/wood.jpg") 50 50 stretch;
     border: 15px solid transperant;
-
-}
-
-img {
 
 }
 
@@ -288,15 +281,16 @@ img {
 }
 
 nav {
-  background-color: #998888 !important;
+  background-color: #473335 !important;
 }
 
 
 
 .navSection {
-  background-color: #998888;
-  font-family: 'Gentium Book Basic', serif;
+  background-color: #473335;
+  font-family: 'Poppins', sans-serif;
   border-radius: 5px;
+  color: #FFFFFF !important;;
 }
 
 .mainHead{
@@ -374,6 +368,10 @@ nav {
     color: whitesmoke;
     border-radius: 25px;
     display: none;
+}
+
+footer {
+    padding: 20px;
 }
 
 
