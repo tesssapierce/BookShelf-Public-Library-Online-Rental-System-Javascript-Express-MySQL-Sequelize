@@ -1,6 +1,11 @@
 var path = require("path");
 const db = require("../../models");
 module.exports = function (app) {
+
+  ///////////////////////////////////////
+  // GET ROUTE: HOME PAGE  //
+  ///////////////////////////////////////
+
   app.get("/", function (req, res) {
     db.Books.findAll({ where: { on_loan: "false" } }).then(function (data) {
       //most recent
@@ -72,22 +77,6 @@ module.exports = function (app) {
     })
   });
 
-
-
-  //   db.User.findAll().then(function(dbUser){
-  //   console.log(dbUser)
-  //   })
-
-    // res.render("profile", {data: books})
-  // });
-  // app.get("/login", function(req, res){
-  //   res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
-  // })
-
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../../public/assets/html/index.html"));
-  });
-
   ///////////////////////////////////////
   // GET ROUTE: PROFILE PAGE FORMATTER //
   ///////////////////////////////////////
@@ -157,15 +146,17 @@ module.exports = function (app) {
     })
   });
 
+  ///////////////////////////////////////
+  // GET ROUTE: LOGIN PAGE  //
+  ///////////////////////////////////////
+
   app.get("/login", function (req, res) {
     res.render("login")
   })
 
-  app.get("/search", function(req, res){
-    var searchVal = []
-    res.render("search", {data: searchVal})
-
-
+  ///////////////////////////////////////
+  // GET ROUTE: SEARCH PAGE  //
+  ///////////////////////////////////////
   app.get("/search/:val", function (req, res) {
     var searchVal = req.params.val
     console.log(searchVal)
@@ -175,8 +166,12 @@ module.exports = function (app) {
     // res.render("search", { data: dbBooks })
   })
 
+  ///////////////////////////////////////
+  // GET ROUTE: VIEW ALL PAGE  //
+  ///////////////////////////////////////
   app.get("/view-all", function(req,res){
     res.render("viewall", {data : data })
   })
+
 
 };
