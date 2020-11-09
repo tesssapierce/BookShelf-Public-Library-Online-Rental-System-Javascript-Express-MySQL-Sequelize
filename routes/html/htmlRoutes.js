@@ -1,5 +1,7 @@
 var path = require("path");
 const db = require("../../models");
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 module.exports = function (app) {
 
   ///////////////////////////////////////
@@ -93,13 +95,13 @@ module.exports = function (app) {
       // console.log(dbUser)
       let emptyCover = "../assets/images/emptycover-placeholder.jpg";
       let emptyArray = [emptyCover];
-      
+
       // Set Up Arrays for Books and Cover Image Code - for Instances When Arrays Are Full
       let booksOwned = [];
       let ownedCoverImg = [];
       let booksBorrowed = [];
       let borrowedCoverImg = [];
-      
+
       // Format Cover Image Code After Its Existence Is Confirmed
       function formatImageCode() {
         console.log("Formatting image code")
@@ -110,7 +112,7 @@ module.exports = function (app) {
           ownedCoverImg.push(imageSrc);
         }
       }
-      
+
       // If User Has No Owned Books, Feed Placeholder Image
       if (dbUser.dataValues.books_owned == "") {
         ownedCoverImg = emptyArray;
@@ -119,7 +121,7 @@ module.exports = function (app) {
         booksOwned = JSON.parse(dbUser.dataValues.books_owned);
         formatImageCode();
       }
-      
+
       // If User Has No Borrowed Books, Feed Placeholder Image
       if (dbUser.dataValues.books_onloan == "") {
         borrowedCoverImg = emptyArray;
@@ -129,19 +131,19 @@ module.exports = function (app) {
         booksOnloan = JSON.parse(dbUser.dataValues.books_owned);
         formatImageCode();
       }
-      
+
       // Reformat profilePage Object
       let profilePage = {
-        
+
         user_id: dbUser.dataValues.user_id,
         username: dbUser.dataValues.username,
         zipcode: dbUser.dataValues.zipcode,
         about_me: dbUser.dataValues.about_me,
         books_owned: ownedCoverImg,
         books_onloan: borrowedCoverImg
-        
+
       }
-      
+
       res.render("profile", profilePage)
     })
   });
@@ -157,20 +159,62 @@ module.exports = function (app) {
   ///////////////////////////////////////
   // GET ROUTE: SEARCH PAGE  //
   ///////////////////////////////////////
+
+  //With Search Value
   app.get("/search/:val", function (req, res) {
     var searchVal = req.params.val
     console.log(searchVal)
-    // db.Books.findAll({where: {title: searchVal.toLowerCase()}}).then(function(dbBooks){
-    //   res.json(dbBooks)
-    //   })
-    // res.render("search", { data: dbBooks })
+
+    db.Books.findAll({
+      where: {
+        title: {
+          [Op.like]: '%' + searchVal + '%'
+        }
+      }
+    }).then(function (dbBooks) {
+      var books = []
+      dbBooks.forEach(book => {
+        var thisBook = {
+          book_id: book.dataValues.book_id,
+          isbn: book.dataValues.isbn,
+          title: book.dataValues.title,
+          owner_id: book.dataValues.owner_id,
+          lender_id: book.dataValues.lender_id,
+          on_loan: book.dataValues.on_loan
+        }
+        books.push(thisBook)
+      })
+      console.log(books)
+      res.render("search", {books: books, searchQuery: searchVal})
+    })
   })
 
+  //Without Search Value
+  app.get("/search/", function (req, res) {
+    res.redirect("/view-all")
+  })
   ///////////////////////////////////////
   // GET ROUTE: VIEW ALL PAGE  //
   ///////////////////////////////////////
-  app.get("/view-all", function(req,res){
-    res.render("viewall", {data : data })
-  })
 
-};
+  app.get("/view-all", function (req, res) {
+    db.Books.findAll({})
+      .then((dbBooks) => {
+        var books = []
+        dbBooks.forEach(book => {
+          var thisBook = {
+            book_id: book.dataValues.book_id,
+            isbn: book.dataValues.isbn,
+            title: book.dataValues.title,
+            owner_id: book.dataValues.owner_id,
+            lender_id: book.dataValues.lender_id,
+            on_loan: book.dataValues.on_loan
+          }
+          books.push(thisBook)
+        })
+        res.render("findAll", {books: books})
+      })
+  });
+
+
+}
