@@ -3,6 +3,9 @@
 /* ///////////////
 
 /* PROFILE BOOKCASE DESIGN */
+.text{
+    font-size:8vw;
+}
 
 /* Profile Bookcase Outline: Container Div */
 #profileBackground {
@@ -252,6 +255,13 @@
     width: 100px;
 }
 } */
+
+
+
+/* Profile: Modal: Resizes Image */
+#addImgFormat {
+    width:30px;
+}
 
 #bookshelf_container {
     margin-left: 20px;

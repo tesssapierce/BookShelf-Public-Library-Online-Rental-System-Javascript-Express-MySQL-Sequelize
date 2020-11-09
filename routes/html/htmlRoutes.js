@@ -73,6 +73,21 @@ module.exports = function (app) {
   });
 
 
+
+  //   db.User.findAll().then(function(dbUser){
+  //   console.log(dbUser)
+  //   })
+
+    // res.render("profile", {data: books})
+  // });
+  // app.get("/login", function(req, res){
+  //   res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
+  // })
+
+  app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "../../public/assets/html/index.html"));
+  });
+
   ///////////////////////////////////////
   // GET ROUTE: PROFILE PAGE FORMATTER //
   ///////////////////////////////////////
@@ -143,8 +158,13 @@ module.exports = function (app) {
   });
 
   app.get("/login", function (req, res) {
-    res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
+    res.render("login")
   })
+
+  app.get("/search", function(req, res){
+    var searchVal = []
+    res.render("search", {data: searchVal})
+
 
   app.get("/search/:val", function (req, res) {
     var searchVal = req.params.val

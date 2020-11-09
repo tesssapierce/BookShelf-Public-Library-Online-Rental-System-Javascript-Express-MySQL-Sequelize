@@ -9,15 +9,26 @@ $(document).ready(function () {
         window.location.href = "/search/" + encodedQuery
     })
 
-    // FEELING LUCKY BUTTON //
-    $("#lucky").on("click", function () {
-        console.log("hello");
-    })
+   
+    // SIGN IN PAGE //
 
+    $("#login-submit").on("click", function(e){
+        console.log("fuck shit");
+    })
 
 }
 
+
     // SIGN IN //
+
+
+
+    //ADD BOOK OWNED ON PROFILE PAGE
+    $(".addButton").click(function(){
+        $("#modalDisplay").css("display", "block")
+        // $(".profileModalFormat").css("height", "500")
+    })
+
         
 
     // API CALL TO RECIEVE BOOK NAME //
@@ -68,7 +79,6 @@ $(document).ready(function () {
     })
 
     //PROFILE PAGE
-
 
     //ADD BOOK OWNED ON PROFILE PAGE
     $(".addButton").click(function(){
@@ -149,3 +159,13 @@ $(document).ready(function () {
         });
     });
 });
+
+    
+})
+
+$('#recipeCarousel').carousel({
+    interval: 10000
+  })
+  
+ 
+
