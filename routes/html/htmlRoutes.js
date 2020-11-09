@@ -52,9 +52,6 @@ module.exports = function (app) {
       for (var i = 12; i < 18; i++) {
         random_three.push(isbnArrRan[i])
       };
-
-
-
       var hbsObjNewArival = {
         NewArival1: recent_one,
         NewArival2: recent_two,
@@ -77,9 +74,6 @@ module.exports = function (app) {
 
 
 
-  // app.get("/user/:username", function(req, res) {
-  //   var username = req.params.username
-
   //   db.User.findAll().then(function(dbUser){
   //   console.log(dbUser)
   //   })
@@ -93,7 +87,7 @@ module.exports = function (app) {
   app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/index.html"));
   });
-  
+
   ///////////////////////////////////////
   // GET ROUTE: PROFILE PAGE FORMATTER //
   ///////////////////////////////////////
@@ -152,6 +146,7 @@ module.exports = function (app) {
       res.render("profile", profilePage)
     })
   });
+
   app.get("/login", function (req, res) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   })
@@ -159,5 +154,19 @@ module.exports = function (app) {
   app.get("/search", function(req, res){
     var searchVal = []
     res.render("search", {data: searchVal})
+
+
+  app.get("/search/:val", function (req, res) {
+    var searchVal = req.params.val
+    console.log(searchVal)
+    // db.Books.findAll({where: {title: searchVal.toLowerCase()}}).then(function(dbBooks){
+    //   res.json(dbBooks)
+    //   })
+    // res.render("search", { data: dbBooks })
   })
+
+  app.get("/view-all", function(req,res){
+    res.render("viewall", {data : data })
+  })
+
 };

@@ -20,11 +20,4 @@ module.exports = function (app) {
     res.redirect("/login");
   });
 
-  app.post("/api/search", function (req, res) {
-    var searchVal = req.body.search
-    db.Books.findAll({where: {title: searchVal.toLowerCase()}}).then(function(dbBooks){
-      res.json(dbBooks)
-    })
-  })
-
 }
