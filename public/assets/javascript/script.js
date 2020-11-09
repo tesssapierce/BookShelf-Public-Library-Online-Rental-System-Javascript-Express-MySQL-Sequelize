@@ -19,7 +19,7 @@ $(document).ready(function () {
         console.log(searchQuery)
         console.log(dataObj)
         $.get("/search", dataObj, function(response){
-            // window.location.href = "/search/";
+            window.location.href = "/search/";
         })
     }
 
