@@ -198,11 +198,23 @@ module.exports = function (app) {
   ///////////////////////////////////////
 
   app.get("/view-all", function (req, res) {
-    db.Books.findAll({
-
-    })
-
-
+    db.Books.findAll({})
+      .then((dbBooks) => {
+        var books = []
+        dbBooks.forEach(book => {
+          var thisBook = {
+            book_id: book.dataValues.book_id,
+            isbn: book.dataValues.isbn,
+            title: book.dataValues.title,
+            owner_id: book.dataValues.owner_id,
+            lender_id: book.dataValues.lender_id,
+            on_loan: book.dataValues.on_loan
+          }
+          books.push(thisBook)
+        })
+        res.render("findAll", {books: books})
+      })
   });
+
 
 }
