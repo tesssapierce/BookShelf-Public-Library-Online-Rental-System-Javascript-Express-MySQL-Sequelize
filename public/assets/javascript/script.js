@@ -1,5 +1,3 @@
-const connection = require("../../../../../../homework13/13-Node-Express-Handlebars/config/connection");
-
 $(document).ready(function () {
 
     // SEARCH BAR RESULT //
@@ -17,7 +15,7 @@ $(document).ready(function () {
     })
 
 
-
+}
 
     // SIGN IN //
         
