@@ -148,7 +148,7 @@ module.exports = function (app) {
   });
 
   app.get("/login", function (req, res) {
-    res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
+    res.render("login")
   })
 
   app.get("/search", function(req, res){

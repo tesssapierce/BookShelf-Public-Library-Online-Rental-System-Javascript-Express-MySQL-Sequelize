@@ -9,15 +9,15 @@ $(document).ready(function () {
         window.location.href = "/search/" + encodedQuery
     })
 
-    // FEELING LUCKY BUTTON //
-    $("#lucky").on("click", function () {
-        console.log("hello");
+   
+    // SIGN IN PAGE //
+
+    $("#login-submit").on("click", function(e){
+        console.log("fuck shit");
     })
 
 
 
-
-    // SIGN IN //
 
 
     //ADD BOOK OWNED ON PROFILE PAGE
