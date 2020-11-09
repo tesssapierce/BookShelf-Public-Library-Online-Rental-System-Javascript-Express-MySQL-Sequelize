@@ -1,22 +1,69 @@
-
 var path = require("path");
 const db = require("../../models");
-
 module.exports = function (app) {
-
   app.get("/", function (req, res) {
-
-    db.Books.findAll({where: {on_loan:"false"}, limit: 6}).then( function(data) {
-      // var isbnArr = [];
-      // data.forEach( book => isbnArr.push(book.isbn) )
-      var booksArr = [];
-      data.forEach( book => booksArr.push(book.isbn) )
-      console.log(booksArr)
-      var hbsObj = {
-        isbn: booksArr
+    db.Books.findAll({ where: { on_loan: "false" } }).then(function (data) {
+      //most recent
+      var isbnArr = [];
+      for (var i = 0; i < data.length; i++) {
+        isbnArr.push(data[i].isbn)
+      };
+      console.log(isbnArr)
+      var recent_one = []
+      for (var i = isbnArr.length - 6; i < isbnArr.length; i++) {
+        recent_one.push(isbnArr[i])
+      };
+      var recent_two = []
+      for (var i = isbnArr.length - 12; i < isbnArr.length - 6; i++) {
+        recent_two.push(isbnArr[i])
+      };
+      var recent_three = []
+      for (var i = isbnArr.length - 18; i < isbnArr.length - 12; i++) {
+        recent_three.push(isbnArr[i])
+      };
+      //forPopular logic needs fix
+      var popular_one = []
+      for (var i = 0; i < 6; i++) {
+        popular_one.push(isbnArr[i])
+      };
+      var popular_two = []
+      for (var i = 6; i < 12; i++) {
+        popular_two.push(isbnArr[i])
+      };
+      var popular_three = []
+      for (var i = 12; i < 18; i++) {
+        popular_three.push(isbnArr[i])
+      };
+      console.log(popular_one)
+      console.log(random_two)
+      console.log(random_three)
+      //for randoms
+      var isbnArrRan = isbnArr.sort(() => Math.random() - 0.5);
+      console.log(isbnArrRan)
+      var random_one = [];
+      for (var i = 0; i < 6; i++) {
+        random_one.push(isbnArrRan[i])
+      };
+      var random_two = [];
+      for (var i = 6; i < 12; i++) {
+        random_two.push(isbnArrRan[i])
+      };
+      var random_three = [];
+      for (var i = 12; i < 18; i++) {
+        random_three.push(isbnArrRan[i])
+      };
+      var hbsObjNewArival = {
+        NewArival1: recent_one,
+        NewArival2: recent_two,
+        NewArival3: recent_three,
+        Random1: random_one,
+        Random2: random_two,
+        Random3: random_three,
+        Popular1: popular_one,
+        Popular2: popular_two,
+        Popular3: popular_three
       }
-
-      res.render("index", hbsObj)
+      res.render("index", hbsObjNewArival)
       // var booksObj = { 
       //   books: res
       // }
@@ -24,104 +71,87 @@ module.exports = function (app) {
       // res.render("index", booksObj);
     })
   });
-
-
-
   // app.get("/user/:username", function(req, res) {
   //   var username = req.params.username
-
   //   db.User.findAll().then(function(dbUser){
   //   console.log(dbUser)
   //   })
-
     // res.render("profile", {data: books})
   // });
   // app.get("/login", function(req, res){
   //   res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   // })
-
   app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/index.html"));
   });
-  
   ///////////////////////////////////////
   // GET ROUTE: PROFILE PAGE FORMATTER //
   ///////////////////////////////////////
-
-  app.get("/user/:username", function(req, res) {
+  app.get("/user/:username", function (req, res) {
     var username = req.params.username
-
     // Match username with Database and make dbUser the user's data Object
-    db.User.findOne({where: {username:username}}).then(function(dbUser){
-    console.log(dbUser.dataValues)
-    console.log("ISBN: " + JSON.parse(dbUser.dataValues.books_owned))
-
-    // Set Up Images - for Instances Where Array Are Empty
-    let emptyCover = "../assets/images/emptycover-placeholder.jpg";
-    let emptyArray = [emptyCover];
-
-    // Set Up Arrays for Books and Cover Image Code - for Instances When Arrays Are Full
-    let booksOwned = [];
-    let ownedCoverImg =[];
-    let booksBorrowed = [];
-    let borrowedCoverImg = [];
-
-    // Format Cover Image Code After Its Existence Is Confirmed
-    function formatImageCode(){      
-      console.log("Formatting image code")
-      // Loop imageSrc Code with ISBN Number
-      for(var i=0; i < booksOwned.length; i++){
-        imageSrc="http://covers.openlibrary.org/b/isbn/" + booksOwned[i] + ".jpg";
-        ownedCoverImg.push(imageSrc);
+    db.User.findOne({ where: { username: username } }).then(function (dbUser) {
+      console.log(dbUser.dataValues)
+      console.log("ISBN: " + JSON.parse(dbUser.dataValues.books_owned))
+      // Set Up Images - for Instances Where Array Are Empty
+      console.log(dbUser)
+      let emptyCover = "../assets/images/emptycover-placeholder.jpg";
+      let emptyArray = [emptyCover];
+      // Set Up Arrays for Books and Cover Image Code - for Instances When Arrays Are Full
+      let booksOwned = [];
+      let ownedCoverImg = [];
+      let booksBorrowed = [];
+      let borrowedCoverImg = [];
+      // Format Cover Image Code After Its Existence Is Confirmed
+      function formatImageCode() {
+        // console.log("Formatting image code")
+        // Loop imageSrc Code with ISBN Number
+        for (var i = 0; i < booksOwned.length; i++) {
+          imageSrc = "http://covers.openlibrary.org/b/isbn/" + booksOwned[i] + ".jpg";
+          ownedCoverImg.push(imageSrc);
+        }
+        // console.log("TEST: " + ownedCoverImg)
       }
-      console.log("TEST: " + ownedCoverImg)
-    }
-
       // If User Has No Owned Books, Feed Placeholder Image
-      if (dbUser.dataValues.books_owned == ""){
-        ownedCoverImg = emptyArray; 
-      //   // return booksOnloan;
-      // Else, Send Owned Books to formatCodeImage()
+      if (dbUser.dataValues.books_owned == "") {
+        ownedCoverImg = emptyArray;
+        //   // return booksOnloan;
+        // Else, Send Owned Books to formatCodeImage()
       } else {
         booksOwned = JSON.parse(dbUser.dataValues.books_owned);
         formatImageCode();
       }
-
       // If User Has No Borrowed Books, Feed Placeholder Image
-      if (dbUser.dataValues.books_onloan == ""){
-        borrowedCoverImg = emptyArray; 
-      //   // return booksOnloan;
-      // Else, Send Owned Books to formatCodeImage()
+      if (dbUser.dataValues.books_onloan == "") {
+        borrowedCoverImg = emptyArray;
+        //   // return booksOnloan;
+        // Else, Send Owned Books to formatCodeImage()
       } else {
         booksOnloan = JSON.parse(dbUser.dataValues.books_owned);
         formatImageCode();
       }
-
-    // Reformat profilePage Object
-    let profilePage = {
-      username: dbUser.dataValues.username,
-      zipcode: dbUser.dataValues.zipcode,
-      about_me: dbUser.dataValues.about_me,
-      books_owned: ownedCoverImg,
-      books_onloan: borrowedCoverImg
-    }
-
-    console.log(profilePage)
-
-    res.render("profile", profilePage)
-
+      // Reformat profilePage Object
+      let profilePage = {
+        username: dbUser.dataValues.username,
+        zipcode: dbUser.dataValues.zipcode,
+        about_me: dbUser.dataValues.about_me,
+        books_owned: ownedCoverImg,
+        books_onloan: borrowedCoverImg
+      }
+      console.log(profilePage)
+      res.render("profile", profilePage)
     })
-
   });
-
-  
-  app.get("/login", function(req, res){
+  app.get("/login", function (req, res) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   })
-
-  app.get("/search", function(req, res){
+  app.get("/search", function (req, res) {
     var searchObj = req
     console.log(searchObj)
     // res.render("search", searchVal)
+
+    var searchVal = []
+    res.render("search", { data: searchVal })
   })
+
 };
