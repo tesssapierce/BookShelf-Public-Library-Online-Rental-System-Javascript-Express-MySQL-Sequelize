@@ -459,6 +459,8 @@ img.searchImage {
 
 .searchResults {
     margin: 0 auto;
+    background-color: #987554;
+    border-radius: 5px;
 }
 
 .searchResultCard {
