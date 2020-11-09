@@ -200,5 +200,4 @@ module.exports = function (app) {
     res.render("findAll")
   })
 
-
 };
