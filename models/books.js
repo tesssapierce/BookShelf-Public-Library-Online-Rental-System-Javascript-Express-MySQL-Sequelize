@@ -14,10 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Books.init({
-    id: 
+    book_id: 
       {type: DataTypes.INTEGER,
       primaryKey: true},
-    book_id: DataTypes.INTEGER,
     isbn: DataTypes.STRING,
     title: DataTypes.STRING,
     owner_id: DataTypes.INTEGER,
