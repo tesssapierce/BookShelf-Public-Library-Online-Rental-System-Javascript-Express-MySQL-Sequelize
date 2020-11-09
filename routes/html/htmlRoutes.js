@@ -170,7 +170,7 @@ module.exports = function (app) {
   // GET ROUTE: VIEW ALL PAGE  //
   ///////////////////////////////////////
   app.get("/view-all", function(req,res){
-    res.render("viewall", {data : data })
+    res.render("findAll")
   })
 
 
