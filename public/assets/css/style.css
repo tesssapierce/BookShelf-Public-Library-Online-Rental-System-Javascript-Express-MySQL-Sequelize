@@ -424,8 +424,13 @@ nav {
     display: none;
 } */
 
+
 footer {
+    position: absolute;
+    margin: auto;
     padding: 20px;
+    text-align: center;
+    bottom: 0;
 }
 
 

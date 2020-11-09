@@ -5,10 +5,12 @@ module.exports = function (app) {
   app.post("/api/signup", function (req, res) {
     db.User.create({
       email: req.body.email,
+      zipcode: req.body.zip,
+      username: req.body.username,
       password: req.body.password
     })
       .then(function () {
-        res.redirect("/api/login");
+        res.redirect(307,"/api/login");
       })
       .catch(function (err) {
         res.status(401).json(err);
