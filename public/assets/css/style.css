@@ -333,6 +333,7 @@
     padding-left: 240px;
 }
 
+/* NAVIGATION CSS */
 
 .searchBtn {
   background-color: #473335;
@@ -348,14 +349,13 @@ nav {
   background-color: #473335 !important;
 }
 
-
-
 .navSection {
   background-color: #473335;
   font-family: 'Poppins', sans-serif;
   border-radius: 5px;
   color: #FFFFFF !important;;
 }
+
 
 .mainHead{
   text-align: center;
@@ -429,5 +429,40 @@ footer {
 }
 
 
+/* Searhc Results CSS */
+.searchHead {
+    text-align: center;
+    background-color: #987554;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px 0px;
+    font-family: 'Poppins', sans-serif;
+}
 
+span.searchQuery {
+    font-style: italic;
+}
 
+h3.searchQuery {
+    font-size: 12px;
+}
+
+img.searchImage {
+    height: 200px;
+    width: auto;
+}
+
+.searchTitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+}
+
+.searchResults {
+    margin: 0 auto;
+}
+
+.searchResultCard {
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
