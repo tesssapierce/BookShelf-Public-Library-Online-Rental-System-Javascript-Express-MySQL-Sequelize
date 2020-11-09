@@ -9,9 +9,6 @@
     width: 25%;
     padding-bottom: 1%;
 }
-.bookImgs{
-    size: 100%
-}
 
 #bookshelf_container {
 
@@ -54,7 +51,7 @@
 }
 
 
-.carousel {
+.carousel{
 
     border-bottom: 30px solid #987554;;
 	-webkit-box-shadow: 0 8px 6px -6px  #361a00;
@@ -62,20 +59,18 @@
     box-shadow: 0 8px 6px -6px  #361a00;
     border-image:url("../images/wood.jpg") 50 50 stretch;
     border: 15px solid transperant;
+    height: 33vh;
 
 }
 
-img {
-    width: 100%;
-    size: auto;
-}
 
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
+    padding:none;
 }
-.carousel-item  {
+/* .carousel-item  {
     padding:1%;
-}
+} */
 
 
 
