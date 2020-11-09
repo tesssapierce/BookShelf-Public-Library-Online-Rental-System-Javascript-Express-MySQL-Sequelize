@@ -1,19 +1,5 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 var path = require("path");
 const db = require("../../models");
-<<<<<<< HEAD
-// const { query, response } = require("express");
-// const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
-// const { query } = require("express");
-// var path = require("path");
-// const { json } = require("sequelize");
-// const db = require("../../models");
-=======
-
->>>>>>> master
 module.exports = function (app) {
   app.get("/", function (req, res) {
     db.Books.findAll({ where: { on_loan: "false" } }).then(function (data) {
@@ -88,12 +74,6 @@ module.exports = function (app) {
       // res.render("index", booksObj);
     })
   });
-<<<<<<< HEAD
-  // module.exports = function(app){
-  //   app.get("/", function(req, res) {
-  //     res.sendFile(path.join(__dirname, "../../public/assets/html/index.html"));
-  //   });
-=======
 
 
 
@@ -114,44 +94,49 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/index.html"));
   });
   
->>>>>>> master
   ///////////////////////////////////////
   // GET ROUTE: PROFILE PAGE FORMATTER //
   ///////////////////////////////////////
+
   app.get("/user/:username", function (req, res) {
     var username = req.params.username
+
     // Match username with Database and make dbUser the user's data Object
     db.User.findOne({ where: { username: username } }).then(function (dbUser) {
-      console.log(dbUser.dataValues)
+      console.log("MAIN TARGET: "+ dbUser.dataValues)
       console.log("ISBN: " + JSON.parse(dbUser.dataValues.books_owned))
+
       // Set Up Images - for Instances Where Array Are Empty
       console.log(dbUser)
       let emptyCover = "../assets/images/emptycover-placeholder.jpg";
       let emptyArray = [emptyCover];
+      
       // Set Up Arrays for Books and Cover Image Code - for Instances When Arrays Are Full
       let booksOwned = [];
       let ownedCoverImg = [];
       let booksBorrowed = [];
       let borrowedCoverImg = [];
+      
       // Format Cover Image Code After Its Existence Is Confirmed
       function formatImageCode() {
-        // console.log("Formatting image code")
+        console.log("Formatting image code")
+
         // Loop imageSrc Code with ISBN Number
         for (var i = 0; i < booksOwned.length; i++) {
           imageSrc = "http://covers.openlibrary.org/b/isbn/" + booksOwned[i] + ".jpg";
           ownedCoverImg.push(imageSrc);
         }
-        // console.log("TEST: " + ownedCoverImg)
       }
+      
       // If User Has No Owned Books, Feed Placeholder Image
       if (dbUser.dataValues.books_owned == "") {
         ownedCoverImg = emptyArray;
-        //   // return booksOnloan;
         // Else, Send Owned Books to formatCodeImage()
       } else {
         booksOwned = JSON.parse(dbUser.dataValues.books_owned);
         formatImageCode();
       }
+      
       // If User Has No Borrowed Books, Feed Placeholder Image
       if (dbUser.dataValues.books_onloan == "") {
         borrowedCoverImg = emptyArray;
@@ -161,30 +146,28 @@ module.exports = function (app) {
         booksOnloan = JSON.parse(dbUser.dataValues.books_owned);
         formatImageCode();
       }
+      
       // Reformat profilePage Object
       let profilePage = {
+        
+        user_id: dbUser.dataValues.user_id,
         username: dbUser.dataValues.username,
         zipcode: dbUser.dataValues.zipcode,
         about_me: dbUser.dataValues.about_me,
         books_owned: ownedCoverImg,
         books_onloan: borrowedCoverImg
+        
       }
-      console.log(profilePage)
+      
       res.render("profile", profilePage)
     })
   });
   app.get("/login", function (req, res) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   })
-<<<<<<< HEAD
-  app.get("/search/:value", function (req, res) {
-    var searchVal = req.params.value
-    console.log(searchVal)
-=======
 
   app.get("/search", function(req, res){
     var searchVal = []
     res.render("search", {data: searchVal})
->>>>>>> master
   })
 };
