@@ -9,15 +9,13 @@ $(document).ready(function () {
         window.location.href = "/search/" + encodedQuery
     })
 
-    // FEELING LUCKY BUTTON //
-    $("#lucky").on("click", function () {
-        console.log("hello");
-    })
+   
+    // SIGN IN PAGE //
+
+    
 
 
 
-
-    // SIGN IN //
 
 
     //ADD BOOK OWNED ON PROFILE PAGE
