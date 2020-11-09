@@ -1,19 +1,5 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 var path = require("path");
 const db = require("../../models");
-<<<<<<< HEAD
-// const { query, response } = require("express");
-// const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
-// const { query } = require("express");
-// var path = require("path");
-// const { json } = require("sequelize");
-// const db = require("../../models");
-=======
-
->>>>>>> master
 module.exports = function (app) {
   app.get("/", function (req, res) {
     db.Books.findAll({ where: { on_loan: "false" } }).then(function (data) {
@@ -88,12 +74,6 @@ module.exports = function (app) {
       // res.render("index", booksObj);
     })
   });
-<<<<<<< HEAD
-  // module.exports = function(app){
-  //   app.get("/", function(req, res) {
-  //     res.sendFile(path.join(__dirname, "../../public/assets/html/index.html"));
-  //   });
-=======
 
 
 
@@ -114,7 +94,6 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/index.html"));
   });
   
->>>>>>> master
   ///////////////////////////////////////
   // GET ROUTE: PROFILE PAGE FORMATTER //
   ///////////////////////////////////////
@@ -176,15 +155,9 @@ module.exports = function (app) {
   app.get("/login", function (req, res) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   })
-<<<<<<< HEAD
-  app.get("/search/:value", function (req, res) {
-    var searchVal = req.params.value
-    console.log(searchVal)
-=======
 
   app.get("/search", function(req, res){
     var searchVal = []
     res.render("search", {data: searchVal})
->>>>>>> master
   })
 };
