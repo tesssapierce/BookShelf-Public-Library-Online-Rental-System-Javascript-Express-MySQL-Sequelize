@@ -1,5 +1,5 @@
 
-<div id="bookcase" class="container">
+<div id="profileBackground">
 
     <!-- Profile -->
 
@@ -9,65 +9,129 @@
         </div>
     </div>
     <div id="userInfo" class="row">
-        <div class="col-3">
+        <div class="col-6">
             <img id="userImage" class="profilePic" src="../assets/images/profile-placeholder-pic.jpg">
-            <h3 id="userLocation">{{zipcode}}</h3>
+                
+            
+            
         </div>
-        <div class="col-9">
+        <div class="col-6">
 
             <h3 id="bioHeadline">About Me</h3>
             <p id="userBio">{{about_me}}</p>
-    
+            <p id="userId">{{user_id}}</p>
+            
+        </div>
+    </div>
+    <div id="userInfo" class="row">
+        <div class="col-12">
+            <h3 id="userLocation">Zip Code: {{zipcode}}</h3>
         </div>
     </div>
 
     <!-- Book Section -->
 
-    <div class="row">
-        <div id="profileBookSection" class="col-12">
+    <div class="bookself" id="bookshelf_container">
+        <div class="row">
+            <div class="col-12">
+                    <h2 class="text">Owned Books</h2><button class="addButton">Add Book</button>
+                    <!--slider newarivals-->
+                    <div id="carouselNewArivalsControls" class="carousel  slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                    <!--Slider Owned 1-->
+                                    <div class="carousel-item active">
+                                        <div class="row">
+                                            
+                                            {{#each books_owned}}
+                                                <div class="col-lg-2"> <img src="{{this}}" class="d-block w-100" alt="first slide"></div>
+                                            {{/each}}
 
-            
+                                        </div>
+                                    </div>
+                                    <!-- End Owned 1 -->
 
-            <!-- Owned Books -->
+                                    <!--Slider Owned 2-->
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            {{#each books_owned}}
+                                                <div class="col-lg-2"> <img src="{{this}}" class="d-block w-100" alt="first slide"></div>
+                                            {{/each}}
+                                        </div>
 
-            <div class="booksToLoan">
-                <div id="booksToLoanHeadline">
-                    <h3 style="display: inline;">Books Owned</h3>
-                    <button class="addButton">+</button>
-                </div>
+                                    </div>
+                                    <!-- End Owned 2-->
 
-                {{!-- CAROUSEL 1 --}}
-                <div>
+                                    <!--Slider Owned 3-->
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            {{#each books_owned}}
+                                                <div class="col-lg-2"> <img src="{{this}}" class="d-block w-100" alt="first slide"></div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                    <!-- End Owned 3-->
+
+                                    <a class="carousel-control-prev" href="#carouselNewArivalsControls"
+                                            role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselNewArivalsControls"
+                                            role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                    </a>
+                            </div>
+                    </div>
+            </div>
+            <div class="col-12">
+                    <h2 class="text">Borrowed Books</h2>
+                    <!--popular slider-->
+                    <div id="carouselPopularControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                    <!--Slider popular part 1"public/assets -->
+                                    <div class="carousel-item active">
+                                            
+                                        {{#each books_onloan}}
+                                            <div class="col-lg-2"> <img src="{{this}}" class="d-block w-100" alt="first slide"></div>
+                                        {{/each}}
+                                                    
+                                    </div>
+                                    <!--End of slider popular part 1-->
+
+                                    <!--Slider popular part 2 random-->
+                                    <div class="carousel-item">
+                                            
+                                        {{#each books_onloan}}
+                                            <div class="col-lg-2"> <img src="{{this}}"class="d-block w-100" alt="first slide"></div>
+                                        {{/each}}
+                                                    
+                                    </div>
+                                    <!-- end of slider popular part 2-->
+                                    <!--Slider popular part 3 random-->
+                                    <div class="carousel-item">
+                                            
+                                        {{#each books_onloan}}
+                                        <div class="col-lg-2"> <img src="{{this}}" class="d-block w-100" alt="first slide"></div>
+                                        {{/each}}
                     
-                    <table>
-                        <tr>
-                            {{#each books_owned}}
-                                <td>
-                                    <img class="bookCover" src="{{this}}">
-                                </td>
-                            {{/each}}
-                        </tr>
-                    </table>
-                    
-                </div>
+                                    </div>
+                                    <!-- end of slider popular part 3-->
 
+                                    <a class="carousel-control-prev" href="#carouselPopularControls" role="button"
+                                            data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselPopularControls" role="button"
+                                            data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                    </a>
+                            </div>
+                    </div>
             </div>
 
-            <!-- Borrowed Books -->
-            <div class="booksBorrowed">
-                <div id="booksBorrowedHeadline">
-                    <h3 style="display: inline;">Books Borrowed</h3>
-                    <button class="addButton">+</button>
-                </div>
-                
-                {{!-- CAROUSEL 2 --}}
-                <div>
-                    {{#each books_onloan}}
-                        <img class="bookCover" src="{{this}}">
-                    {{/each}}
-                </div>
-
-            </div>
         </div>
     </div>
     {{!-- Add Book Module --}}
