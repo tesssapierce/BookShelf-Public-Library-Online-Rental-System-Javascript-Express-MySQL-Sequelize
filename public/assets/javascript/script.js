@@ -157,9 +157,9 @@ $(document).ready(function () {
             });
         });
     });
-    $('#recipeCarousel').carousel({
-        interval: 10000
+    // $('#recipeCarousel').carousel({
+    //     interval: 10000
       })
-});
+// });
  
 
