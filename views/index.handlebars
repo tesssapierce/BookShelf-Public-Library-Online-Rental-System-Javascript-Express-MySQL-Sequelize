@@ -48,8 +48,10 @@
                                         <!--Slider arivalspart 2 random-->
                                         <div class="carousel-item">
                                                 <div class="row">
-                                                        {{#each Books}}
-                                                        {{> Books/carousel-block}}
+                                                        {{#each isbn}}
+                                                                <div class="col-lg-2"> 
+                                                                        <img src="http://covers.openlibrary.org/b/isbn/{{this}}.jpg" class="d-block w-100" alt="first slide">
+                                                                </div>
                                                         {{/each}}
                                                 </div>
 

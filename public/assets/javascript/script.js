@@ -20,6 +20,7 @@ $(document).ready(function () {
     // FEELING LUCKY BUTTON //
     $("#lucky").on("click", function () {
         console.log("hello");
+        
     })
 
 
@@ -74,13 +75,34 @@ $(document).ready(function () {
         })
     })
 
+    ///////////////////////////
+    // WORK IN PROGRESS AREA //
+    ///////////////////////////
     // CONFIRM ADD BOOK BUTTON //
 
     $("#add-book").on("click", function () {
-        console.log("hello");
+        console.log("Submission Clicked");
+
+        // Configuration
+        // let user = $("#profileHeader").get
+
+        // let newProfileBook = {
+        //     isbn: isbnNumber,
+        //     title: ajaxTitle,
+        //     owner_id: 
+        //     lender_id: null,
+        //     on_loan
+
+        // }
+
+        // $.post("/api/users/:username", addNewBook, (req, res) =>{
+        //     console.log("Sending to Post Route");
+        // })
+    ///////////////////////////
+
+
     })
 
-    //PROFILE PAGE
 
     
 })

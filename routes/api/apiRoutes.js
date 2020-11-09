@@ -27,4 +27,21 @@ module.exports = function (app) {
     })
   })
 
+  ////////////////////////////////////
+  // WORK IN PROGRESS AREA
+  ///////////////////////////////////
+  // Adding Post Route for Books to DB
+  // app.post("/api/user/:username"), function (req,res) {}
+
+  //Copied from JS for guide
+  // function search(searchQuery){
+  //   $.post("/api/users/:username", searchQuery, function(){
+  //   })
+  ////////////////////////////////////
+
+
+
+  // Add Book to User Profile Database
+  app.post("/api/")
+
 }
