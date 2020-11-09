@@ -1,0 +1,15 @@
+<div class="searchResults container">
+    <div class="row">
+        <div class="col-3 offset-5">
+            <h1 id="">All Books</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        {{#each books}}
+        <div class="col-3">
+            <img src="http://covers.openlibrary.org/b/isbn/{{this.isbn}}.jpg" class="img-fluid">
+            <h2 class="title">{{this.title}}</h2>
+        </div>
+        {{/each}}
+    </div>
