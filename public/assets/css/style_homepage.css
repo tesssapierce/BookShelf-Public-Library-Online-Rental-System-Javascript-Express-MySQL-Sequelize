@@ -2,8 +2,18 @@
     padding-top: 10vh;   /* padding-left: 240px; */
     background-position: center center;
 }
+<<<<<<< HEAD
 
 
+=======
+#nameLogo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    padding-bottom: 1%;
+}
+>>>>>>> master
 
 #bookshelf_container {
 
@@ -50,7 +60,7 @@
 }
 
 
-.carousel {
+.carousel{
 
     border-bottom: 30px solid #987554;;
 	-webkit-box-shadow: 0 8px 6px -6px  #361a00;
@@ -58,13 +68,18 @@
     box-shadow: 0 8px 6px -6px  #361a00;
     border-image:url("../images/wood.jpg") 50 50 stretch;
     border: 15px solid transperant;
+<<<<<<< HEAD
     /* height: 33vh; */
+=======
+    height: 33vh;
+>>>>>>> master
 
 }
 
 
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
+<<<<<<< HEAD
     width:100%;
 }
 .carousel-item  {
@@ -78,6 +93,13 @@
     padding-top: 35vh;
     margin-right: 2vh;
 }
+=======
+    padding:none;
+}
+/* .carousel-item  {
+    padding:1%;
+} */
+>>>>>>> master
 
 
 
