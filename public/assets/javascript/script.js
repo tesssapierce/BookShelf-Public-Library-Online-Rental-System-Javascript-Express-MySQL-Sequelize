@@ -16,7 +16,6 @@ $(document).ready(function () {
         console.log("fuck shit");
     })
 
-}
 
 
     // SIGN IN //
@@ -158,14 +157,9 @@ $(document).ready(function () {
             });
         });
     });
+    $('#recipeCarousel').carousel({
+        interval: 10000
+      })
 });
-
-    
-})
-
-$('#recipeCarousel').carousel({
-    interval: 10000
-  })
-  
  
 
