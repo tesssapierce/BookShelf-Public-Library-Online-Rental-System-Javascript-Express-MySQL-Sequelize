@@ -1,17 +1,6 @@
-<<<<<<< HEAD
-const { query, response } = require("express");
-=======
-const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
-const { query } = require("express");
->>>>>>> master
+
 var path = require("path");
-const { json } = require("sequelize");
 const db = require("../../models");
-
-<<<<<<< HEAD
-
-
-
 
 module.exports = function (app) {
 
@@ -45,18 +34,12 @@ module.exports = function (app) {
   //   console.log(dbUser)
   //   })
 
-  //   // res.render("profile", {data: books})
+    // res.render("profile", {data: books})
   // });
   // app.get("/login", function(req, res){
   //   res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   // })
 
-  // app.get("/search/:value", function(req, res){
-  //   var searchVal = req.params.value
-  //   console.log(searchVal)
-  // })
-=======
-module.exports = function(app){
   app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/index.html"));
   });
@@ -136,9 +119,8 @@ module.exports = function(app){
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   })
 
-  app.get("/search/:value", function(req, res){
-    var searchVal = req.params.value
-    console.log(searchVal)
+  app.get("/search", function(req, res){
+    var searchVal = []
+    res.render("search", {data: searchVal})
   })
->>>>>>> master
 };
