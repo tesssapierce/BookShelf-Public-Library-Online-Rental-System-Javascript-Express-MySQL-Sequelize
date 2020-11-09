@@ -23,7 +23,7 @@ module.exports = function (app) {
   app.post("/api/search", function (req, res) {
     var searchVal = req.body.search
     db.Books.findAll({where: {title: searchVal.toLowerCase()}}).then(function(dbBooks){
-      console.log(dbBooks[0].isbn)
+      res.json(dbBooks)
     })
   })
 
