@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "happyface",
-=======
     "password": "mysqlpassword",
->>>>>>> master
     "database": "library",
     "host": "localhost",
     "dialect": "mysql"
@@ -18,7 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
+    "username": "kvriz2rnea3jvx8r",
+    "password": "p1eepkka3jwyyvz1",
+    "database": "walln6zp2jqkpe2p",
+    "host": "x3ztd854gaa7on6s.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }

@@ -5,7 +5,7 @@ const { query } = require("express");
 module.exports = {
   up: async (queryInterface, Sequelize) => {
 
-    return queryInterface.bulkInsert('users', 
+    return queryInterface.bulkInsert('Users', 
     [
       {
         username: 'tesssapierce',
@@ -66,6 +66,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('users', null, {})
+    return queryInterface.bulkDelete('User', null, {})
   }
 };
