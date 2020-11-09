@@ -185,7 +185,7 @@ module.exports = function (app) {
         books.push(thisBook)
       })
       console.log(books)
-      res.render("search", { books: books })
+      res.render("search", {books: books, searchQuery: searchVal})
     })
   })
 
