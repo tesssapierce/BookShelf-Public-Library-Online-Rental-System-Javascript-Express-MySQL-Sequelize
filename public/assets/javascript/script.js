@@ -36,7 +36,12 @@ $(document).ready(function () {
     // SIGN IN //
 
 
-
+    //ADD BOOK OWNED ON PROFILE PAGE
+    $(".addButton").click(function(){
+        $("#modalDisplay").css("display", "block")
+        // $(".profileModalFormat").css("height", "500")
+    })
+        
 
     // API CALL TO RECIEVE BOOK NAME //
     $("#isbn-submit").on("click", function () {

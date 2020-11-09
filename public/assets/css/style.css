@@ -1,12 +1,10 @@
-/* USER PROFILE DATA */
+/* ///////////////
+/* PROFILE PAGE */
+/* ///////////////
 
-/* #body-background {
+/* PROFILE BOOKCASE DESIGN */
 
-    background-image: url(../images/black-brick.jpg);
-    padding-top: 25px;
-
-  } */
-
+/* Profile Bookcase Outline: Container Div */
 #bookcase {
     box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45);
     border-top: 20px solid rgb(150,118,79);
@@ -18,23 +16,27 @@
 
 }
 
+/* Profile Header Row: Contains Username */
 #profileHeaderBlock {
     color: white;
     background-color: rgba(0,0,0,0.45);
     box-shadow: inset 0 3px 1px rgba(0,0,0,0.16), 0 4px 1px rgba(0,0,0,0.45);
-}
-#profileHeader {
     font-size: 36px;
     text-align: center;
     margin:10px;
 }
 
+/* ////////////////////////// */
+/* PROFILE HANDLEBARS ENTRIES */
+
+/* Profile: Info Row Block */
 #userInfo {
     color: white;
     margin:10px;
     padding:10px;
 }
 
+/* Profile: Username Entry Display */
 #userName {
     font-size: 24px;
     text-align: center;
@@ -42,6 +44,7 @@
     margin-left: 20px;
 }
 
+/* Profile: Location Entry Display */
 #userLocation {
     font-size: 18px;
     text-align: center;
@@ -49,11 +52,13 @@
     margin-left: 20px;
 }
 
+/* Profile: Bio Headline "About Me" */
 #bioHeadline {
     font-size: 24px;
     margin-left: 50px;
 }
 
+/* Profile: Bio Entry Display */
 #userBio {
     font-size: 18px;
     margin-top: 20px;
@@ -62,25 +67,7 @@
     margin-right: 50px;
 }
 
-#favGenreHeadline {
-    font-size: 24px;
-    margin-left: 50px;
-}
-
-.faveGenreButtons {
-    margin-left: 50px;
-}
-
-.genreButton {
-    margin:10px;
-    padding: 5px;
-    color: black;
-    font-weight: 700px;
-    color: white;
-    background-color: rgb(153,136,136);
-    cursor: pointer;
-}
-
+/* Profile: Image Display */
 .profilePic {
     display:block;
     box-shadow: inset 0px 0px 5px rgba(0,0,0,0.16), 0px 0px 5px rgba(0,0,0,0.45);
@@ -93,8 +80,9 @@
 }
 
 
-/* BOOK SECTIONS DATA */
+/* PROFILE BOOK SECTIONS DATA */
 
+/* Profile: Book Section Row Block */
 #profileBookSection {
     color:white;
     margin-left:10px;
@@ -102,6 +90,7 @@
     margin-bottom:10px;
 }
 
+/* Profile: Books Owned Headline */
 #booksToLoanHeadline {
     color: white;
     font-size: 30px;
@@ -109,6 +98,7 @@
     margin-top: 20px;
 }
 
+/* Profile: Books Borrowed Headline */
 #booksBorrowedHeadline {
     color: white;
     font-size: 30px;
@@ -116,6 +106,7 @@
     margin-top: 20px;
 }
 
+/* Profile: Add Owned Book Button - Connected to Javascript */
 .addButton {
     margin-left: 20px;
     padding-left: 15px;
@@ -125,29 +116,87 @@
     cursor: pointer;
 }
 
+/* Profile: Add Owned Book Button - Connected to Javascript */
 .bookCover {
     width:175px;
     padding: 20px;
 }
 
-/* .bookshelfRow {
-    
-    border-bottom: 10px solid rgb(150,118,79);
-    margin:10px;
-    padding:10px;
-} */
-
+/* Profile: Books Owned Design Elements */
 .booksToLoan {
     border-top: 10px solid rgb(150,118,79);
     margin-right: 20px;
     box-shadow: inset 0 4px 5px rgba(0,0,0,0.45);
 }
 
+/* Profile: Books Borrowed Design Elements */
 .booksBorrowed {
     border-top: 10px solid rgb(150,118,79);
     border-bottom: 10px solid rgb(150,118,79);
     box-shadow: inset 0 4px 5px rgba(0,0,0,0.45);
     margin-right: 20px;
+}
+
+/* ////////////////////// */
+/* PROFILE MODAL ELEMENTS */
+
+/* Profile Modal: Turns Modal On and Off from Javascript */
+#modalDisplay {
+    display: none;
+    position: fixed;
+    top:50%;
+    left:44%;
+    transform: translate(-50%,-50%);
+    
+}
+
+/* Profile Modal: Formats the Modal's shape, size and background */
+#profileModalFormat {
+    background-color: whitesmoke;
+    height: 500px;
+    width: 300px;
+    margin-top: 80px;
+    margin-left: 400px;
+    border-radius: 25px;
+}
+
+/* #add-book-area {
+    background-color: whitesmoke;
+    height: 500px;
+    margin-top: 80px;
+    margin-left: 400px;
+    border-radius: 25px;
+
+    #isbn-title {
+    margin-top: 30px;
+    margin-left: 30px;
+    font-family: 'Comfortaa', cursive; 
+}
+
+#isbn-val {
+    margin-top: 5px;
+    width: 300px;
+    font-family: 'Comfortaa', cursive;    
+    margin-left: 30px;
+}
+
+#isbn-submit {
+    font-family: 'Comfortaa', cursive;    
+    margin-left: 30px;
+    margin-top: 14px;
+    border-radius: 25px;
+    border-style: none;
+    background: #5B7B7A;
+    color: whitesmoke;
+    height: 30px;
+    width: 100px;
+}
+} */
+
+
+/* Profile: Modal: Resizes Image */
+#addImgFormat {
+    width:30px;
 }
 
 #bookshelf_container {

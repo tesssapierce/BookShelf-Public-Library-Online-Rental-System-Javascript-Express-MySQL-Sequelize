@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
-    "password": "mysqlpassword",
+<<<<<<< HEAD
+    "password": "happyface",
+=======
+    "password": "easybeagle",
+>>>>>>> master
     "database": "library",
     "host": "localhost",
     "dialect": "mysql"
