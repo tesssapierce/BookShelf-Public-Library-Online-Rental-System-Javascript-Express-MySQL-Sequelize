@@ -2,21 +2,19 @@ $(document).ready(function () {
 
     // SEARCH BAR RESULT //
 
-    $(".searchBtn").on("click", function(e){
+    $(".searchBtn").on("click", function (e) {
         e.preventDefault();
         var query = $("#searchVal").val()
         var encodedQuery = encodeURIComponent(query)
         window.location.href = "/search/" + encodedQuery
     })
 
-   
+
     // SIGN IN PAGE //
 
-    $("#login-submit").on("click", function(e){
+    $("#login-submit").on("click", function (e) {
         console.log("fuck shit");
     })
-
-}
 
 
     // SIGN IN //
@@ -24,12 +22,12 @@ $(document).ready(function () {
 
 
     //ADD BOOK OWNED ON PROFILE PAGE
-    $(".addButton").click(function(){
+    $(".addButton").click(function () {
         $("#modalDisplay").css("display", "block")
         // $(".profileModalFormat").css("height", "500")
     })
 
-        
+
 
     // API CALL TO RECIEVE BOOK NAME //
     $("#isbn-submit").on("click", function () {
@@ -81,13 +79,13 @@ $(document).ready(function () {
     //PROFILE PAGE
 
     //ADD BOOK OWNED ON PROFILE PAGE
-    $(".addButton").click(function(){
+    $(".addButton").click(function () {
         // MODULE CONTROLS
         $("#modalDisplay").css("display", "block")
-        
+
 
         $("#isbn-submit").on("click", function () {
-            
+
 
             var isbnNumber = $("#isbn-val").val().trim()
             var queryURl = "http://openlibrary.org/api/books?bibkeys=ISBN:" + isbnNumber + "&jscmd=details&format=json"
@@ -143,13 +141,13 @@ $(document).ready(function () {
 
                     console.log("Preparing Data for Ajax");
                     console.log("READ " + newBookAdded.title);
-        
+
                     $.ajax("api/Books", {
                         type: "POST",
-                        
+
                         data: newBookAdded
                     }).then(
-                        function() {
+                        function () {
                             console.log("Added New Book");
                             location.reload();
                         }
@@ -157,15 +155,13 @@ $(document).ready(function () {
                 });
             });
         });
-    });
-});
 
-    
+        $('#recipeCarousel').carousel({
+            interval: 10000
+        });
+    })
+
 })
 
-$('#recipeCarousel').carousel({
-    interval: 10000
-  })
-  
- 
+
 
