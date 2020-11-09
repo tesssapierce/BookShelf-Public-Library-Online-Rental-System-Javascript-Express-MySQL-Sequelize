@@ -28,8 +28,10 @@ require("./routes/html/htmlRoutes.js")(app);
 require("./routes/api/apiRoutes.js")(app);
 
 //Listener + Sequelize Sync
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: false}).then(function() {
     app.listen(PORT, function() {
       console.log("App listening on PORT " + PORT);
     });
   });
+
+  
