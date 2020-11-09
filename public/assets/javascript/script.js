@@ -5,24 +5,9 @@ $(document).ready(function () {
     $(".searchBtn").on("click", function(e){
         e.preventDefault();
         var query = $("#searchVal").val()
-        var searchQuery = {search: query}
-        search(searchQuery)   
+        var encodedQuery = encodeURIComponent(query)
+        window.location.href = "/search/" + encodedQuery
     })
-
-    function search(searchQuery){
-        $.post("/api/search", searchQuery, function(data){
-            searchDisplay(searchQuery, data)
-        })
-    }
-
-    function searchDisplay(searchQuery, dataObj){
-        console.log(searchQuery)
-        console.log(dataObj)
-        $.get("/search", dataObj, function(response){
-            window.location.href = "/search/";
-        })
-    }
-
 
     // FEELING LUCKY BUTTON //
     $("#lucky").on("click", function () {

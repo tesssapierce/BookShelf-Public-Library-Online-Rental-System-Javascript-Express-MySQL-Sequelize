@@ -14,12 +14,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Books.init({
+    id: 
+      {type: DataTypes.INTEGER,
+      primaryKey: true},
     book_id: DataTypes.INTEGER,
     isbn: DataTypes.STRING,
     title: DataTypes.STRING,
     owner_id: DataTypes.INTEGER,
     lender_id: DataTypes.INTEGER,
-    on_loan: DataTypes.BOOLEAN
+    on_loan: 
+      {type: DataTypes.BOOLEAN,
+      default: false}
   }, {
     sequelize,
     modelName: 'Books',

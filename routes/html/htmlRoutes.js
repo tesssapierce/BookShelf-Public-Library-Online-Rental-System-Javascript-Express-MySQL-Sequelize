@@ -136,10 +136,13 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   })
 
-  app.get("/search", function (req, res) {
-    var searchObj = req.body
-    console.log(searchObj)
-    res.render("search", { data: searchObj })
+  app.get("/search/:val", function (req, res) {
+    var searchVal = req.params.val
+    console.log(searchVal)
+    // db.Books.findAll({where: {title: searchVal.toLowerCase()}}).then(function(dbBooks){
+    //   res.json(dbBooks)
+    //   })
+    // res.render("search", { data: dbBooks })
   })
 
   app.get("/view-all", function(req,res){
