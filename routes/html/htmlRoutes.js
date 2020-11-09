@@ -146,12 +146,9 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../../public/assets/html/login.html"))
   })
   app.get("/search", function (req, res) {
-    var searchObj = req
+    var searchObj = req.body
     console.log(searchObj)
-    // res.render("search", searchVal)
-
-    var searchVal = []
-    res.render("search", { data: searchVal })
+    res.render("search", { data: searchObj })
   })
 
 };

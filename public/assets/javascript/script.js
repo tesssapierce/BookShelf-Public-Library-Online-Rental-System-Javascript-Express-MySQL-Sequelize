@@ -6,7 +6,6 @@ $(document).ready(function () {
         e.preventDefault();
         var query = $("#searchVal").val()
         var searchQuery = {search: query}
-        console.log(searchQuery)
         search(searchQuery)   
     })
 
@@ -16,12 +15,11 @@ $(document).ready(function () {
         })
     }
 
-    function searchDisplay(searchQuery, data){
+    function searchDisplay(searchQuery, dataObj){
         console.log(searchQuery)
-        console.log(data[0])
-        dataParse = JSON.parse(data[0])
-        $.get("/search/", dataParse, function(response){
-            window.location.href = "/search/";
+        console.log(dataObj)
+        $.get("/search", dataObj, function(response){
+            // window.location.href = "/search/";
         })
     }
 
