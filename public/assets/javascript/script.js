@@ -18,8 +18,9 @@ $(document).ready(function () {
 
     function searchDisplay(searchQuery, data){
         console.log(searchQuery)
-        console.log(data)
-        $.get("/search/", data, function(data){
+        console.log(data[0])
+        dataParse = JSON.parse(data[0])
+        $.get("/search/", dataParse, function(response){
             window.location.href = "/search/";
         })
     }

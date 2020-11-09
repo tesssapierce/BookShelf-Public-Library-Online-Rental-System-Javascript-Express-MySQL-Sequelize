@@ -120,7 +120,8 @@ module.exports = function (app) {
   })
 
   app.get("/search", function(req, res){
-    var searchVal = []
-    res.render("search", {data: searchVal})
+    var searchObj = req
+    console.log(searchObj)
+    // res.render("search", searchVal)
   })
 };

@@ -1,1 +1,10 @@
-{{ searchVal }}
+<div class="searchResults container">
+  <div class="row">
+    {{#each Books}}
+    <div class="col-3">
+      <img src="http://covers.openlibrary.org/b/isbn/{{Books.isbn}}.jpg" class="img-fluid">
+      <h2 class="title">{{Books.title}}</h2>
+    {{/each}}
+    </div>
+  </div>
+</div>
