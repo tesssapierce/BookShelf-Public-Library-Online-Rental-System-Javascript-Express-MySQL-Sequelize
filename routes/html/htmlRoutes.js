@@ -1,5 +1,7 @@
 var path = require("path");
 const db = require("../../models");
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 module.exports = function (app) {
 
   ///////////////////////////////////////
@@ -157,15 +159,40 @@ module.exports = function (app) {
   ///////////////////////////////////////
   // GET ROUTE: SEARCH PAGE  //
   ///////////////////////////////////////
+
+  //With Search Value
   app.get("/search/:val", function (req, res) {
     var searchVal = req.params.val
     console.log(searchVal)
-    // db.Books.findAll({where: {title: searchVal.toLowerCase()}}).then(function(dbBooks){
-    //   res.json(dbBooks)
-    //   })
-    // res.render("search", { data: dbBooks })
+
+    db.Books.findAll({
+      where: {
+        title: {
+          [Op.like]: '%' + searchVal + '%'
+        }
+      }
+    }).then(function(dbBooks){
+      var books = []
+      dbBooks.forEach(book => {
+        var thisBook = {
+          book_id: book.dataValues.book_id,
+          isbn: book.dataValues.isbn,
+          title: book.dataValues.title,
+          owner_id: book.dataValues.owner_id,
+          lender_id: book.dataValues.lender_id,
+          on_loan: book.dataValues.on_loan
+        }
+        books.push(thisBook)
+      })
+      console.log(books)
+      res.render("search", {books: books})
+    })
   })
 
+  //Without Search Value
+  app.get("/search/", function (req, res) {
+    res.redirect("/view-all")
+  })
   ///////////////////////////////////////
   // GET ROUTE: VIEW ALL PAGE  //
   ///////////////////////////////////////
