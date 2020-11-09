@@ -12,7 +12,9 @@ $(document).ready(function () {
    
     // SIGN IN PAGE //
 
-    
+    $("#login-submit").on("click", function(e){
+        console.log("fuck shit");
+    })
 
 
 
