@@ -28,8 +28,6 @@ $(document).ready(function () {
         // $(".profileModalFormat").css("height", "500")
     })
 
-        
-
     // API CALL TO RECIEVE BOOK NAME //
     $("#isbn-submit").on("click", function () {
         var isbnNumber = $("#isbn-val").val().trim()
@@ -79,15 +77,14 @@ $(document).ready(function () {
 
     //PROFILE PAGE
 
-    //ADD BOOK OWNED ON PROFILE PAGE
+    //ADD BOOK BUTTON CLICK
     $(".addButton").click(function(){
-        // MODULE CONTROLS
+
+        // MODULE TURNS ON
         $("#modalDisplay").css("display", "block")
         
-
+        // SUBMIT BUTTON CLICK
         $("#isbn-submit").on("click", function () {
-            
-
             var isbnNumber = $("#isbn-val").val().trim()
             var queryURl = "http://openlibrary.org/api/books?bibkeys=ISBN:" + isbnNumber + "&jscmd=details&format=json"
             $.ajax({
@@ -96,14 +93,11 @@ $(document).ready(function () {
             }).then((response) => {
 
                 // REFORMAT MODULE //
-                // DISPLAY THE CONFIRM BOOK BUTTON //
                 $("#profileModalFormat").css("height", "100%")
                 $("#addImgFormat").css("display", "block")
                 $("#confirm-button").css("display", "block")
-
-                // console.log("Response: "+ response[isbnNumber].details)
+                
                 // CONSOLE LOGGING ROUTES TO DATA //
-
                 console.log(response["ISBN:" + isbnNumber].details)
                 console.log(response["ISBN:" + isbnNumber].details.title)
                 console.log(response["ISBN:" + isbnNumber].details.by_statement)
@@ -123,43 +117,64 @@ $(document).ready(function () {
 
                 // INPUTTING BOOK COVER //
 
+                
+                
+                // CONFIRM ADD BOOK BUTTON //
+                $("#confirm").on("click", function (newBookAdded) {
                 // Prepare Data for Next Function
                 var userID = $("#userId").html();
+                var userName = $("#profileHeader").html();
 
                 var newBookAdded = {
                     isbn: isbnNumber,
                     title: ajaxTitle,
                     owner_id: userID,
-                    lender_id: null,
-                    on_loan: 0,
-                    createdAt: new Date(),
-                    updatedAt: new Date()
+                    owner_name: userName
                 };
 
-                // CONFIRM ADD BOOK BUTTON //
-
-                $("#confirm").on("click", function () {
-
-                    console.log("Preparing Data for Ajax");
-                    console.log("READ " + newBookAdded.title);
+                console.log("New Book ISBN: " + newBookAdded.isbn);
         
-                    $.ajax("api/Books", {
-                        type: "POST",
-                        
+                    $.ajax("/api/books", {
+                        type: "POST",        
                         data: newBookAdded
                     }).then(
                         function() {
                             console.log("Added New Book");
                             location.reload();
-                        }
-                    );
+                    });
+
+                    $.ajax("/api/books", {
+                        type: "PUT",        
+                        data: newBookAdded
+                    }).then(
+                        function() {
+                            console.log("Added New Book");
+                            location.reload();
+                    });
                 });
+
             });
         });
     });
-    $('#recipeCarousel').carousel({
-        interval: 10000
-      })
 });
+
+// CONFIRM ADD BOOK BUTTON //
+
+// $("#confirm").on("click", function () {
+
+//     console.log("Preparing Data for Ajax");
+
+//     var isbnNumber = $("#isbn-val").val().trim()
+
+//     $.ajax("api/Books", {
+//         type: "POST",
+//         data: isbnNumber
+//     }).then(
+//         function() {
+//             console.log("Added New Book");
+//             location.reload();
+//         }
+//     );
+// });
  
 

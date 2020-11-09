@@ -46,7 +46,7 @@ module.exports = {
         zipcode: 80304,
         about_me: "I'm Beni!",
         password: 'password1',
-        books_owned: '["9781452601458","9780679723011","9781447279990","9780393609394","9780425074817"]',
+        books_owned: '["9780385720953","9780679723011","9781447279990","9780393609394","9780425074817"]',
         books_onloan: '',
         createdAt: new Date(),
         updatedAt: new Date()        
@@ -57,7 +57,7 @@ module.exports = {
         zipcode: 80218,
         about_me: "I'm Andy!",
         password: 'password1',
-        books_owned: '["9780792271949","9780446691864","9780307291844","9780877799306","9780877798507"]',
+        books_owned: '["9780792271949","9780446691864","9781593279509","9780877799306","9780877798507"]',
         books_onloan: '',
         createdAt: new Date(),
         updatedAt: new Date()        
