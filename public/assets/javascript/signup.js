@@ -11,19 +11,24 @@ $(document).ready(function() {
             email: emailInput.val().trim().toLowerCase(),
             zipcode: zipInput.val().trim(),
             username: usernameInput.val().trim(),
-            passowrd: passwordInput.val().trim()
+            password: passwordInput.val().trim()
         };
         console.log(userData.email);
+        console.log(userData.zipcode);
+        console.log(userData.username);
+        console.log(userData.password);
+       
 
         if (!userData.email || !userData.password) {
             return;
-        }else {
+
+        }else 
             signUpUser(userData.email, userData.zipcode, userData.username, userData.password);
             emailInput.val("");
             zipInput.val("");
             usernameInput.val("");
             passwordInput.val("");
-        }
+        
     });
     function signUpUser(email, zipcode, username, password) {
         $.post("/api/signup", {
@@ -32,10 +37,10 @@ $(document).ready(function() {
           username: username,
           password: password
         })
-        .then(function(username) {
-             window.location.href="/users/" + username;
-            // window.location.replace(data);
-            console.log(userData.username);
+        .then(function(data) {
+            //  window.location.href="/users/" + username;
+           window.location.replace(data);
+        
         })
         .catch(handleLoginErr);
     }
