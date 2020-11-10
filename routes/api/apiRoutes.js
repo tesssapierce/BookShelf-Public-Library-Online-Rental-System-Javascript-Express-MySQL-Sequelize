@@ -2,9 +2,7 @@ var path = require("path");
 const db = require("../../models");
 const { QueryTypes } = require('sequelize');
 const { sequelize } = require("../../models");
-
 module.exports = function (app) {
-  
     /////////////////////////
   // Sign in //
   /////////////////////////
@@ -21,13 +19,10 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
-
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/login");
   });
-
-
     /////////////////////////
   // Add Book Post Route //
   /////////////////////////
@@ -73,10 +68,7 @@ module.exports = function (app) {
           res.status(401).json(err);
         });
     });
-
-    
   })
-      
   /////////////////////////
   // Check Availability //
   /////////////////////////
@@ -93,9 +85,76 @@ module.exports = function (app) {
 
 app.get("/api/user_data/:user_id", function(req,res){
   var user_id = req.params.user_id
-  db.User.findOne({where: {user_id: user_id}}).then(function(dbUsers){
+  db.User.findOne({where: {username: user_id}}).then(function(dbUsers){
     res.json(dbUsers)
   })
 })
+app.post("/api/login", function(req,res){
+  res.json("/user/profile");
+});
+app.get("/api/user/:username", (req, res) =>{
+console.log("user lookup")
+db.User.username({
+  where: {username: req.params.username}
+});
+});
+
+
+/////////////////////////
+  // Add Book Post Route //
+  /////////////////////////
+  app.post("/api/books", function (req, res) {
+    console.log("ISBN POST:" + req.body.isbn)
+    console.log("TITLE POST:" + req.body.title)
+    console.log("OWNER ID:" + req.body.owner_id)
+  ////////////////////////////
+    db.Books.create({
+      isbn: req.body.isbn,
+      title: req.body.title,
+      owner_id: req.body.owner_id,
+      lender_id: null,
+      on_loan: 0,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }).then(function () {
+      //REDIRECT TO USER'S PAGE
+      // res.redirect("/user/" + req.body.owner_name);
+    })
+      .catch(function (err) {
+        // res.status(401).json(err);
+      });
+  });
+
+  ///////////////////////
+  // Update Book Put Route //
+  ///////////////////////
+  app.put("/api/books", function (req, res) {
+    db.User.findOne({ where: { username: req.body.owner_name } }).then(function (dbUser) {
+      // Adding Book to Old Array
+      console.log("OLD ISBN ARRAY : " + JSON.parse(dbUser.dataValues.books_owned))
+      let userBookArray = JSON.parse(dbUser.dataValues.books_owned);
+      let newIsbn = req.body.isbn;
+      userBookArray.push(newIsbn);
+      console.log("New ISBN ARRAY :" + userBookArray)
+
+      newUserArray = JSON.stringify(userBookArray)
+
+      db.User.update({books_owned: newUserArray},
+        {
+          where: {
+            username: req.body.owner_name
+          }
+        })
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    })
+
+  })
 
 }
+
+
+
+
+
+
