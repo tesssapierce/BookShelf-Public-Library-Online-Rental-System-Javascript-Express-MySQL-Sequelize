@@ -20,7 +20,7 @@ $(document).ready(function () {
         var isbn = $(this).attr("data-id")
         console.log(isbn)
         $(".searchModalDisplay").css("display", "block")
-        var queryURL = "http://openlibrary.org/api/books?bibkeys=ISBN:" + isbn + "&jscmd=details&format=json"
+        var queryURL = "https://openlibrary.org/api/books?bibkeys=ISBN:" + isbn + "&jscmd=details&format=json"
             $.ajax({
                 url: queryURL,
                 method: "GET"

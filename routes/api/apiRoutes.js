@@ -94,7 +94,7 @@ module.exports = function (app) {
 app.get("/api/user_data/:user_id", function(req,res){
   var user_id = req.params.user_id
   db.User.findOne({where: {user_id: user_id}}).then(function(dbUsers){
-    res.json(dbUsers)
+    console.log(dbUsers)
   })
 })
 
