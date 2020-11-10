@@ -10,10 +10,10 @@ module.exports = function (app) {
       username: req.body.username,
       password: req.body.password
     }).then(function () {
-        res.redirect("/user/" + req.body.username)
-      }).catch(function (err) {
-        res.status(401).json(err);
-      });
+      res.redirect("/user/" + req.body.username)
+    }).catch(function (err) {
+      res.status(401).json(err);
+    });
   });
 
   app.get("/logout", function (req, res) {
@@ -22,7 +22,24 @@ module.exports = function (app) {
   });
 
 
-    /////////////////////////
+  /////////////////////////
+  // Login  //
+  /////////////////////////
+
+  // app.get("/api/User/:username", function (req, res) {
+  //   var username = req.params.username
+  //   db.User.findOne({
+  //     where: {
+  //       username: {username: username}()
+  //     }
+  //   }).then((loginUser) => {
+  //     console.log(loginUser);
+  //   });
+  // });
+
+  
+
+  /////////////////////////
   // Add Book Post Route //
   /////////////////////////
   app.post("/api/books", function (req, res) {
@@ -68,6 +85,7 @@ module.exports = function (app) {
         });
     });
   })
+
 
 
 }
