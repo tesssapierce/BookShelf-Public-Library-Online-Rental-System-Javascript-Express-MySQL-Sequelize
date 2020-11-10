@@ -157,7 +157,7 @@ $(document).ready(function () {
                     }).then(
                         function () {
                             console.log("Added New Book");
-                            // location.reload();
+                            location.reload();
                     }).catch(function (err) {
                         console.log(err);
                     });
