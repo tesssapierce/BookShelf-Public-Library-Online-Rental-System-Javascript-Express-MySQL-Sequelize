@@ -2,6 +2,10 @@ var path = require("path");
 const db = require("../../models");
 
 module.exports = function (app) {
+  
+    /////////////////////////
+  // Sign in //
+  /////////////////////////
   app.post("/api/signup", function (req, res) {
     console.log(req.body);
     db.User.create({
@@ -67,7 +71,18 @@ module.exports = function (app) {
           res.status(401).json(err);
         });
     });
-  })
 
+    
+  })
+      
+  /////////////////////////
+  // Check Availability //
+  /////////////////////////
+  app.get("/api/availability/:isbn", function (req, res){
+    var isbn = req.params.isbn
+    db.Books.findAll({where: {isbn: isbn}}).then(function(dbBooks){
+      res.json(dbBooks)
+    })
+  })
 
 }
