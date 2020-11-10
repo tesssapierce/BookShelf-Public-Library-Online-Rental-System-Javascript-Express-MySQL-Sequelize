@@ -9,6 +9,7 @@
 /* Profile Bookcase Outline: Container Div */
 #profileBackground {
     background-color: rgb(70,94,68);
+    border-radius: 5px 5px 0px 0px;
     /* box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45);
     border-top: 20px solid rgb(150,118,79);
     border-left: 10px solid rgb(150,118,79);
@@ -25,6 +26,7 @@
     font-size: 36px;
     text-align: center;
     padding:15px;
+    border-radius: 5px 5px 0px 0px;
 }
 
 /* ////////////////////////// */
@@ -117,9 +119,8 @@
 
 /* Profile: Add Owned Book Button - Connected to Javascript */
 .addButton {
-    /* margin-left: 20px;
-    padding-left: 15px;
-    padding-right: 15px; */
+    margin-top: 0px;
+    margin-bottom: 20px;
     color: white;
     background-color: rgb(153,136,136);
     cursor: pointer;

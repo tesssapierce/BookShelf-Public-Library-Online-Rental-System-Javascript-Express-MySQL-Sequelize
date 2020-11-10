@@ -67,8 +67,8 @@ $(document).ready(function () {
                 $("#ajax-year").text("Year: " + ajaxYear);
 
                 // INPUTTING BOOK COVER //
-
                 
+                var imageSrc = "http://covers.openlibrary.org/b/isbn/" + isbnNumber + ".jpg";        
                 
                 // CONFIRM ADD BOOK BUTTON //
                 $("#confirm").on("click", function (newBookAdded) {
@@ -80,7 +80,8 @@ $(document).ready(function () {
                     isbn: isbnNumber,
                     title: ajaxTitle,
                     owner_id: userID,
-                    owner_name: userName
+                    owner_name: userName,
+                    imageCover: imageSrc
                 };
 
                 console.log("New Book ISBN: " + newBookAdded.isbn);
