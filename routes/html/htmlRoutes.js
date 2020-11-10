@@ -10,19 +10,6 @@ module.exports = function (app) {
 
   app.get("/", function (req, res) {
 
-    db.User.findAll().then(function(userbooks){
-        var allBooksOwned = []
-        for(var i=0; i<userbooks.booksOwned;i++){
-            allBooksOwned.push(userbooks[i].booksOwned
-            )};
-            console.log(allBooksOwned)      
-        });
-
-
-
-
-
-
     db.Books.findAll({ where: { on_loan: "false" } }).then(function (data) {
       //most recent
       var isbnArr = [];
@@ -43,17 +30,49 @@ module.exports = function (app) {
         recent_three.push(isbnArr[i])
       };
       //forPopular logic needs fix
+
+      var uniqueIsbn = [];
+      var isbnCount = [];
+      var prev;
+
+      var isbnPop = isbnArr.sort();
+      console.log(isbnPop);
+      for(var i = 0; i < isbnPop.length;i++) {
+          if(isbnPop[i] !== prev){
+              uniqueIsbn.push(isbnPop[i]);
+              isbnCount.push(1);
+          }else{
+              isbnCount[isbnCount.length - 1]++; 
+          }
+          prev = isbnArr[i];
+      }
+    //   console.log(uniqueIsbn);
+    //   console.log(isbnCount)
+    popularity = [];
+    for (var i=0; i<uniqueIsbn.length;i++){
+        popularity.push({"isbn":uniqueIsbn[i], "count":isbnCount[i]});
+    }
+    console.log(popularity[0].count)
+
+    popular_arr = [];
+    for( var i=0;i<popularity.length; i++){
+        if(popularity[i].count >= 2){
+            popular_arr.push(popularity[i].isbn)
+        }
+    }
+      
+
       var popular_one = []
       for (var i = 0; i < 6; i++) {
-        popular_one.push(isbnArr[i])
+        popular_one.push(popular_arr[i])
       };
       var popular_two = []
       for (var i = 6; i < 12; i++) {
-        popular_two.push(isbnArr[i])
+        popular_two.push(popular_arr[i])
       };
       var popular_three = []
       for (var i = 12; i < 18; i++) {
-        popular_three.push(isbnArr[i])
+        popular_three.push(popular_arr[i])
       };
     //   console.log(popular_one)
     //   console.log(random_two)
@@ -104,10 +123,15 @@ module.exports = function (app) {
     // Match username with Database and make dbUser the user's data Object
     db.User.findOne({ where: { username: username } }).then(function (dbUser) {
       // console.log("MAIN TARGET: "+ dbUser.dataValues)
-      // console.log("ISBN: " + JSON.parse(dbUser.dataValues.books_owned))
+      console.log("ISBN: " + JSON.parse(dbUser.dataValues.books_owned))
 
+<<<<<<< HEAD
       // Set Up Images - for Instances Where Arrays Are Empty
       // console.log(dbUser)
+=======
+      // Set Up Images - for Instances Where Array Are Empty
+      console.log(dbUser)
+>>>>>>> monday
       let emptyCover = "../assets/images/emptycover-placeholder.jpg";
       let emptyArray = [emptyCover];
 
@@ -140,7 +164,11 @@ module.exports = function (app) {
       }
 
       // If User Has No Owned Books, Feed Placeholder Image
+<<<<<<< HEAD
       if (dbUser.dataValues.books_owned == "" || null) {
+=======
+      if (dbUser.dataValues.books_owned == "") {
+>>>>>>> monday
         ownedCoverImg = emptyArray;
         // Else, Send Owned Books to formatCodeImage()
       } else {
@@ -211,7 +239,7 @@ module.exports = function (app) {
         books.push(thisBook)
       })
       console.log(books)
-      res.render("search", {books: books, searchQuery: searchVal})
+      res.render("search", { books: books, searchQuery: searchVal })
     })
   })
 
@@ -239,9 +267,57 @@ module.exports = function (app) {
           }
           books.push(thisBook)
         })
-        res.render("findAll", {books: books})
+        res.render("findAll", { books: books })
       })
   });
+
+  ///////////////////////////////////////
+  // LOGIN  //
+  ///////////////////////////////////////
+
+  app.get("/user/:username", function (req, res) {
+    var UsernameValue = req.params.val
+    console.log(UsernameValue)
+
+    db.Books.findAll({
+      where: {
+        username: UsernameValue
+      }
+    })
+  })
+
+  //With Search Value
+  // app.get("/search/:val", function (req, res) {
+  //   var searchVal = req.params.val
+  //   console.log(searchVal)
+
+  //   db.Books.findAll({
+  //     where: {
+  //       title: {
+  //         [Op.like]: '%' + searchVal + '%'
+  //       }
+  //     }
+  //   }).then(function (dbBooks) {
+  //     var books = []
+  //     dbBooks.forEach(book => {
+  //       var thisBook = {
+  //         book_id: book.dataValues.book_id,
+  //         isbn: book.dataValues.isbn,
+  //         title: book.dataValues.title,
+  //         owner_id: book.dataValues.owner_id,
+  //         lender_id: book.dataValues.lender_id,
+  //         on_loan: book.dataValues.on_loan
+  //       }
+  //       books.push(thisBook)
+  //     })
+  //     console.log(books)
+  //     res.render("search", { books: books, searchQuery: searchVal })
+  //   })
+  // })
+
+
+
+
 
 
 }
