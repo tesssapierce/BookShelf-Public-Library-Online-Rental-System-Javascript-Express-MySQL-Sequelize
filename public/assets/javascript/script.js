@@ -17,11 +17,30 @@ $(document).ready(function () {
 
 
     $(".searchResultCard").on("click", function (e) {
-        $(".searchModalDisplay").css("display", "block")
         var isbn = $(this).attr("data-id")
-        console.log(isbn)
-
-    })
+        $(".searchModalDisplay").css("display", "block")
+        var queryURl = "http://openlibrary.org/api/books?bibkeys=ISBN:" + isbn + "&jscmd=details&format=json"
+            $.ajax({
+                url: queryURl,
+                method: "GET"
+            }).then((response) => {
+                var ajaxTitle = (response["ISBN:" + isbn].details.title);
+                var ajaxAuthor = (response["ISBN:" + isbn].details.by_statement)
+                var ajaxYear = (response["ISBN:" + isbn].details.publish_date)
+                var imageUrl = `http://covers.openlibrary.org/b/isbn/${isbn}.jpg`
+                $("#bookDetails-title").text(ajaxTitle)
+                $("#bookDetails-author").text(ajaxAuthor)
+                $("#booksDetails-img").attr("src", imageUrl)
+                $("#bookDetails-publish").text(ajaxYear)
+            })
+        getAvailability(isbn)
+      })
+      
+      function getAvailability(isbn){
+        $.get( "/api/availability/"+isbn, function( data ) {
+            console.log(data)
+          });
+      }
 
     ///////////////////////////////////////
          // PROFILE PAGE FUNCTIONALITY   //
