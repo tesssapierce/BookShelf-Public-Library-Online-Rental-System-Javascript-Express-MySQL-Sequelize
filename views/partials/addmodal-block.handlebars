@@ -6,6 +6,11 @@
 
         <div class="col-12" id="profileModalFormat">
             <div class="row">
+                <div class="col-12" >
+                    <p class="closeX">&#10006</p>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-12">
                     <h4 id="isbn-title">Search Your Book's ISBN Number</h4>
                 </div>
@@ -20,11 +25,12 @@
             <!-- OUTPUT FROM AJAX FOR SELECTED BOOK -->
 
             <div class="row">
-                <div class="col-4" class="ajax-info-add">
-                    <img id="addImgFormat" src="../../assets/images/add-book-placeholder.jpg">
+                <div class="col-3">
+                    <img id="addImgFormat" src="">
                     
                 </div>
-                <div class="col-8 ">
+                <div class="col-9">
+                    <h5 class="unavailable"></h5>
                     <h5 class="ajax-info" id="ajax-title"></h5>
                     <h5 class="ajax-info" id="ajax-author"></h5>
                     <h5 class="ajax-info" id="ajax-year"></h5>

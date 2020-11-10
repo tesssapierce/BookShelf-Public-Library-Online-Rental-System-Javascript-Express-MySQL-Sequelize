@@ -9,6 +9,7 @@
 /* Profile Bookcase Outline: Container Div */
 #profileBackground {
     background-color: rgb(70,94,68);
+    border-radius: 5px 5px 0px 0px;
     /* box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45);
     border-top: 20px solid rgb(150,118,79);
     border-left: 10px solid rgb(150,118,79);
@@ -25,6 +26,7 @@
     font-size: 36px;
     text-align: center;
     padding:15px;
+    border-radius: 5px 5px 0px 0px;
 }
 
 /* ////////////////////////// */
@@ -90,6 +92,7 @@
     margin-bottom:10px;
 }
 
+/* Headlines for Owned Books and Borrowed Books */
 .textRowText {
     color:  #987554;
     background-image: linear-gradient(#130000, #664229);
@@ -97,6 +100,7 @@
     padding-bottom: 10px;
     padding: 10px 10px 0px 20px;
     text-align: left;
+    font-size: 150%;
 }
 
 /* Profile: Books Owned Headline */
@@ -115,21 +119,61 @@
     margin-top: 20px;
 }
 
+#profileLeftArrow {
+    margin-left: -60%;
+    margin-top: -100%;
+}
+
+#profileRightArrow {
+    margin-right: -60%;
+    margin-top: -100%;
+}
+
+/* .carousel-control-prev{
+    padding-top: 35vh;
+    margin-right: 2vh;
+}
+.carousel-control-next{
+    padding-top: 35vh;
+    margin-left: 2vh;
+} */
+
 /* Profile: Add Owned Book Button - Connected to Javascript */
 .addButton {
-    /* margin-left: 20px;
-    padding-left: 15px;
-    padding-right: 15px; */
-    color: white;
-    background-color: rgb(153,136,136);
+    margin-top: 0px;
+    margin-bottom: 20px;
     cursor: pointer;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    height: 30px;
+    width: 100px;
+    border-style: none;
+    background: #5B7B7A;
+    color: whitesmoke;
+    /* border-radius */
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    /* box-shadow */
+    -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+    -moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+    box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+    /* border-radius: 25px;
+    box-shadow: 5px; */
 }
 
 /* Profile: Add Owned Book Button - Connected to Javascript */
 .bookCover {
-    width:175px;
-    padding: 20px;
+    width:110%;
+    padding: 0px;
+    box-shadow: 5px 5px 5px 5px  #361a00;
 }
+
+/* .d-block {
+    box-shadow: 0px 0px 5px 5px  #361a00;
+    width: 110%;
+} */
 
 /* Profile: Books Owned Design Elements */
 .booksToLoan {
@@ -149,7 +193,17 @@
 /* ////////////////////// */
 /* PROFILE MODAL ELEMENTS */
 
-/* Profile Modal: Turns Modal On and Off from Javascript */
+.closeX {
+    text-align: right;
+    color:rgb(91,123,122);
+    font-size: 18px;;
+    font-family: 'Lucida Sans Unicode';
+    margin-top: -5px;
+    margin-right: -5px;
+    cursor: pointer;
+}
+
+/* Profile Modal: Turns Modal On and Off from Javascript and Overlays it Over Content */
 #modalDisplay {
     display: none;
     position: fixed;
@@ -161,19 +215,48 @@
 /* Profile Modal: Formats the Modal's shape, size and background */
 #profileModalFormat {
     background-color: rgb(245,245,245,0.9);
-    height: 200px;
+    height: 100%;
     width: 500px;
     border-radius: 25px;
-    padding:10px;
+    padding:30px;
 }
 
 /* Profile: Modal: Resizes Image */
 #addImgFormat {
-    width:120px;
+    width:100px;
     height:auto;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-left: 50px;
-    display: none;
+    /* display: none; */
+}
+
+.unavailable {
+    display:none;
+    color:red;
+    text-align:left;
+    margin-left: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size:16px;
+    margin-top: -25px;
+}
+
+.ajax-info {
+    margin-top: 25px;
+    margin-left: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+
+#ajax-title {
+    display:block;
+}
+
+#ajax-author {
+    display:block;
+}
+
+#ajax-year {
+    display:block;
 }
 
 /* .moduleVisibility {
@@ -182,22 +265,16 @@
 } */
 
 #isbn-title {
-    margin-top: 20px;
-    margin-left: 30px;
-    font-family: 'Comfortaa', cursive; 
+    margin-top: 0px;
+    margin-left: 20px;
+    font-family: 'Poppins', sans-serif; 
 }
 
 #isbn-val {
-    margin-top: 5px;
+    margin-top: 10px;
     width: 300px;
-    font-family: 'Comfortaa', cursive;    
+    font-family: 'Poppins', sans-serif;    
     margin-left: 30px;
-}
-
-.ajax-info {
-    margin-top: 30px;
-    margin-left: 50px;
-    font-family: 'Comfortaa', cursive; 
 }
 
 #userId {
@@ -209,9 +286,9 @@
 } */
 
 #isbn-submit {
-    font-family: 'Comfortaa', cursive;    
+    font-family: 'Poppins', sans-serif;    
     margin-left: 20px;
-    margin-top: 14px;
+    margin-top: 20px;
     border-radius: 25px;
     border-style: none;
     background: #5B7B7A;
@@ -219,6 +296,7 @@
     height: 30px;
     width: 100px;
 }
+
 
 #confirm-button {
     margin-top: 30px;
@@ -234,6 +312,7 @@
     border-radius: 25px;
     display: none;
 } 
+
 
 
 /* #add-book-area {
@@ -263,83 +342,6 @@
     width: 100px;
 }
 } */
-
-
-
-/* Profile: Modal: Resizes Image */
-#addImgFormat {
-    width:30px;
-}
-
-#bookshelf_container {
-    margin-left: 20px;
-    margin-right: 40px;
-    border: 30px solid #987554;
-    border-bottom: none;
-    border-top: 50px solid #987554;
-    margin: auto;
-    margin-top: 25px;
-    padding-top: 0px;
-    width: 72%;
-    position: relative;
- 
-    text-align: center;
-    background-color: #664229;
-
-     -webkit-box-shadow: 
-     0px 10px 30px 20px #000, 
-     inset 0 0 10px #000;
-    -moz-box-shadow: 
-     0px 0px 30px 20px #000, 
-     inset 0 0 10px #000;
-    -o-box-shadow: 
-     0px 0px 30px 20px #000, 
-     inset 0 0 10px #000;
-    box-shadow: 
-     0px 0px 20px #888888, 
-     inset 0 0 px  #361a00;
-
-     border-image:url("../images/wood.jpg") 50 50 stretch;
-     border: 15px solid transperant;
-}
-
-
-.text {
-    color:  #987554;
-    background-image: linear-gradient(#130000, #664229);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding: 10px 10px 0px 20px;
-    text-align: left;
-}
-
-#pre {
-    justify-content: left;
-}
-
-.carousel {
-    padding-top: 20px;
-    padding-bottom: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
-    border-bottom: 30px solid #987554;;
-	-webkit-box-shadow: 0 8px 6px -6px  #361a00;
-	-moz-box-shadow: 0 8px 6px -6px  #361a00;
-    box-shadow: 0 8px 6px -6px  #361a00;
-    border-image:url("../images/wood.jpg") 50 50 stretch;
-    border: 15px solid transperant;
-
-}
-
-.d-block {
-    box-shadow: 0px 0px 5px 5px  #361a00;
-    width: 100%;
-}
-
-.title-div {
-    padding-top: 60px;
-    padding-left: 240px;
-}
 
 /* NAVIGATION CSS */
 
@@ -434,7 +436,7 @@ nav {
 
 
 footer {
-    position: absolute;
+    /* position: absolute; */
     margin: auto;
     padding: 20px;
     text-align: center;
@@ -490,3 +492,67 @@ img.searchImage {
     transform: translate(-50%,-50%);
     font-family: 'Poppins', sans-serif;
 }
+
+.queryModal {
+    background-color: rgb(245,245,245,0.9);
+    height: 100%;
+    width: 500px;
+    border-radius: 25px;
+    padding:30px;
+}
+
+#booksDetails-img{
+    height: 200px;
+    width: auto;
+}
+
+#bookDetails-title{
+    font-size: 22px;
+}
+
+#bookDetails-author{
+    font-size: 14px;
+}
+
+#bookDetails-publish{
+    font-size: 14px;
+}
+
+#bookDetails-availTitle{
+    font-size: 22px;
+    border-bottom: 8px black solid
+}
+
+/* Login page */
+
+.login {
+    /* object-fit: cover; */
+    width: 100%;  
+    padding-left: 60px;
+    padding-right: 35px;
+    
+
+} 
+
+
+.form-group {
+    margin-top: 18px;
+    border-radius: 25px;
+    padding-right: 65px;
+    
+}
+
+#login-form {
+   
+    background-image: url("../images/antique.JPG");
+    margin-top: 30px;
+    box-shadow: 0 0 10px 2px;
+    border-radius: 15px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#logtitle {
+    padding-left: 60px;
+}
+
