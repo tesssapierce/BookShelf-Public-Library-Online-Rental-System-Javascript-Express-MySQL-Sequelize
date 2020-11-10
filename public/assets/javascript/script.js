@@ -45,22 +45,23 @@ $(document).ready(function () {
 
       function joinUser(data){
         var availableUsers = []
+        console.log(data)
           data.forEach(book=>{
               $.get("/api/user_data/"+book.owner_id, function(data){
                 availableUsers.push(data)
               })
-            console.log(availableUsers)
             //This properly console logs an object with users
           })
+          console.log(availableUsers[1])
           $("#availableUsers").empty()
           //However I think that maybe my object is not structured correctly because the for each doesn't do anything
-          availableUsers.forEach(user=>{
-              console.log(user)
+        //   availableUsers.forEach(user=>{
+        //       console.log(user)
             // var username = `<h3>${user.username}</h3>`
             // var zipcode = `<h3>${user.zipcode}</h3>`
             // console.log(username)
             // console.log(zipcode)
-        })
+        // })
           
     }
 
