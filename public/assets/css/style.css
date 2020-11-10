@@ -149,7 +149,18 @@
 /* ////////////////////// */
 /* PROFILE MODAL ELEMENTS */
 
-/* Profile Modal: Turns Modal On and Off from Javascript */
+.closeX {
+    text-align: right;
+    color:rgb(91,123,122);
+    padding-top: 10px;
+    padding-right: 10px;
+    font-size: 18px;;
+    font-family: 'Lucida Sans Unicode';
+    margin-bottom: -10px;
+    cursor: pointer;
+}
+
+/* Profile Modal: Turns Modal On and Off from Javascript and Overlays it Over Content */
 #modalDisplay {
     display: none;
     position: fixed;
@@ -220,6 +231,7 @@
     width: 100px;
 }
 
+
 #confirm-button {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -234,6 +246,7 @@
     border-radius: 25px;
     display: none;
 } 
+
 
 
 /* #add-book-area {

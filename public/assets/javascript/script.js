@@ -66,13 +66,6 @@ $(document).ready(function () {
         })
     })
 
-    // CONFIRM ADD BOOK BUTTON //
-
-    $("#add-book").on("click", function () {
-        console.log("hello");
-
-
-    })
 
     //PROFILE PAGE
 
@@ -156,8 +149,10 @@ $(document).ready(function () {
         });
     });
 
-
-// CONFIRM ADD BOOK BUTTON //
+// CLOSE MODULE "X"
+$(".closeX").click(function(){
+    $("#modalDisplay").css("display", "none")
+})
  
 
     ///////////////////////////////////////

@@ -114,7 +114,7 @@ module.exports = function (app) {
       }
 
       // If User Has No Owned Books, Feed Placeholder Image
-      if (dbUser.dataValues.books_owned == "") {
+      if (dbUser.dataValues.books_owned == "" || null) {
         ownedCoverImg = emptyArray;
         // Else, Send Owned Books to formatCodeImage()
       } else {
@@ -123,7 +123,7 @@ module.exports = function (app) {
       }
 
       // If User Has No Borrowed Books, Feed Placeholder Image
-      if (dbUser.dataValues.books_onloan == "") {
+      if (dbUser.dataValues.books_owned == "" || null) {
         borrowedCoverImg = emptyArray;
         //   // return booksOnloan;
         // Else, Send Owned Books to formatCodeImage()
@@ -193,6 +193,7 @@ module.exports = function (app) {
   app.get("/search/", function (req, res) {
     res.redirect("/view-all")
   })
+
   ///////////////////////////////////////
   // GET ROUTE: VIEW ALL PAGE  //
   ///////////////////////////////////////
