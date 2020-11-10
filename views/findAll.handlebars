@@ -1,17 +1,22 @@
 <div class="searchPage container">
   <div class="row">
     <div class="col-12 searchHead">
-      <h1>View All Books</h1>
+      <h1>Search Results</h1>
+      <h3 class="searchQuery">results for <span class="searchQuery">"{{searchQuery}}"</span></h3>
     </div>
   </div>
 
   <div class="row searchResults">
     {{#each books}}
-    <div class="col-3 searchResultCard">
-      <img src="http://covers.openlibrary.org/b/isbn/{{this.isbn}}.jpg" class="img-fluid searchImage" data-id="{{this.isbn}}">
+    <div class="col-3 searchResultCard" data-id="{{this.isbn}}">
+      <img src="http://covers.openlibrary.org/b/isbn/{{this.isbn}}.jpg" class="img-fluid searchImage">
       <h2 class="searchTitle">{{this.title}}</h2>
     </div>
     {{/each}}
   </div>
 
+  <div class="searchModalDisplay">
+    {{>querymodal-block}}
+  </div>
 </div>
+
