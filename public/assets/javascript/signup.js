@@ -62,45 +62,23 @@ $(document).ready(function () {
             username: loginUserName.val(),
             password: loginPassword.val()
         };
-        console.log(loginProfile.username);
-        console.log(loginProfile.password);
-        getLoginInfo()
+        console.log(loginProfile);
+        getLoginInfo(loginProfile)
     });
 
-    function getLoginInfo(loginInfo) {
-        // $.get("/api/user/" + loginInfo, function (data) {
+    function getLoginInfo(loginProfile) {
+        $.post("/api/login/",  {
+            username: loginProfile.username,
+            password: loginProfile.password
+        }).then((dbUser) => {
+            if (!dbUser){
 
-        // });
+            }
+            else {
+            window.location.href= "/user/" + loginProfile.username
+            }
+        })
     }
-
-
-
-
-
-
-
-
-    // console.log(loginUserName);
-    // console.log(loginPassword);
-    // if (loginUserName === 0)
-    // if (!userData.email || !userData.password) {
-    // return;
-
-    // } else
-    //     loginUser(userData.username, userData.password);
-    // usernameInput.val("");
-    // passwordInput.val("");
-
-    // function loginUser(username, password) {
-    //     $.get("/api/login", {
-    //         username: username,
-    //         password: password
-    //     }).then((data) => {
-    //         console.log(username);
-    //     })
-    // }
-
-
 
 
 })
