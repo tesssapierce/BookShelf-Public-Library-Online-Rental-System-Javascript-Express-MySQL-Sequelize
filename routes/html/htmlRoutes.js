@@ -211,7 +211,7 @@ module.exports = function (app) {
         books.push(thisBook)
       })
       console.log(books)
-      res.render("search", {books: books, searchQuery: searchVal})
+      res.render("search", { books: books, searchQuery: searchVal })
     })
   })
 
@@ -239,9 +239,57 @@ module.exports = function (app) {
           }
           books.push(thisBook)
         })
-        res.render("findAll", {books: books})
+        res.render("findAll", { books: books })
       })
   });
+
+  ///////////////////////////////////////
+  // LOGIN  //
+  ///////////////////////////////////////
+
+  app.get("/user/:username", function (req, res) {
+    var UsernameValue = req.params.val
+    console.log(UsernameValue)
+
+    db.Books.findAll({
+      where: {
+        username: UsernameValue
+      }
+    })
+  })
+
+  //With Search Value
+  // app.get("/search/:val", function (req, res) {
+  //   var searchVal = req.params.val
+  //   console.log(searchVal)
+
+  //   db.Books.findAll({
+  //     where: {
+  //       title: {
+  //         [Op.like]: '%' + searchVal + '%'
+  //       }
+  //     }
+  //   }).then(function (dbBooks) {
+  //     var books = []
+  //     dbBooks.forEach(book => {
+  //       var thisBook = {
+  //         book_id: book.dataValues.book_id,
+  //         isbn: book.dataValues.isbn,
+  //         title: book.dataValues.title,
+  //         owner_id: book.dataValues.owner_id,
+  //         lender_id: book.dataValues.lender_id,
+  //         on_loan: book.dataValues.on_loan
+  //       }
+  //       books.push(thisBook)
+  //     })
+  //     console.log(books)
+  //     res.render("search", { books: books, searchQuery: searchVal })
+  //   })
+  // })
+
+
+
+
 
 
 }
