@@ -422,3 +422,33 @@ img.searchImage {
     transform: translate(-50%,-50%);
     font-family: 'Poppins', sans-serif;
 }
+
+.queryModal {
+    background-color: rgb(245,245,245,0.9);
+    height: 100%;
+    width: 500px;
+    border-radius: 25px;
+    padding:30px;
+}
+
+#booksDetails-img{
+    height: 200px;
+    width: auto;
+}
+
+#bookDetails-title{
+    font-size: 22px;
+}
+
+#bookDetails-author{
+    font-size: 14px;
+}
+
+#bookDetails-publish{
+    font-size: 14px;
+}
+
+#bookDetails-availTitle{
+    font-size: 22px;
+    border-bottom: 8px black solid
+}
