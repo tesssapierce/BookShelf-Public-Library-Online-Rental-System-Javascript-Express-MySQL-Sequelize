@@ -59,12 +59,11 @@ module.exports = function (app) {
   /////////////////////////
   // Add Book Post Route //
   /////////////////////////
-
   app.post("/api/books", function (req, res) {
     console.log("ISBN POST:" + req.body.isbn)
     console.log("TITLE POST:" + req.body.title)
     console.log("OWNER ID:" + req.body.owner_id)
-    ////////////////////////////
+  ////////////////////////////
     db.Books.create({
       isbn: req.body.isbn,
       title: req.body.title,
@@ -75,13 +74,16 @@ module.exports = function (app) {
       updatedAt: new Date()
     }).then(function () {
       //REDIRECT TO USER'S PAGE
-      // res.redirect("/user/" + req.body.owner_name);
+      res.redirect("/user/" + req.body.owner_name);
     })
       .catch(function (err) {
-        res.status(401).json(err);
+        // res.status(401).json(err);
       });
   });
 
+  ////////////////////////
+  // Add Book Put Route //
+  ////////////////////////
 
   app.put("/api/books", function (req, res) {
     ////////////////////////////
@@ -122,48 +124,21 @@ module.exports = function (app) {
 })
 
 app.get("/api/user_data/:user_id", function(req,res){
-  var user_id = req.params.user_id
-  db.User.findOne({where: {username: user_id}}).then(function(dbUsers){
-    res.json(dbUsers)
-  })
-})
-app.post("/api/login", function(req,res){
-  res.json("/user/profile");
-});
-app.get("/api/user/:username", (req, res) =>{
-console.log("user lookup")
-db.User.username({
-  where: {username: req.params.username}
-});
-});
-
-
-/////////////////////////
-  // Add Book Post Route //
-  /////////////////////////
-  app.post("/api/books", function (req, res) {
-    console.log("ISBN POST:" + req.body.isbn)
-    console.log("TITLE POST:" + req.body.title)
-    console.log("OWNER ID:" + req.body.owner_id)
-  ////////////////////////////
-    db.Books.create({
-      isbn: req.body.isbn,
-      title: req.body.title,
-      owner_id: req.body.owner_id,
-      lender_id: null,
-      on_loan: 0,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }).then(function () {
-      //REDIRECT TO USER'S PAGE
-      // res.redirect("/user/" + req.body.owner_name);
+    var user_id = req.params.user_id
+    db.User.findOne({where: {username: user_id}}).then(function(dbUsers){
+      res.json(dbUsers)
     })
-      .catch(function (err) {
-        // res.status(401).json(err);
-      });
+  })
+  app.post("/api/login", function(req,res){
+    res.json("/user/profile");
+  });
+  app.get("/api/user/:username", (req, res) =>{
+    console.log("user lookup")
+    db.User.username({
+      where: {username: req.params.username}
+    });
   });
 
 }
-
 
 
