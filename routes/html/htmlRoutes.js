@@ -9,13 +9,27 @@ module.exports = function (app) {
   ///////////////////////////////////////
 
   app.get("/", function (req, res) {
+
+    db.User.findAll().then(function(userbooks){
+        var allBooksOwned = []
+        for(var i=0; i<userbooks.booksOwned;i++){
+            allBooksOwned.push(userbooks[i].booksOwned
+            )};
+            console.log(allBooksOwned)      
+        });
+
+
+
+
+
+
     db.Books.findAll({ where: { on_loan: "false" } }).then(function (data) {
       //most recent
       var isbnArr = [];
       for (var i = 0; i < data.length; i++) {
         isbnArr.push(data[i].isbn)
       };
-      console.log(isbnArr)
+    //   console.log(isbnArr)
       var recent_one = []
       for (var i = isbnArr.length - 6; i < isbnArr.length; i++) {
         recent_one.push(isbnArr[i])
@@ -41,12 +55,12 @@ module.exports = function (app) {
       for (var i = 12; i < 18; i++) {
         popular_three.push(isbnArr[i])
       };
-      console.log(popular_one)
-      console.log(random_two)
-      console.log(random_three)
+    //   console.log(popular_one)
+    //   console.log(random_two)
+    //   console.log(random_three)
       //for randoms
       var isbnArrRan = isbnArr.sort(() => Math.random() - 0.5);
-      console.log(isbnArrRan)
+    //   console.log(isbnArrRan)
       var random_one = [];
       for (var i = 0; i < 6; i++) {
         random_one.push(isbnArrRan[i])
@@ -59,6 +73,7 @@ module.exports = function (app) {
       for (var i = 12; i < 18; i++) {
         random_three.push(isbnArrRan[i])
       };
+
       var hbsObjNewArival = {
         NewArival1: recent_one,
         NewArival2: recent_two,
