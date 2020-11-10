@@ -1,11 +1,10 @@
+
+
 /* ///////////////
 /* PROFILE PAGE */
 /* ///////////////
 
 /* PROFILE BOOKCASE DESIGN */
-/* .text{
-    font-size:8vw;
-} */
 
 /* Profile Bookcase Outline: Container Div */
 #profileBackground {
@@ -89,6 +88,15 @@
     margin-left:10px;
     margin-right:10px;
     margin-bottom:10px;
+}
+
+.textRowText {
+    color:  #987554;
+    background-image: linear-gradient(#130000, #664229);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding: 10px 10px 0px 20px;
+    text-align: left;
 }
 
 /* Profile: Books Owned Headline */
