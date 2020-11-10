@@ -39,31 +39,32 @@ $(document).ready(function () {
       
       function getAvailability(isbn){
         $.get( "/api/availability/"+isbn, function(data)  {
-            joinUser(data)
+            console.log(data)
+            $("#availableUsers").empty()
+            data.forEach(user=>{
+                console.log(user)
+                    var newUser = $("<div>")
+                    var username = $("<h3>")
+                        .text("username: " + user.username)
+                        .addClass("availableUsername")
+                    var zipcode = $("<h3>")
+                        .text("zipcode: " + user.zipcode)
+                        .addClass("availableZipcode")
+                    var button = $("<button>")
+                        .text("borrow")
+                        .addClass("availableButton" + user.book_id)
+                        .attr("data-bookid",user.book_id)
+                        .attr("data-isbn", isbn)
+                        .attr("data-ownerid",user.user_id)
+                        .attr("id", "availableButton")
+                    newUser
+                        .append(username)
+                        .append(zipcode)
+                        .append(button)
+                    $("#availableUsers").append(newUser)
+            })
           });
       }
-
-      function joinUser(data){
-        var availableUsers = []
-        console.log(data)
-          data.forEach(book=>{
-              $.get("/api/user_data/"+book.owner_id, function(data){
-                availableUsers.push(data)
-              })
-            //This properly console logs an object with users
-          })
-          console.log(availableUsers[1])
-          $("#availableUsers").empty()
-          //However I think that maybe my object is not structured correctly because the for each doesn't do anything
-        //   availableUsers.forEach(user=>{
-        //       console.log(user)
-            // var username = `<h3>${user.username}</h3>`
-            // var zipcode = `<h3>${user.zipcode}</h3>`
-            // console.log(username)
-            // console.log(zipcode)
-        // })
-          
-    }
 
     ///////////////////////////////////////
          // PROFILE PAGE FUNCTIONALITY   //
@@ -185,6 +186,10 @@ $(".closeX").click(function(){
 
     $("#addImgFormat").css("display", "none")
     $("#confirm-button").css("display", "none")
+})
+
+$(".closeY").click(()=>{
+    $(".searchModalDisplay").css("display", "none")
 })
  
 

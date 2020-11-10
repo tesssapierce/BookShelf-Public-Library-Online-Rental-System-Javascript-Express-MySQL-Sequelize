@@ -89,13 +89,24 @@ module.exports = function (app) {
   app.get("/api/availability/:isbn", function (req, res) {
     var isbn = req.params.isbn
     db.Books.findAll({ where: { isbn: isbn } }).then(function (dbBooks) {
-      res.json(dbBooks)
+      let bookUsers = []
+      dbBooks.forEach( (book,idx) => {
+        console.log(book.dataValues.owner_id)
+        db.User.findOne({where: {user_id: book.dataValues.owner_id}}).then( owner => {
+          owner.dataValues["book_id"] = book.dataValues.book_id
+          bookUsers.push(owner.dataValues)
+          if( idx === dbBooks.length-1 ){
+            res.json(bookUsers)
+          }
+        })
+      })
     })
     // sequelize.query("SELECT books.isbn, books.title, books.on_loan, users.username, users.zipcode, users.email FROM library.books LEFT JOIN users ON books.owner_id = users.user_id", function(err,res){
     //   if (err) throw err;
     //   return res
     // })
   })
+
   app.get("/api/user_data/:user_id", function (req, res) {
     var user_id = req.params.user_id
     db.User.findOne({ where: { user_id: user_id } }).then(function (dbUsers) {
