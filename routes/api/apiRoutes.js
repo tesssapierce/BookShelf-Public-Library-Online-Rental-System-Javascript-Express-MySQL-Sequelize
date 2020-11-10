@@ -81,6 +81,8 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
+
+
   app.put("/api/books", function (req, res) {
     ////////////////////////////
     db.User.findOne({ where: { username: req.body.owner_name } }).then(function (dbUser) {
@@ -90,18 +92,19 @@ module.exports = function (app) {
       let newIsbn = req.body.isbn;
       userBookArray.push(newIsbn);
       console.log("New ISBN ARRAY :" + userBookArray)
-    }).then(function (userBookArray) {
-      db.User.update({ where: { username: req.body.owner_name } }).then(function (dbUser) {
-        books_owned: JSON.stringify(userBookArray);
-      }).then(function () {
-        //REDIRECT TO USER'S PAGE
-        res.json()
-        // res.redirect("/user/" + req.body.owner_name);
-      })
-        .catch(function (err) {
-          res.status(401).json(err);
-        });
-    });
+
+      newUserArray = JSON.stringify(userBookArray)
+
+      db.User.update({books_owned: newUserArray},
+        {
+          where: {
+            username: req.body.owner_name
+          }
+        })
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    })
+
   })
   /////////////////////////
   // Check Availability //
@@ -160,36 +163,7 @@ db.User.username({
       });
   });
 
-  ///////////////////////
-  // Update Book Put Route //
-  ///////////////////////
-  app.put("/api/books", function (req, res) {
-    db.User.findOne({ where: { username: req.body.owner_name } }).then(function (dbUser) {
-      // Adding Book to Old Array
-      console.log("OLD ISBN ARRAY : " + JSON.parse(dbUser.dataValues.books_owned))
-      let userBookArray = JSON.parse(dbUser.dataValues.books_owned);
-      let newIsbn = req.body.isbn;
-      userBookArray.push(newIsbn);
-      console.log("New ISBN ARRAY :" + userBookArray)
-
-      newUserArray = JSON.stringify(userBookArray)
-
-      db.User.update({books_owned: newUserArray},
-        {
-          where: {
-            username: req.body.owner_name
-          }
-        })
-    }).then(function(dbUser) {
-      res.json(dbUser);
-    })
-
-  })
-
 }
-
-
-
 
 
 
