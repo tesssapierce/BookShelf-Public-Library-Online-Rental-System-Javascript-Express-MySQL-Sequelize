@@ -3,7 +3,7 @@ const db = require("../../models");
 const { QueryTypes } = require('sequelize');
 const { sequelize } = require("../../models");
 module.exports = function (app) {
-    /////////////////////////
+  /////////////////////////
   // Sign in //
   /////////////////////////
   app.post("/api/signup", function (req, res) {
@@ -14,18 +14,52 @@ module.exports = function (app) {
       username: req.body.username,
       password: req.body.password
     }).then(function () {
-        res.redirect("/user/" + req.body.username)
-      }).catch(function (err) {
-        res.status(401).json(err);
-      });
+      res.redirect("/user/" + req.body.username)
+    }).catch(function (err) {
+      res.status(401).json(err);
+    });
   });
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/login");
   });
-    /////////////////////////
+
+  /////////////////////////
+  // Login 1/2 - PROCEED TO USER PROFILE PAGE //
+  /////////////////////////
+
+  app.post("/api/login", function (req, res) {
+    db.User.findOne({
+      where: {
+        username: req.body.username,
+        password: req.body.password
+      }
+    }).then((dbUser) => {
+      // res.json(dbUser)
+    })
+  })
+
+
+  /////////////////////////
+  // Login 2/2 - UPDATE BOOLEAN VALUE IN LOGIN TABLE //
+  /////////////////////////
+
+  app.post("/api/authenticate/", function (req, res) {
+    db.login.update({login: true}, {
+      where: {
+        username: req.body.username,
+        password: req.body.password
+      }
+    }).then((dblogin) => {
+      res.json(dblogin)
+      console.log(dblogin);
+    })
+  })
+
+  /////////////////////////
   // Add Book Post Route //
   /////////////////////////
+
   app.post("/api/books", function (req, res) {
     console.log("ISBN POST:" + req.body.isbn)
     console.log("TITLE POST:" + req.body.title)
@@ -72,9 +106,10 @@ module.exports = function (app) {
   /////////////////////////
   // Check Availability //
   /////////////////////////
-  app.get("/api/availability/:isbn", function (req, res){
+
+  app.get("/api/availability/:isbn", function (req, res) {
     var isbn = req.params.isbn
-    db.Books.findAll({where: {isbn: isbn}}).then(function(dbBooks){
+    db.Books.findAll({ where: { isbn: isbn } }).then(function (dbBooks) {
       res.json(dbBooks)
     })
     // sequelize.query("SELECT books.isbn, books.title, books.on_loan, users.username, users.zipcode, users.email FROM library.books LEFT JOIN users ON books.owner_id = users.user_id", function(err,res){

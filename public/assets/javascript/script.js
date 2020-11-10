@@ -16,7 +16,7 @@ $(document).ready(function () {
         var isbn = $(this).attr("data-id")
         console.log(isbn)
         $(".searchModalDisplay").css("display", "block")
-        var queryURL = "http://openlibrary.org/api/books?bibkeys=ISBN:" + isbn + "&jscmd=details&format=json"
+        var queryURL = "https://openlibrary.org/api/books?bibkeys=ISBN:" + isbn + "&jscmd=details&format=json"
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -41,22 +41,23 @@ $(document).ready(function () {
 
       function joinUser(data){
         var availableUsers = []
+        console.log(data)
           data.forEach(book=>{
               $.get("/api/user_data/"+book.owner_id, function(data){
                 availableUsers.push(data)
               })
-            console.log(availableUsers)
             //This properly console logs an object with users
           })
+          console.log(availableUsers[1])
           $("#availableUsers").empty()
           //However I think that maybe my object is not structured correctly because the for each doesn't do anything
-          availableUsers.forEach(user=>{
-              console.log(user)
+        //   availableUsers.forEach(user=>{
+        //       console.log(user)
             // var username = `<h3>${user.username}</h3>`
             // var zipcode = `<h3>${user.zipcode}</h3>`
             // console.log(username)
             // console.log(zipcode)
-        })
+        // })
           
     }
 
@@ -240,46 +241,46 @@ $(".closeX").click(function(){
 
 
     ///////////////////////////////////////
-    // LOG IN JAVASCRIPT  //
+    // LOG IN JAVASCRIPT (BROKEN) //
     ///////////////////////////////////////
 
-    // Getting references to our form and inputs
-    var loginForm = $("form.login");
-    var emailInput = $("input#email-input");
-    var passwordInput = $("input#password-input");
+    // // Getting references to our form and inputs
+    // var loginForm = $("form.login");
+    // var emailInput = $("input#email-input");
+    // var passwordInput = $("input#password-input");
 
-    // When the form is submitted, we validate there's an email and password entered
-    loginForm.on("submit", function (event) {
-        event.preventDefault();
-        var userData = {
-            email: emailInput.val().trim(),
-            password: passwordInput.val().trim()
-        };
+    // // When the form is submitted, we validate there's an email and password entered
+    // loginForm.on("submit", function (event) {
+    //     event.preventDefault();
+    //     var userData = {
+    //         email: emailInput.val().trim(),
+    //         password: passwordInput.val().trim()
+    //     };
 
-        if (!userData.email || !userData.password) {
-            return;
-        }
+    //     if (!userData.email || !userData.password) {
+    //         return;
+    //     }
 
-        // If we have an email and password we run the loginUser function and clear the form
-        loginUser(userData.email, userData.password);
-        emailInput.val("");
-        passwordInput.val("");
-    });
+    //     // If we have an email and password we run the loginUser function and clear the form
+    //     loginUser(userData.email, userData.password);
+    //     emailInput.val("");
+    //     passwordInput.val("");
+    // });
 
-    // loginUser does a post to our "api/login" route and if successful, redirects us to the members page
-    function loginUser(email, password) {
-        $.post("/api/login", {
-            email: email,
-            password: password
-        })
-            .then(function () {
-                window.location.replace("/user/:username");
-                // If there's an error, log the error
-            })
-            .catch(function (err) {
-                console.log(err);
-            });
-    }
+    // // loginUser does a post to our "api/login" route and if successful, redirects us to the members page
+    // function loginUser(email, password) {
+    //     $.post("/api/login", {
+    //         email: email,
+    //         password: password
+    //     })
+    //         .then(function () {
+    //             window.location.replace("/user/:username");
+    //             // If there's an error, log the error
+    //         })
+    //         .catch(function (err) {
+    //             console.log(err);
+    //         });
+    // }
 
 
 });
