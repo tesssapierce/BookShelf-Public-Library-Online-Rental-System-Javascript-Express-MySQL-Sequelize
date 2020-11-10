@@ -23,23 +23,43 @@ module.exports = function (app) {
     req.logout();
     res.redirect("/login");
   });
+
   /////////////////////////
-      // Login  //
+  // Login 1/2 - PROCEED TO USER PROFILE PAGE //
   /////////////////////////
+
   app.post("/api/login", function (req, res) {
-    console.log(req.body);
     db.User.findOne({
       where: {
         username: req.body.username,
         password: req.body.password
       }
     }).then((dbUser) => {
-      res.json(dbUser)
+      // res.json(dbUser)
     })
   })
+
+
+  /////////////////////////
+  // Login 2/2 - UPDATE BOOLEAN VALUE IN LOGIN TABLE //
+  /////////////////////////
+
+  app.post("/api/authenticate/", function (req, res) {
+    db.logins.findOne({
+      where: {
+        username: req.body.username,
+        password: req.body.password
+      }
+    }).then((dblogin) => {
+      res.json(dblogin)
+      console.log(dblogin);
+    })
+  })
+
   /////////////////////////
   // Add Book Post Route //
   /////////////////////////
+
   app.post("/api/books", function (req, res) {
     console.log("ISBN POST:" + req.body.isbn)
     console.log("TITLE POST:" + req.body.title)
@@ -83,9 +103,11 @@ module.exports = function (app) {
         });
     });
   })
+
   /////////////////////////
   // Check Availability //
   /////////////////////////
+
   app.get("/api/availability/:isbn", function (req, res) {
     var isbn = req.params.isbn
     db.Books.findAll({ where: { isbn: isbn } }).then(function (dbBooks) {
