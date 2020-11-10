@@ -114,7 +114,7 @@ module.exports = function (app) {
       }
 
       // If User Has No Owned Books, Feed Placeholder Image
-      if (dbUser.dataValues.books_owned == "") {
+      if (!JSON.parse(dbUser.dataValues.books_owned)) {
         ownedCoverImg = emptyArray;
         // Else, Send Owned Books to formatCodeImage()
       } else {
