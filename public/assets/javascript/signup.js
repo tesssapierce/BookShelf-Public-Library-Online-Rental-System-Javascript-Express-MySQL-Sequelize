@@ -74,7 +74,7 @@ $(document).ready(function () {
             password: loginProfile.password
         }).then((dbUser) => {
             if (!dbUser) {
-
+                
             }
             else {
                 window.location.href = "/user/" + loginProfile.username
@@ -91,11 +91,11 @@ $(document).ready(function () {
         }).then((dblogin) => {
             console.log(dblogin);
         })
-    
+
     };
 
 
-    
+
 
 
 
