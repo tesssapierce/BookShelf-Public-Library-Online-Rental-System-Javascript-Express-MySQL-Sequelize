@@ -38,9 +38,7 @@ $(document).ready(function() {
           password: password
         })
         .then(function(data) {
-            //  window.location.href="/users/" + username;
-           window.location.replace(data);
-        
+        window.location.href="/user/" + username;
         })
         .catch(handleLoginErr);
     }
