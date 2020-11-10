@@ -102,6 +102,19 @@ body{
     margin-bottom:10px;
 }
 
+<<<<<<< HEAD
+=======
+.textRowText {
+    color:  #987554;
+    background-image: linear-gradient(#130000, #664229);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding: 10px 10px 0px 20px;
+    text-align: left;
+    font-size: 150%;
+}
+
+>>>>>>> master
 /* Profile: Books Owned Headline */
 #booksToLoanHeadline {
     color: white;
@@ -297,7 +310,7 @@ body{
 }
 
 
-#confirm-button {
+#confirmButton {
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left:auto;
@@ -494,8 +507,114 @@ img.searchImage {
     padding: 20px;
 }
 
+<<<<<<< HEAD
 
 /*////////////////////////////////////////////////////// STYLING FOR HOMEPAGE//////////////////////////////////////////// */
+=======
+.searchModalDisplay {
+    display: none;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    font-family: 'Poppins', sans-serif;
+}
+
+.queryModal {
+    background-color: rgb(245,245,245,0.9);
+    height: 100%;
+    width: 500px;
+    border-radius: 25px;
+    padding:30px;
+}
+
+.closeY {
+    text-align: right;
+    color:rgb(91,123,122);
+    font-size: 18px;;
+    font-family: 'Lucida Sans Unicode';
+    margin-top: -5px;
+    margin-right: -5px;
+    cursor: pointer;
+}
+
+#availableButton {
+    margin-bottom: 10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    height: 30px;
+    width: 100px;
+    border-style: none;
+    background: #5B7B7A;
+    color: whitesmoke;
+    border-radius: 25px;
+}
+
+.availableUsername{
+    font-size: 12px;
+}
+
+.availableZipcode{
+    font-size: 12px;
+}
+
+#booksDetails-img{
+    height: 200px;
+    width: auto;
+}
+
+#bookDetails-title{
+    font-size: 22px;
+}
+
+#bookDetails-author{
+    font-size: 14px;
+}
+
+#bookDetails-publish{
+    font-size: 14px;
+}
+
+#bookDetails-availTitle{
+    font-size: 22px;
+    border-bottom: 8px black solid
+}
+
+/* Login page */
+
+.login {
+    /* object-fit: cover; */
+    width: 100%;  
+    padding-left: 60px;
+    padding-right: 35px;
+    
+
+} 
+
+
+.form-group {
+    margin-top: 18px;
+    border-radius: 25px;
+    padding-right: 65px;
+    
+}
+
+#login-form {
+   
+    background-image: url("../images/antique.JPG");
+    margin-top: 30px;
+    box-shadow: 0 0 10px 2px;
+    border-radius: 15px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#logtitle {
+    padding-left: 60px;
+}
+
+>>>>>>> master
 
 .title-div {
     padding-top: 10vh;   /* padding-left: 240px; */
@@ -566,10 +685,20 @@ img.searchImage {
 
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
+<<<<<<< HEAD
     width: 100%;
     padding-bottom: 2%;
     height: auto;
     display: block;
+=======
+    width: 125px;
+    height: auto;
+}
+.carousel-inner {
+    padding-right: 4vh;
+    padding-left: 1vh;
+    
+>>>>>>> master
 }
 
 .carousel-control-prev{
@@ -599,7 +728,12 @@ nav{
 
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
+<<<<<<< HEAD
     width:120%;
+=======
+    width:75px;
+
+>>>>>>> master
 }
 .carousel-inner{
     padding-right: 3vh;

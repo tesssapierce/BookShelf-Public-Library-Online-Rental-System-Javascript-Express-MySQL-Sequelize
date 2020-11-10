@@ -126,8 +126,13 @@ module.exports = function (app) {
       // console.log("MAIN TARGET: "+ dbUser.dataValues)
       console.log("ISBN: " + JSON.parse(dbUser.dataValues.books_owned))
 
+<<<<<<< HEAD
       // Set Up Images - for Instances Where Arrays Are Empty
       // console.log(dbUser)
+=======
+      // Set Up Images - for Instances Where Array Are Empty
+      console.log(dbUser)
+>>>>>>> master
       let emptyCover = "../assets/images/emptycover-placeholder.jpg";
       let emptyArray = [emptyCover];
 
@@ -231,7 +236,7 @@ module.exports = function (app) {
         books.push(thisBook)
       })
       console.log(books)
-      res.render("search", {books: books, searchQuery: searchVal})
+      res.render("search", { books: books, searchQuery: searchVal })
     })
   })
 
@@ -258,7 +263,25 @@ module.exports = function (app) {
           }
           books.push(thisBook)
         })
-        res.render("findAll", {books: books})
+        res.render("findAll", { books: books })
       })
   });
+<<<<<<< HEAD
+=======
+
+  ///////////////////////////////////////
+  // LOGIN  //
+  ///////////////////////////////////////
+
+  app.get("/user/:username", function (req, res) {
+    var UsernameValue = req.params.val
+    console.log(UsernameValue)
+
+    db.Books.findAll({
+      where: {
+        username: UsernameValue
+      }
+    })
+  })
+>>>>>>> master
 }
