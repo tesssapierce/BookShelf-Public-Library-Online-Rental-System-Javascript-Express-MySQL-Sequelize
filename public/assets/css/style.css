@@ -1,6 +1,15 @@
-/* ///////////////
+/* BODY ///////////////////////////////////////////////////////////////////////////////////////*/
+
+
+
+body{
+    background-color: #6a6866;
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* PROFILE PAGE */
-/* ///////////////
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* PROFILE BOOKCASE DESIGN */
 /* .text{
@@ -93,20 +102,6 @@
     margin-bottom:10px;
 }
 
-<<<<<<< HEAD
-/* Headlines for Owned Books and Borrowed Books */
-.textRowText {
-    color:  #987554;
-    background-image: linear-gradient(#130000, #664229);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding: 10px 10px 0px 20px;
-    text-align: left;
-    font-size: 150%;
-}
-
-=======
->>>>>>> monday
 /* Profile: Books Owned Headline */
 #booksToLoanHeadline {
     color: white;
@@ -347,7 +342,15 @@
 }
 } */
 
-/* NAVIGATION CSS */
+/*/////////////////////////////////////////// NAVIGATION CSS////////////////////////////////// */
+
+
+#titleLogo{
+    width: 50%;
+    height: auto;
+    padding-bottom: 1%;
+
+}
 
 .searchBtn {
   background-color: #473335;
@@ -360,14 +363,17 @@
 }
 
 nav {
-  background-color: #473335 !important;
+  background-color:#aaa9a8 !important;
 }
 
 .navSection {
-  background-color: #473335;
+  background-color: #959392;
   font-family: 'Poppins', sans-serif;
   border-radius: 5px;
-  color: #FFFFFF !important;;
+  margin-bottom: 2%;
+  height: 20%;
+  width: auto;
+  /* color: #FFFFFF !important;; */
 }
 
 
@@ -376,7 +382,7 @@ nav {
   font-family: 'Gentium Book Basic', serif;
   font-weight: 700;
   font-size: 50px;
-  padding: 25px;
+  padding-top:2%;
   border-radius: 5px;
 }
 
@@ -447,7 +453,7 @@ footer {
     bottom: 0;
 }
 
-
+/*/////////////////////////////////// SEARCH BOOKS ////////////////////////////////////////////////////////////
 /* Searhc Results CSS */
 .searchHead {
     text-align: center;
@@ -488,80 +494,6 @@ img.searchImage {
     padding: 20px;
 }
 
-<<<<<<< HEAD
-.searchModalDisplay {
-    display: none;
-    position: fixed;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    font-family: 'Poppins', sans-serif;
-}
-
-.queryModal {
-    background-color: rgb(245,245,245,0.9);
-    height: 100%;
-    width: 500px;
-    border-radius: 25px;
-    padding:30px;
-}
-
-#booksDetails-img{
-    height: 200px;
-    width: auto;
-}
-
-#bookDetails-title{
-    font-size: 22px;
-}
-
-#bookDetails-author{
-    font-size: 14px;
-}
-
-#bookDetails-publish{
-    font-size: 14px;
-}
-
-#bookDetails-availTitle{
-    font-size: 22px;
-    border-bottom: 8px black solid
-}
-
-/* Login page */
-
-.login {
-    /* object-fit: cover; */
-    width: 100%;  
-    padding-left: 60px;
-    padding-right: 35px;
-    
-
-} 
-
-
-.form-group {
-    margin-top: 18px;
-    border-radius: 25px;
-    padding-right: 65px;
-    
-}
-
-#login-form {
-   
-    background-image: url("../images/antique.JPG");
-    margin-top: 30px;
-    box-shadow: 0 0 10px 2px;
-    border-radius: 15px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-#logtitle {
-    padding-left: 60px;
-}
-
-=======
 
 /*////////////////////////////////////////////////////// STYLING FOR HOMEPAGE//////////////////////////////////////////// */
 
@@ -571,10 +503,9 @@ img.searchImage {
 }
 
 
-#bookshelf_container {
+.bookself {
+    border: 4vh solid #987554;
 
-    border: 5vh solid #987554;
-    border-top: 7vh solid #987554;
     border-bottom: none;
     border-image:url("../images/wood.jpg") 50 50 stretch;
     margin: auto;
@@ -614,19 +545,16 @@ img.searchImage {
     width:100%;
 }
 
-
 .carousel{
-
+    box-sizing: content-box;
     border-bottom: 30px solid #987554;;
-    padding-left: 5vh;
-    padding-right: 5vh;
+    padding-left: 4%;
+    padding-right: 4%;
 	-webkit-box-shadow: 0 8px 6px -6px  #361a00;
 	-moz-box-shadow: 0 8px 6px -6px  #361a00;
     box-shadow: 0 8px 6px -6px  #361a00;
     border-image:url("../images/wood.jpg") 50 50 stretch;
     border: 15px solid transperant;
-    
-
 
 }
 
@@ -635,77 +563,67 @@ img.searchImage {
     padding-right: 90%;
 }
 
+
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-    width: 120%;
+    width: 100%;
+    padding-bottom: 2%;
+    height: auto;
+    display: block;
 }
-.carousel-inner {
-    padding-right: 4vh;
-    padding-left: 1vh;
-    
-}
+
 .carousel-control-prev{
-    padding-top: 35vh;
+    padding-top: 25%;
     margin-right: 2vh;
 }
 .carousel-control-next{
-    padding-top: 35vh;
+    padding-top: 25%;
     margin-left: 2vh;
 }
 
-
+/*////////////////////////////////////////// Responsive /////////////////////////////////////////////////*/
 
 @media only screen and (max-width: 991px){
 
-#nameLogo{
-    width: 30%;
+nav{
+    display: inline;
 }
+#tilteLogo{
+    display: none;
+}
+      
+
 .carousel{
     border-bottom: 20px solid #987554;;
 }
-#bookshelf_container {
-    width: 80%;
-    border: 4vh solid #987554;
-    border-bottom: none;
-    border-image:url("../images/wood.jpg") 50 50 stretch;
 
-}
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-    width:140%;
+    width:120%;
+}
+.carousel-inner{
+    padding-right: 3vh;
+}
+.bookself{
+    border: 2vh solid #987554;
+
+    border-bottom: none;
+    border-image:url("../images/wood.jpg") 50 50 stretch;
+}
 
 }
-.carousel-control-prev{
-    padding-top: 28vh;
-    margin-right: 2vh;
-}
-.carousel-control-next{
-    padding-top: 28vh;
-    margin-left: 2vh;
-}
 
 
-
-}
 @media only screen and (max-width: 767px){
-
-    .carousel-control-prev{
-        padding-top: 20vh;
-        margin-right: 1vh;
-    }
-    .carousel-control-next{
-        padding-top: 20vh;
-        margin-left: 1vh;
-    }
-    .d-block{
-        width: 160%;
-    }
-    .carousel-inner {
-        padding-right: 4vh;
-        padding-left: 1vh;
-        
-    }
-
+#titleLogo{
+    height:50%;
+}
+.d-block{
+    width: 140%;
+}
+.carousel-inner{
+    padding-right: 3vh;
+}
     
     
 
@@ -719,15 +637,22 @@ img.searchImage {
 }
 #bookshelf_container {
     width: 100%;
-    border: 4vh solid #987554;
+    border: 2vh solid #987554;
     border-bottom: none;
     border-image:url("../images/wood.jpg") 50 50 stretch;
 }
 .d-block{
-    max-width: 30%;
+    width:100%;
+    height:auto;
 }
-
+.carousel-control-prev{
+    padding-top: 500vh;
+    margin-right: 2vh;
+}
+.carousel-control-next{
+    padding-top: 25%;
+    margin-left: 2vh;
+}
 }
 
     
->>>>>>> monday

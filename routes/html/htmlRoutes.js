@@ -17,26 +17,30 @@ module.exports = function (app) {
         isbnArr.push(data[i].isbn)
       };
     //   console.log(isbnArr)
+
+      var isbnArry_filtered = isbnArr.filter((value, index)=> isbnArr.indexOf(value) === index);
+    //   console.log(isbnArry_filtered)
+
+
       var recent_one = []
-      for (var i = isbnArr.length - 6; i < isbnArr.length; i++) {
-        recent_one.push(isbnArr[i])
+      for (var i = isbnArry_filtered.length - 6; i < isbnArry_filtered.length; i++) {
+        recent_one.push(isbnArry_filtered[i])
       };
       var recent_two = []
-      for (var i = isbnArr.length - 12; i < isbnArr.length - 6; i++) {
-        recent_two.push(isbnArr[i])
+      for (var i = isbnArry_filtered.length - 12; i < isbnArry_filtered.length - 6; i++) {
+        recent_two.push(isbnArry_filtered[i])
       };
       var recent_three = []
-      for (var i = isbnArr.length - 18; i < isbnArr.length - 12; i++) {
-        recent_three.push(isbnArr[i])
+      for (var i = isbnArry_filtered.length - 18; i < isbnArry_filtered.length - 12; i++) {
+        recent_three.push(isbnArry_filtered[i])
       };
-      //forPopular logic needs fix
-
+    //Logic for popular
       var uniqueIsbn = [];
       var isbnCount = [];
       var prev;
-
+      
       var isbnPop = isbnArr.sort();
-      console.log(isbnPop);
+    //   console.log(isbnPop) and unique array;
       for(var i = 0; i < isbnPop.length;i++) {
           if(isbnPop[i] !== prev){
               uniqueIsbn.push(isbnPop[i]);
@@ -46,13 +50,13 @@ module.exports = function (app) {
           }
           prev = isbnArr[i];
       }
-    //   console.log(uniqueIsbn);
+    // console.log(uniqueIsbn);
     //   console.log(isbnCount)
     popularity = [];
     for (var i=0; i<uniqueIsbn.length;i++){
         popularity.push({"isbn":uniqueIsbn[i], "count":isbnCount[i]});
     }
-    console.log(popularity[0].count)
+    // console.log(popularity[0].count)
 
     popular_arr = [];
     for( var i=0;i<popularity.length; i++){
@@ -74,11 +78,8 @@ module.exports = function (app) {
       for (var i = 12; i < 18; i++) {
         popular_three.push(popular_arr[i])
       };
-    //   console.log(popular_one)
-    //   console.log(random_two)
-    //   console.log(random_three)
       //for randoms
-      var isbnArrRan = isbnArr.sort(() => Math.random() - 0.5);
+      var isbnArrRan = isbnArry_filtered.sort(() => Math.random() - 0.5);
     //   console.log(isbnArrRan)
       var random_one = [];
       for (var i = 0; i < 6; i++) {
@@ -125,13 +126,8 @@ module.exports = function (app) {
       // console.log("MAIN TARGET: "+ dbUser.dataValues)
       console.log("ISBN: " + JSON.parse(dbUser.dataValues.books_owned))
 
-<<<<<<< HEAD
       // Set Up Images - for Instances Where Arrays Are Empty
       // console.log(dbUser)
-=======
-      // Set Up Images - for Instances Where Array Are Empty
-      console.log(dbUser)
->>>>>>> monday
       let emptyCover = "../assets/images/emptycover-placeholder.jpg";
       let emptyArray = [emptyCover];
 
@@ -164,11 +160,7 @@ module.exports = function (app) {
       }
 
       // If User Has No Owned Books, Feed Placeholder Image
-<<<<<<< HEAD
       if (dbUser.dataValues.books_owned == "" || null) {
-=======
-      if (dbUser.dataValues.books_owned == "") {
->>>>>>> monday
         ownedCoverImg = emptyArray;
         // Else, Send Owned Books to formatCodeImage()
       } else {
@@ -247,7 +239,6 @@ module.exports = function (app) {
   app.get("/search/", function (req, res) {
     res.redirect("/view-all")
   })
-
   ///////////////////////////////////////
   // GET ROUTE: VIEW ALL PAGE  //
   ///////////////////////////////////////
@@ -270,6 +261,4 @@ module.exports = function (app) {
         res.render("findAll", {books: books})
       })
   });
-
-
 }
