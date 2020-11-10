@@ -159,7 +159,7 @@ module.exports = function (app) {
       }
 
       // If User Has No Owned Books, Feed Placeholder Image
-      if (dbUser.dataValues.books_owned == "") {
+      if (dbUser.dataValues.books_owned == "" || null) {
         ownedCoverImg = emptyArray;
         // Else, Send Owned Books to formatCodeImage()
       } else {
@@ -276,39 +276,4 @@ module.exports = function (app) {
       }
     })
   })
-
-  //With Search Value
-  // app.get("/search/:val", function (req, res) {
-  //   var searchVal = req.params.val
-  //   console.log(searchVal)
-
-  //   db.Books.findAll({
-  //     where: {
-  //       title: {
-  //         [Op.like]: '%' + searchVal + '%'
-  //       }
-  //     }
-  //   }).then(function (dbBooks) {
-  //     var books = []
-  //     dbBooks.forEach(book => {
-  //       var thisBook = {
-  //         book_id: book.dataValues.book_id,
-  //         isbn: book.dataValues.isbn,
-  //         title: book.dataValues.title,
-  //         owner_id: book.dataValues.owner_id,
-  //         lender_id: book.dataValues.lender_id,
-  //         on_loan: book.dataValues.on_loan
-  //       }
-  //       books.push(thisBook)
-  //     })
-  //     console.log(books)
-  //     res.render("search", { books: books, searchQuery: searchVal })
-  //   })
-  // })
-
-
-
-
-
-
 }

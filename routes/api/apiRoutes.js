@@ -2,9 +2,7 @@ var path = require("path");
 const db = require("../../models");
 const { QueryTypes } = require('sequelize');
 const { sequelize } = require("../../models");
-
 module.exports = function (app) {
-
   /////////////////////////
   // Sign in //
   /////////////////////////
@@ -21,17 +19,13 @@ module.exports = function (app) {
       res.status(401).json(err);
     });
   });
-
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/login");
   });
-
-
   /////////////////////////
       // Login  //
   /////////////////////////
-
   app.post("/api/login", function (req, res) {
     console.log(req.body);
     db.User.findOne({
@@ -43,7 +37,6 @@ module.exports = function (app) {
       res.json(dbUser)
     })
   })
-
   /////////////////////////
   // Add Book Post Route //
   /////////////////////////
@@ -89,10 +82,7 @@ module.exports = function (app) {
           res.status(401).json(err);
         });
     });
-
-
   })
-
   /////////////////////////
   // Check Availability //
   /////////////////////////
@@ -106,13 +96,10 @@ module.exports = function (app) {
     //   return res
     // })
   })
-
   app.get("/api/user_data/:user_id", function (req, res) {
     var user_id = req.params.user_id
     db.User.findOne({ where: { user_id: user_id } }).then(function (dbUsers) {
-      res.json(dbUsers)
+      console.log(dbUser)
     })
   })
-
-
 }
