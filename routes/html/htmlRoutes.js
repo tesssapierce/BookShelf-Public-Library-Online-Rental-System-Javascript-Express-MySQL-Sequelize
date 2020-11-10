@@ -102,9 +102,9 @@ module.exports = function (app) {
       let booksBorrowed = [];
       let borrowedCoverImg = [];
 
-      // Format Cover Image Code After Its Existence Is Confirmed
-      function formatImageCode() {
-        console.log("Formatting image code")
+      // Format Cover Image Code for Owned Books After Its Existence Is Confirmed
+      function formatOwnedImageCode() {
+        console.log("Formatting Owned Image code")
 
         // Loop imageSrc Code with ISBN Number
         for (var i = 0; i < booksOwned.length; i++) {
@@ -113,25 +113,36 @@ module.exports = function (app) {
         }
       }
 
+      // Format Cover Image Code for Borrowed Books After Its Existence Is Confirmed
+      function formatBorrowedImageCode() {
+        console.log("Formatting Borrowed code")
+
+        // Loop imageSrc Code with ISBN Number
+        for (var i = 0; i < booksOwned.length; i++) {
+          imageSrc = "http://covers.openlibrary.org/b/isbn/" + booksBorrowed[i] + ".jpg";
+          borrowedCoverImg.push(imageSrc);
+        }
+      }
+
       // If User Has No Owned Books, Feed Placeholder Image
-      if (dbUser.dataValues.books_owned == "" || null) {
+      if (dbUser.dataValues.books_owned == "") {
         ownedCoverImg = emptyArray;
         // Else, Send Owned Books to formatCodeImage()
       } else {
         booksOwned = JSON.parse(dbUser.dataValues.books_owned);
-        formatImageCode();
+        formatOwnedImageCode();
       }
 
       // If User Has No Borrowed Books, Feed Placeholder Image
-      if (dbUser.dataValues.books_owned == "" || null) {
+      if (dbUser.dataValues.books_onloan == "") {
         borrowedCoverImg = emptyArray;
         //   // return booksOnloan;
         // Else, Send Owned Books to formatCodeImage()
       } else {
         booksOnloan = JSON.parse(dbUser.dataValues.books_owned);
-        formatImageCode();
+        formatBorrowedImageCode();
       }
-
+      
       // Reformat profilePage Object
       let profilePage = {
 

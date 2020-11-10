@@ -55,7 +55,7 @@
                                         <div class="row">
                                             {{#each books_owned}}
                                                 <div class="col-lg-2"> <img src="{{this}}" class="d-block w-100" alt="first slide"></div>
-                                            {{/each}}
+                                            {{/each}}+
                                         </div>
 
                                     </div>
@@ -83,38 +83,42 @@
                                     </a>
                             </div>
                     </div>
-            </div>
+                </div>
+        </div>
+        <div class="row">
             <div class="col-12">
                     <h2 class="text">Borrowed Books</h2>
                     <!--popular slider-->
                     <div id="carouselPopularControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                     <!--Slider popular part 1"public/assets -->
-                                    <div class="carousel-item active">
+                                    <div class="carousel-item active">'
+                                        <div class="row">
                                             
                                         {{#each books_onloan}}
-                                            <div class="col-lg-2"> <img src="{{this}}" class="d-block w-100" alt="first slide"></div>
+                                            <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}" class="d-block w-100" alt="first slide"></div>
                                         {{/each}}
-                                                    
+
+                                        </div> 
                                     </div>
                                     <!--End of slider popular part 1-->
 
                                     <!--Slider popular part 2 random-->
                                     <div class="carousel-item">
-                                            
-                                        {{#each books_onloan}}
-                                            <div class="col-lg-2"> <img src="{{this}}"class="d-block w-100" alt="first slide"></div>
-                                        {{/each}}
-                                                    
+                                        <div class="row">
+                                            {{#each books_onloan}}
+                                                <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}"class="d-block w-100" alt="first slide"></div>
+                                            {{/each}}
+                                        </div>
                                     </div>
                                     <!-- end of slider popular part 2-->
                                     <!--Slider popular part 3 random-->
                                     <div class="carousel-item">
-                                            
-                                        {{#each books_onloan}}
-                                        <div class="col-lg-2"> <img src="{{this}}" class="d-block w-100" alt="first slide"></div>
-                                        {{/each}}
-                    
+                                         <div class="row">
+                                            {{#each books_onloan}}
+                                                <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}"class="d-block w-100" alt="first slide"></div>
+                                            {{/each}}
+                                        </div>
                                     </div>
                                     <!-- end of slider popular part 3-->
 
@@ -131,7 +135,6 @@
                             </div>
                     </div>
             </div>
-
         </div>
     </div>
     {{!-- Add Book Module --}}
