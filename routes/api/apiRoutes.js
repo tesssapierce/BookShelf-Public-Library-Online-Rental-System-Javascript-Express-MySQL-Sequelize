@@ -23,20 +23,39 @@ module.exports = function (app) {
     req.logout();
     res.redirect("/login");
   });
+
   /////////////////////////
-      // Login  //
+  // Login 1/2 - PROCEED TO USER PROFILE PAGE //
   /////////////////////////
+
   app.post("/api/login", function (req, res) {
-    console.log(req.body);
     db.User.findOne({
       where: {
         username: req.body.username,
         password: req.body.password
       }
     }).then((dbUser) => {
-      res.json(dbUser)
+      // res.json(dbUser)
     })
   })
+
+
+  /////////////////////////
+  // Login 2/2 - UPDATE BOOLEAN VALUE IN LOGIN TABLE //
+  /////////////////////////
+
+  app.post("/api/authenticate/", function (req, res) {
+    db.login.update({login: true}, {
+      where: {
+        username: req.body.username,
+        password: req.body.password
+      }
+    }).then((dblogin) => {
+      res.json(dblogin)
+      console.log(dblogin);
+    })
+  })
+
   /////////////////////////
   // Add Book Post Route //
   /////////////////////////
@@ -44,7 +63,7 @@ module.exports = function (app) {
     console.log("ISBN POST:" + req.body.isbn)
     console.log("TITLE POST:" + req.body.title)
     console.log("OWNER ID:" + req.body.owner_id)
-    ////////////////////////////
+  ////////////////////////////
     db.Books.create({
       isbn: req.body.isbn,
       title: req.body.title,
@@ -55,12 +74,17 @@ module.exports = function (app) {
       updatedAt: new Date()
     }).then(function () {
       //REDIRECT TO USER'S PAGE
-      // res.redirect("/user/" + req.body.owner_name);
+      res.redirect("/user/" + req.body.owner_name);
     })
       .catch(function (err) {
-        res.status(401).json(err);
+        // res.status(401).json(err);
       });
   });
+
+  ////////////////////////
+  // Add Book Put Route //
+  ////////////////////////
+
   app.put("/api/books", function (req, res) {
     ////////////////////////////
     db.User.findOne({ where: { username: req.body.owner_name } }).then(function (dbUser) {
@@ -70,22 +94,24 @@ module.exports = function (app) {
       let newIsbn = req.body.isbn;
       userBookArray.push(newIsbn);
       console.log("New ISBN ARRAY :" + userBookArray)
-    }).then(function (userBookArray) {
-      db.User.update({ where: { username: req.body.owner_name } }).then(function (dbUser) {
-        books_owned: JSON.stringify(userBookArray);
-      }).then(function () {
-        //REDIRECT TO USER'S PAGE
-        res.json()
-        // res.redirect("/user/" + req.body.owner_name);
-      })
-        .catch(function (err) {
-          res.status(401).json(err);
-        });
-    });
+
+      newUserArray = JSON.stringify(userBookArray)
+
+      db.User.update({books_owned: newUserArray},
+        {
+          where: {
+            username: req.body.owner_name
+          }
+        })
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    })
+
   })
   /////////////////////////
   // Check Availability //
   /////////////////////////
+
   app.get("/api/availability/:isbn", function (req, res) {
     var isbn = req.params.isbn
     db.Books.findAll({ where: { isbn: isbn } }).then(function (dbBooks) {
@@ -105,12 +131,24 @@ module.exports = function (app) {
     //   if (err) throw err;
     //   return res
     // })
-  })
+})
 
-  app.get("/api/user_data/:user_id", function (req, res) {
+app.get("/api/user_data/:user_id", function(req,res){
     var user_id = req.params.user_id
-    db.User.findOne({ where: { user_id: user_id } }).then(function (dbUsers) {
-      console.log(dbUser)
+    db.User.findOne({where: {username: user_id}}).then(function(dbUsers){
+      res.json(dbUsers)
     })
   })
+  app.post("/api/login", function(req,res){
+    res.json("/user/profile");
+  });
+  app.get("/api/user/:username", (req, res) =>{
+    console.log("user lookup")
+    db.User.username({
+      where: {username: req.params.username}
+    });
+  });
+
 }
+
+

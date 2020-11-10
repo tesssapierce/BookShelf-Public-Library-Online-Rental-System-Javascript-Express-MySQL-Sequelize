@@ -4,8 +4,6 @@ $(document).ready(function () {
          // SEARCH FUNCTIONALITY   //
     ///////////////////////////////////////
 
-    // SEARCH BAR RESULT //
-
     $(".searchBtn").on("click", function (e) {
         e.preventDefault();
         var query = $("#searchVal").val()
@@ -14,8 +12,6 @@ $(document).ready(function () {
     })
 
     //SEARCH RESULT CLICK
-
-
     $(".searchResultCard").on("click", function (e) {
         var isbn = $(this).attr("data-id")
         console.log(isbn)
@@ -71,7 +67,7 @@ $(document).ready(function () {
     ///////////////////////////////////////
 
 
-    //ADD BOOK BUTTON CLICK
+    // ADD BOOK BUTTON CLICK
     $(".addButton").click(function(){
 
         // MODULE TURNS ON
@@ -81,6 +77,7 @@ $(document).ready(function () {
         $("#isbn-submit").on("click", function () {
             var isbnNumber = $("#isbn-val").val().trim()
             var queryURL = "http://openlibrary.org/api/books?bibkeys=ISBN:" + isbnNumber + "&jscmd=details&format=json"
+
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -96,7 +93,9 @@ $(document).ready(function () {
                     $(".unavailable").css("display", "none")
                     $("#profileModalFormat").css("height", "100%")
                     $("#addImgFormat").css("display", "block")
-                    $("#confirm-button").css("display", "block")
+                    $("#ajax-title").css("display","block");
+                    $("#ajax-year").css("display","block");
+                    $("#confirmButton").css("display", "block")
                 
                     // CONSOLE LOGGING ROUTES TO DATA //
                     console.log(response)
@@ -115,16 +114,12 @@ $(document).ready(function () {
                         $("#ajax-year").css("display","block")
 
                     //FILTER OUT UNDEFINED AUTHORS 
-                    if(ajaxAuthor="undefined"){
+                    console.log(ajaxAuthor)
+                    if(ajaxAuthor = "undefined"){
                         $("#ajax-author").css("display","none")
                     } else {
-                        $("#ajax-author").css("display","block")
+                        $("#ajax-author").css("display","block");
                     }
-
-
-                    $("#ajax-title").css("display","block");
-                    $("#ajax-author").css("display","block");
-                    $("#ajax-year").css("display","block");
 
                     // INPUTTING DATA INTO AJAX OUTPUT AREA //
                     $("#ajax-title").text("Title: " + ajaxTitle);
@@ -136,29 +131,37 @@ $(document).ready(function () {
                     console.log(imageSrc)
                     $("#addImgFormat").attr("src", imageSrc)
 
-                    // CONFIRM ADD BOOK BUTTON //
-                    $("#confirm").on("click", function (newBookAdded) {
                     // Prepare Data for Next Function
 
                     var userID = $("#userId").html();
                     var userName = $("#profileHeader").html();
 
+                }
+                    
+                // CONFIRM ADD BOOK BUTTON //
+                $("#confirmButton").off().on("click", function () {
+                    $("#modalDisplay").css("display", "none")
+
+                    console.log("read");
+                
                     var newBookAdded = {
                         isbn: isbnNumber,
                         title: ajaxTitle,
                         owner_id: userID,
                         owner_name: userName,
                     };
-
+                    
                     console.log("New Book ISBN: " + newBookAdded.isbn);
             
                     $.ajax("/api/books", {
-                        type: "POST",        
-                        data: newBookAdded
+                            type: "POST",        
+                            data: newBookAdded
                     }).then(
                         function () {
                             console.log("Added New Book");
                             location.reload();
+                    }).catch(function (err) {
+                        console.log(err);
                     });
 
                     $.ajax("/api/books", {
@@ -169,12 +172,12 @@ $(document).ready(function () {
                             console.log("Added New Book");
                             location.reload();
                     });
-                    });
-                }
+                
+                
+                });
             });
         });
-    });
-
+    })
 // CLOSE MODULE "X"
 $(".closeX").click(function(){
     $("#modalDisplay").css("display", "none")
@@ -185,7 +188,7 @@ $(".closeX").click(function(){
     $("#ajax-year").css("display","none");
 
     $("#addImgFormat").css("display", "none")
-    $("#confirm-button").css("display", "none")
+    $("#confirmButton").css("display", "none")
 })
 
 $(".closeY").click(()=>{

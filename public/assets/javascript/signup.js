@@ -62,23 +62,48 @@ $(document).ready(function () {
             username: loginUserName.val(),
             password: loginPassword.val()
         };
-        console.log(loginProfile);
         getLoginInfo(loginProfile)
+        booleanGet(loginProfile)
     });
 
+    // PROCEEDING TO THE USER PROFILE PAGE //
+
     function getLoginInfo(loginProfile) {
-        $.post("/api/login/",  {
+        $.post("/api/login/", {
             username: loginProfile.username,
             password: loginProfile.password
         }).then((dbUser) => {
-            if (!dbUser){
-
+            if (!dbUser) {
+                
             }
             else {
-            window.location.href= "/user/" + loginProfile.username
+                window.location.href = "/user/" + loginProfile.username
             }
         })
     }
+
+    // CHANGING BOOLEAN VALUE IN WORKBENCH //
+
+    function booleanGet(loginProfile) {
+        $.post("/api/authenticate/", {
+            username: loginProfile.username,
+            password: loginProfile.password,
+        }).then((dblogin) => {
+            console.log(dblogin);
+        })
+
+    };
+
+
+
+
+
+
+
+
+    // function booleanGet(dblogin) {
+    //     console.log(dblogin);
+    // }
 
 
 })
