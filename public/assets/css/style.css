@@ -93,20 +93,6 @@
     margin-bottom:10px;
 }
 
-<<<<<<< HEAD
-/* Headlines for Owned Books and Borrowed Books */
-.textRowText {
-    color:  #987554;
-    background-image: linear-gradient(#130000, #664229);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding: 10px 10px 0px 20px;
-    text-align: left;
-    font-size: 150%;
-}
-
-=======
->>>>>>> monday
 /* Profile: Books Owned Headline */
 #booksToLoanHeadline {
     color: white;
@@ -488,7 +474,6 @@ img.searchImage {
     padding: 20px;
 }
 
-<<<<<<< HEAD
 .searchModalDisplay {
     display: none;
     position: fixed;
@@ -561,9 +546,6 @@ img.searchImage {
     padding-left: 60px;
 }
 
-=======
-
-/*////////////////////////////////////////////////////// STYLING FOR HOMEPAGE//////////////////////////////////////////// */
 
 .title-div {
     padding-top: 10vh;   /* padding-left: 240px; */
@@ -637,7 +619,8 @@ img.searchImage {
 
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-    width: 120%;
+    width: 125px;
+    height: auto;
 }
 .carousel-inner {
     padding-right: 4vh;
@@ -672,7 +655,7 @@ img.searchImage {
 }
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-    width:140%;
+    width:75px;
 
 }
 .carousel-control-prev{
@@ -730,4 +713,3 @@ img.searchImage {
 }
 
     
->>>>>>> monday
