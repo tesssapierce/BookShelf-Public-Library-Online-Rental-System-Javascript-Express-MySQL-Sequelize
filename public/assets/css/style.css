@@ -284,75 +284,7 @@
     width:30px;
 }
 
-#bookshelf_container {
-    margin-left: 20px;
-    margin-right: 40px;
-    border: 30px solid #987554;
-    border-bottom: none;
-    border-top: 50px solid #987554;
-    margin: auto;
-    margin-top: 25px;
-    padding-top: 0px;
-    width: 72%;
-    position: relative;
- 
-    text-align: center;
-    background-color: #664229;
 
-     -webkit-box-shadow: 
-     0px 10px 30px 20px #000, 
-     inset 0 0 10px #000;
-    -moz-box-shadow: 
-     0px 0px 30px 20px #000, 
-     inset 0 0 10px #000;
-    -o-box-shadow: 
-     0px 0px 30px 20px #000, 
-     inset 0 0 10px #000;
-    box-shadow: 
-     0px 0px 20px #888888, 
-     inset 0 0 px  #361a00;
-
-     border-image:url("../images/wood.jpg") 50 50 stretch;
-     border: 15px solid transperant;
-}
-
-
-.text {
-    color:  #987554;
-    background-image: linear-gradient(#130000, #664229);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding: 10px 10px 0px 20px;
-    text-align: left;
-}
-
-#pre {
-    justify-content: left;
-}
-
-.carousel {
-    padding-top: 20px;
-    padding-bottom: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
-    border-bottom: 30px solid #987554;;
-	-webkit-box-shadow: 0 8px 6px -6px  #361a00;
-	-moz-box-shadow: 0 8px 6px -6px  #361a00;
-    box-shadow: 0 8px 6px -6px  #361a00;
-    border-image:url("../images/wood.jpg") 50 50 stretch;
-    border: 15px solid transperant;
-
-}
-
-.d-block {
-    box-shadow: 0px 0px 5px 5px  #361a00;
-    width: 100%;
-}
-
-.title-div {
-    padding-top: 60px;
-    padding-left: 240px;
-}
 
 /* NAVIGATION CSS */
 
@@ -447,7 +379,7 @@ nav {
 
 
 footer {
-    position: absolute;
+    /* position: absolute; */
     margin: auto;
     padding: 20px;
     text-align: center;
