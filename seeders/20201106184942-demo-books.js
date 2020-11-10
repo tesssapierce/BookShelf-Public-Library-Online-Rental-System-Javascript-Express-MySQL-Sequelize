@@ -150,7 +150,7 @@ module.exports = {
       },
       {
         isbn: 9780679723011,
-        title: "The way of Zen =",
+        title: "The way of Zen",
         owner_id: 4,
         lender_id: null,
         on_loan: 0,
