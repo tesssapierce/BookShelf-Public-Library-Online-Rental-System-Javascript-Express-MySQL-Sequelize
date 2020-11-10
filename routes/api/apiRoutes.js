@@ -45,7 +45,7 @@ module.exports = function (app) {
   /////////////////////////
 
   app.post("/api/authenticate/", function (req, res) {
-    db.logins.findOne({
+    db.login.update({login: true}, {
       where: {
         username: req.body.username,
         password: req.body.password
