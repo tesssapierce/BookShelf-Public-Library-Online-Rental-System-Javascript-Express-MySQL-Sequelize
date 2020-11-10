@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   login.init({
-    login_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true
     },
