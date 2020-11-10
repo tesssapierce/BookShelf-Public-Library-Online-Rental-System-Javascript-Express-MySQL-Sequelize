@@ -106,7 +106,7 @@ module.exports = function (app) {
       // console.log("MAIN TARGET: "+ dbUser.dataValues)
       // console.log("ISBN: " + JSON.parse(dbUser.dataValues.books_owned))
 
-      // Set Up Images - for Instances Where Array Are Empty
+      // Set Up Images - for Instances Where Arrays Are Empty
       // console.log(dbUser)
       let emptyCover = "../assets/images/emptycover-placeholder.jpg";
       let emptyArray = [emptyCover];
