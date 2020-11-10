@@ -1,5 +1,7 @@
 var path = require("path");
 const db = require("../../models");
+const { QueryTypes } = require('sequelize');
+const { sequelize } = require("../../models");
 
 module.exports = function (app) {
   
@@ -83,6 +85,17 @@ module.exports = function (app) {
     db.Books.findAll({where: {isbn: isbn}}).then(function(dbBooks){
       res.json(dbBooks)
     })
+    // sequelize.query("SELECT books.isbn, books.title, books.on_loan, users.username, users.zipcode, users.email FROM library.books LEFT JOIN users ON books.owner_id = users.user_id", function(err,res){
+    //   if (err) throw err;
+    //   return res
+    // })
+})
+
+app.get("/api/user_data/:user_id", function(req,res){
+  var user_id = req.params.user_id
+  db.User.findOne({where: {user_id: user_id}}).then(function(dbUsers){
+    res.json(dbUsers)
   })
+})
 
 }

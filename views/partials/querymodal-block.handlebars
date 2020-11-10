@@ -1,22 +1,14 @@
-<!-- RENT BOOK MODAL // SHOULD BE IN ANY QUERY HANDLEBAR PAGE (SEARCH, VIEW ALL) -->
-
-<div class="container">
+<div class="container queryModal">
   <div class="row">
-    <div class="col-4" class="ajax-info-add">
-      <img id="queryModalImg" src="http://covers.openlibrary.org/b/isbn/{{this.isbn}}.jpg">
-
+    <div class="col-6">
+      <h3 id="bookDetails-title"></h3>
+      <h3 id="bookDetails-author"></h3>
+      <img src="" id="booksDetails-img">
+      <h3 id="bookDetails-publish"></h3>
     </div>
-    <div class="col-8 ">
-      <h5 class="ajax-info" id="ajax-title"></h5>
-      <h5 class="ajax-info" id="ajax-author"></h5>
-      <h5 class="ajax-info" id="ajax-year"></h5>
+    <div class="col-6">
+      <h3 id="bookDetails-availTitle">available to borrow near you</h3>
+      <div id="availableUsers"></div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12" id="confirm">
-      <button type="submit" id="confirm-button">Add</button>
-    </div>
-  </div>
-
-</div>
 </div>
