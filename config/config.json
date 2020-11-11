@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "casino123",
+=======
+    "password": "mysqlpassword",
+>>>>>>> master
     "database": "library",
     "host": "localhost",
     "dialect": "mysql"
