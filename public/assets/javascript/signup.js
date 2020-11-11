@@ -1,4 +1,10 @@
 $(document).ready(function () {
+
+    ///////////////////////////////////////
+    // SIGNING UP & INPUT INTO DB  //
+    ///////////////////////////////////////
+
+
     var signUpForm = $("form.signup");
     var emailInput = $("input#email-input");
     var passwordInput = $("input#pass-input");
@@ -53,10 +59,10 @@ $(document).ready(function () {
         $("#alert").fadeIn(500);
     }
 
+    ///////////////////////////////////////
+    // LOG IN & INPUT INTO DB  //
+    ///////////////////////////////////////
 
-    //////////////////////////////
-    // LOGIN JAVASCRIPT //
-    //////////////////////////////
     var loginUserName = $("#username-input")
     var loginPassword = $("#password-input")
     var loginForm = $("form.login");
@@ -79,6 +85,7 @@ $(document).ready(function () {
             password: loginProfile.password
         }).then((dbUser) => {
             if (!dbUser) {
+                window.location.href = "/login"
 
             }
             else {
@@ -94,9 +101,26 @@ $(document).ready(function () {
             username: loginProfile.username,
             password: loginProfile.password,
         }).then((dblogin) => {
-            console.log(dblogin);
-        })
+            logoutButton(dblogin)
+        });
+    };
 
+    ///////////////////////////////////////
+    // DISPLAY LOGOUT BUTTON IF LOGGED IN //
+    ///////////////////////////////////////
+
+    function logoutButton(loginProfile) {
+        $.get("/api/logout/", {
+            username: loginProfile.username,
+            password: loginProfile.password,
+        }).then((userBoolean) => {
+            console.log(userBoolean);
+            // let isLoggedIn = userBoolean.login;
+            // while (isLoggedIn === true){
+            //     $("#logout").css("display", "block")
+            //     $("#login").css("display", "none")
+            // }
+        });
     };
 
 
@@ -106,9 +130,6 @@ $(document).ready(function () {
 
 
 
-    // function booleanGet(dblogin) {
-    //     console.log(dblogin);
-    // }
 
 
-})
+});

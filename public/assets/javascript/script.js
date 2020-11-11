@@ -66,7 +66,6 @@ $(document).ready(function () {
          // PROFILE PAGE FUNCTIONALITY   //
     ///////////////////////////////////////
 
-
     // ADD BOOK BUTTON CLICK
     $(".addButton").click(function(){
 

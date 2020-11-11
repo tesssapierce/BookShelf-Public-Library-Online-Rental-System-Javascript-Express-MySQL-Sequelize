@@ -3,10 +3,11 @@ const db = require("../../models");
 const { QueryTypes } = require('sequelize');
 const { sequelize } = require("../../models");
 module.exports = function (app) {
-  
+
   /////////////////////////
-  // Sign Up - Original Users Table //
+  // SIGN UP - ORIGINAL USER TABLE //
   /////////////////////////
+
   app.post("/api/signup", function (req, res) {
     console.log(req.body);
     db.User.create({
@@ -40,7 +41,7 @@ module.exports = function (app) {
   });
 
   /////////////////////////
-  // Login 1/2 - PROCEED TO USER PROFILE PAGE //
+  // LOGIN 1/2 - PROCEED TO USER PROFILE PAGE //
   /////////////////////////
 
   app.post("/api/login", function (req, res) {
@@ -55,7 +56,7 @@ module.exports = function (app) {
   })
 
   /////////////////////////
-  // Login 2/2 - UPDATE BOOLEAN VALUE IN LOGIN TABLE //
+  // LOGIN 2/2 - UPDATE BOOLEAN VALUE IN LOGIN TABLE //
   /////////////////////////
 
   app.post("/api/authenticate/", function (req, res) {
@@ -66,12 +67,25 @@ module.exports = function (app) {
       }
     }).then((dblogin) => {
       res.json(dblogin)
-      console.log(dblogin);
     })
   })
 
+  /////////////////////////s
+  // LOGOUT NAVBAR CHANGE //
   /////////////////////////
-  // Add Book Post Route //
+
+  app.get("/api/logout/", function (req, res) {
+    db.login.findOne({
+      where: {
+        login: true
+      }
+    }).then((userBoolean) => {
+      res.json(userBoolean)
+    });
+  })
+
+  /////////////////////////
+  // ADD BOOK POST ROUTE //
   /////////////////////////
 
   app.post("/api/books", function (req, res) {
@@ -96,13 +110,12 @@ module.exports = function (app) {
   });
 
   ////////////////////////
-  // Add Book Put Route //
+  // ADD BOOK PUT ROUTE //
   ////////////////////////
 
   app.put("/api/books", function (req, res) {
     ////////////////////////////
     db.User.findOne({ where: { username: req.body.owner_name } }).then(function (dbUser) {
-      // console.log(dbUser);
       console.log("OLD ISBN ARRAY : " + JSON.parse(dbUser.dataValues.books_owned))
       if (!dbUser.dataValues.books_owned) {
         var userBookArray = []
@@ -128,7 +141,7 @@ module.exports = function (app) {
   })
 
   /////////////////////////
-  // Check Availability //
+  // CHECK AVAILABILITY //
   /////////////////////////
 
   app.get("/api/availability/:isbn", function (req, res) {
@@ -166,6 +179,6 @@ module.exports = function (app) {
     });
   });
 
-}
+};
 
 
