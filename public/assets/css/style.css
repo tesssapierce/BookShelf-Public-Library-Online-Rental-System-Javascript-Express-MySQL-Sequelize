@@ -374,8 +374,15 @@ body{
 
 nav {
   background-color:#aaa9a8 !important;
+  
+  
 }
+/* white lettering on nav bar if we want it */
+.nav-link {
+    color: white !important;
 
+
+}
 .navSection {
   background-color: #959392;
   font-family: 'Poppins', sans-serif;
@@ -383,6 +390,7 @@ nav {
   margin-bottom: 2%;
   height: 20%;
   width: auto;
+  
   /* color: #FFFFFF !important;; */
 }
 
