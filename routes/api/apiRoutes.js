@@ -173,7 +173,7 @@ module.exports = function (app) {
             user_id: dbUsers.dataValues.user_id
           }
         }).then(function(dbUser2){
-            console.log("donezo")
+          res.send("success")
         })
 
     })
