@@ -170,6 +170,19 @@ module.exports = function (app) {
     res.json("/user/profile");
   });
 
+  app.post("/api/logout", function(req,res){
+    var username = req.body.username
+    console.log(username)
+    db.login.update({login: false},
+      {
+        where: {
+          username: req.body.username
+        }
+      }).then(function(){
+        res.json("success")
+      })
+  })
+
   app.get("/api/user/:username", (req, res) => {
     db.User.username({
       where: { username: req.params.username }

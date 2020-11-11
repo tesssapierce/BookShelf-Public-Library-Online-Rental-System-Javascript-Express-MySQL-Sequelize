@@ -41,7 +41,6 @@ $(document).ready(function () {
             console.log(data)
             $("#availableUsers").empty()
             data.forEach(user => {
-                console.log(user)
                 var newUser = $("<div>")
                 var username = $("<h3>")
                     .text("username: " + user.username)
@@ -61,46 +60,30 @@ $(document).ready(function () {
                     .append(zipcode)
                     .append(button)
                 $("#availableUsers").append(newUser)
-
                 $(".availableButton" + user.book_id).click(function () {
-                    let chosenBook_id = $(this).attr("data-bookid")
-                    let chosenBook_isbn = $(this).attr("data-isbn")
-                    let chosenBook_ownerid = $(this).attr("data-ownerid")
-                    // console.log("ID:" + chosenBook_id);
-                    // console.log("ISBN:" + chosenBook_isbn);
-                    // console.log("OWNER ID:" + chosenBook_ownerid);
-
-                    var bookInfo = {
-                        book_id: chosenBook_id,
-                        isbn: chosenBook_isbn,
-                        owner_id: chosenBook_ownerid
-                    }
-                    // console.log(bookInfo.book_id);
-                    changeBookBoolean(bookInfo)
+                    console.log("book_id: " + $(this).attr("data-bookid"))
+                    console.log("isbn: " + $(this).attr("data-isbn"))
+                    console.log("owner_id: " + $(this).attr("data-ownerid"))
                 })
             })
-        });
 
-        function changeBookBoolean(bookInfo) {
-
-            var newIsbn = {
-                isbn: bookInfo.
-            }
-
-            console.log(bookInfo.isbn);
-            $.post("/api/onloan/", {
-                book_id: bookInfo.book_id,
-                isbn: bookInfo.isbn,
-            }).then((dbloan) => {
-                console.log(dbloan);
-            })
-
-        };
+        })
     }
 
     ///////////////////////////////////////
     // PROFILE PAGE FUNCTIONALITY   //
     ///////////////////////////////////////
+
+    // LOG OUT FUNCTIONALITY
+
+    $(".signOutBtn").off().on("click", function () {
+        var username = $("#profileHeader").text()
+        var usernameObj = { username: username }
+        console.log(usernameObj)
+        $.post("/api/logout", usernameObj).then(() => {
+            window.location.href = "/login"
+        })
+    })
 
     // ADD BOOK BUTTON CLICK
     $(".addButton").click(function () {
