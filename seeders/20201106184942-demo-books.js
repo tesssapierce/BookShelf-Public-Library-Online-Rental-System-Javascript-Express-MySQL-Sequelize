@@ -23,6 +23,24 @@ module.exports = {
         updatedAt: new Date()
       },
       {
+        isbn: 9780316769174,
+        title: "The catcher in the rye",
+        owner_id: 5,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        isbn: 9780316769174,
+        title: "The catcher in the rye",
+        owner_id: 2,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
         isbn: 9781984822185,
         title: "Normal People",
         owner_id: 1,
@@ -35,6 +53,15 @@ module.exports = {
         isbn: 9780679720201,
         title: "The stranger",
         owner_id: 1,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        isbn: 9780679720201,
+        title: "The stranger",
+        owner_id: 3,
         lender_id: null,
         on_loan: 0,
         createdAt: new Date(),
@@ -59,9 +86,36 @@ module.exports = {
         updatedAt: new Date()
       },
       {
+        isbn: 9781910701881,
+        title: "Homo Deus",
+        owner_id: 4,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        isbn: 9781910701881,
+        title: "Homo Deus",
+        owner_id: 1,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
         isbn: 9780441172719,
         title: "Dune",
         owner_id: 2,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        isbn: 9780441172719,
+        title: "Dune",
+        owner_id: 4,
         lender_id: null,
         on_loan: 0,
         createdAt: new Date(),
@@ -77,9 +131,27 @@ module.exports = {
         updatedAt: new Date()
       },
       {
+        isbn: 9780812550757,
+        title: "Speaker for the dead",
+        owner_id: 5,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
         isbn: 9780812550702,
         title: "Ender's game",
         owner_id: 2,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        isbn: 9780812550702,
+        title: "Ender's game",
+        owner_id: 3,
         lender_id: null,
         on_loan: 0,
         createdAt: new Date(),
@@ -149,6 +221,15 @@ module.exports = {
         updatedAt: new Date()
       },
       {
+        isbn: 9780385720953,
+        title: "The blind assassin",
+        owner_id: 1,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
         isbn: 9780679723011,
         title: "The way of Zen",
         owner_id: 4,
@@ -170,6 +251,24 @@ module.exports = {
         isbn: 9780393609394,
         title: "Astrophysics for people in a hurry",
         owner_id: 4,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        isbn: 9780393609394,
+        title: "Astrophysics for people in a hurry",
+        owner_id: 2,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        isbn: 9780393609394,
+        title: "Astrophysics for people in a hurry",
+        owner_id: 3,
         lender_id: null,
         on_loan: 0,
         createdAt: new Date(),
@@ -206,6 +305,15 @@ module.exports = {
         isbn: 9781593279509,
         title: "Eloquent JavaScript",
         owner_id: 5,
+        lender_id: null,
+        on_loan: 0,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        isbn: 9781593279509,
+        title: "Eloquent JavaScript",
+        owner_id: 1,
         lender_id: null,
         on_loan: 0,
         createdAt: new Date(),
