@@ -184,6 +184,7 @@ module.exports = function (app) {
         for (var i = 0; i < 19; i++) {
           if(i < booksOwned.length){
             ownedCoverImg.push("http://covers.openlibrary.org/b/isbn/" + booksOwned[i] + ".jpg");
+
     
             // Fill Empty Sections with Placeholder for now
             } else {            
