@@ -1,7 +1,9 @@
 var path = require("path");
 const db = require("../../models");
-const { QueryTypes } = require('sequelize');
-const { sequelize } = require("../../models");
+const Sequelize = require('sequelize');
+const { Console } = require("console");
+const { runInNewContext } = require("vm");
+const Op = Sequelize.Op;
 module.exports = function (app) {
 
   /////////////////////////
@@ -138,6 +140,45 @@ module.exports = function (app) {
 
   })
 
+    ////////////////////////
+  // ADD BOOK PUT ROUTE //
+  ////////////////////////
+  app.delete("/api/books", function(req, res){
+    console.log(req.body.isbn)
+    console.log(req.body.username)
+    db.User.findOne({
+      where: {
+        username: req.body.username
+      }
+    }).then(function(dbUsers){
+      console.log(dbUsers.dataValues.user_id)
+      var currentBooksOwned = JSON.parse(dbUsers.dataValues.books_owned)
+      var isbn = req.body.isbn
+      console.log(dbUsers.dataValues.books_owned)
+      db.Books.destroy({
+        where: {
+          [Op.and]: [{isbn: req.body.isbn},{owner_id: dbUsers.dataValues.user_id}]
+        }
+      }).then(function(dbBooks){
+        currentBooksOwned.forEach(function(item, index, object){
+          if (item === isbn){
+            object.splice(index, 1)
+          }
+        })
+
+        var newBooksOwned = JSON.stringify(currentBooksOwned)
+
+        db.User.update({books_owned: newBooksOwned}, {
+          where: {
+            user_id: dbUsers.dataValues.user_id
+          }
+        }).then(function(dbUser2){
+            console.log("donezo")
+        })
+
+    })
+  })
+})
   /////////////////////////
   // CHECK AVAILABILITY //
   /////////////////////////

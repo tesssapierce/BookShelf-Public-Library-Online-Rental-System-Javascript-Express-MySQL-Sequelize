@@ -554,6 +554,17 @@ img.searchImage {
     padding:30px;
 }
 
+.closeZ {
+    text-align: right;
+    color:rgb(91,123,122);
+    font-size: 18px;;
+    font-family: 'Lucida Sans Unicode';
+    margin-top: -5px;
+    margin-right: -5px;
+    cursor: pointer;
+}
+
+
 .closeY {
     text-align: right;
     color:rgb(91,123,122);
@@ -748,7 +759,7 @@ img.searchImage {
     margin-left: 2vh;
 }
 
-.deleteConfirm{
+#deleteConfirm{
     margin-bottom: 10px;
     margin-left:auto;
     margin-right:auto;

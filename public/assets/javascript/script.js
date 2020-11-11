@@ -302,11 +302,31 @@ $(document).ready(function () {
     $(".deleteModalImg").off().on("click", function(){
         $("#deleteModalDisplay").css("display", "block")
         var username = $("#profileHeader").text()
-        console.log(username)
         $("#deleteConfirm").attr("data-username",username)
         var imgLink = $(this).attr("src")
         var isbn = imgLink.split("http://covers.openlibrary.org/b/isbn/")
         var newisbn = isbn[1].split(".jpg")
         $("#deleteConfirm").attr("data-isbn",newisbn[0])
+        $("#deleteConfirm").off().on("click", function(){
+            var thisIsbn = $(this).attr("data-isbn")
+            var thisUser = $(this).attr("data-username")
+            var thisBook = {
+                isbn: thisIsbn,
+                username: thisUser
+            }
+            console.log(thisIsbn)
+            console.log(thisUser)
+            $.ajax({
+                url: "/api/books",
+                method: "DELETE",
+                data: thisBook
+            }).then(function(res){
+                location.reload()
+            })
+        })
+    })
+
+    $(".closeZ").off().on("click", function(){
+        $("#deleteModalDisplay").css("display", "none")
     })
 });
