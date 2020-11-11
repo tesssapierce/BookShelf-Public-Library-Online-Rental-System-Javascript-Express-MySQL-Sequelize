@@ -228,7 +228,7 @@ module.exports = function (app) {
       if (!dbUser.dataValues.books_onloan) {
         var userBookArray = []
       } else {
-        var userBookArray = (dbUser.dataValues.books_onloan);
+        var userBookArray = JSON.parse(dbUser.dataValues.books_onloan);
       }
       let newIsbn = req.body.isbn;
       userBookArray.push(newIsbn);
@@ -244,24 +244,6 @@ module.exports = function (app) {
     })
   })
 
-  // CHANGING BOOLEAN VALUE IN WORKBENCH FOR LOGIN DATABASE //
-
-  app.post("/api/authenticate/", function (req, res) {
-    db.login.update({ login: true }, {
-      where: {
-        username: req.body.username,
-        password: req.body.password
-      }
-    }).then((dblogin) => {
-      res.json(dblogin)
-    })
-  })
-
-
-
-
-
-
   // RETURNING BOOK //
 
   app.post("/api/return/", function (req, res) {
@@ -273,8 +255,6 @@ module.exports = function (app) {
       res.json(dbreturn)
     })
   })
-
-
 
 };
 

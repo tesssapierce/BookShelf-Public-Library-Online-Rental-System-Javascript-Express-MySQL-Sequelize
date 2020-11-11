@@ -95,6 +95,7 @@ $(document).ready(function () {
         }).then((dblogger) => {
             let loggedUser = dblogger
             updateUsersOnLoan(borrowedBookInfo, loggedUser)
+            window.reload.href="/user/" + loggedUser.username
         })
     }
 
@@ -106,11 +107,6 @@ $(document).ready(function () {
             username: loggedUser.username
         })
     }
-
-
-
-
-
 
     ///////////////////////////////////////
     // PROFILE PAGE FUNCTIONALITY   //
