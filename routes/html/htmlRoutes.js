@@ -126,13 +126,8 @@ module.exports = function (app) {
       // console.log("MAIN TARGET: "+ dbUser.dataValues)
       console.log("ISBN: " + JSON.parse(dbUser.dataValues.books_owned))
 
-<<<<<<< HEAD
-      // Set Up Images - for Instances Where Arrays Are Empty
-      // console.log(dbUser)
-=======
       // Set Up Images - for Instances Where Array Are Empty
       console.log(dbUser)
->>>>>>> master
       let emptyCover = "../assets/images/emptycover-placeholder.jpg";
       let emptyArray = [emptyCover];
 
@@ -165,7 +160,7 @@ module.exports = function (app) {
       }
 
       // If User Has No Owned Books, Feed Placeholder Image
-      if (dbUser.dataValues.books_owned == "" || null) {
+      if (!dbUser.dataValues.books_owned) {
         ownedCoverImg = emptyArray;
         // Else, Send Owned Books to formatCodeImage()
       } else {
@@ -174,7 +169,7 @@ module.exports = function (app) {
       }
 
       // If User Has No Borrowed Books, Feed Placeholder Image
-      if (dbUser.dataValues.books_onloan == "" || null) {
+      if (!dbUser.dataValues.books_onloan) {
         borrowedCoverImg = emptyArray;
         //   // return booksOnloan;
         // Else, Send Owned Books to formatCodeImage()
@@ -266,8 +261,6 @@ module.exports = function (app) {
         res.render("findAll", { books: books })
       })
   });
-<<<<<<< HEAD
-=======
 
   ///////////////////////////////////////
   // LOGIN  //
@@ -283,5 +276,4 @@ module.exports = function (app) {
       }
     })
   })
->>>>>>> master
 }

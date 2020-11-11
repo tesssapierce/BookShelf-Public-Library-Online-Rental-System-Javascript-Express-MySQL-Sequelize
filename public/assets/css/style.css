@@ -102,8 +102,6 @@ body{
     margin-bottom:10px;
 }
 
-<<<<<<< HEAD
-=======
 .textRowText {
     color:  #987554;
     background-image: linear-gradient(#130000, #664229);
@@ -114,7 +112,6 @@ body{
     font-size: 150%;
 }
 
->>>>>>> master
 /* Profile: Books Owned Headline */
 #booksToLoanHeadline {
     color: white;
@@ -507,10 +504,6 @@ img.searchImage {
     padding: 20px;
 }
 
-<<<<<<< HEAD
-
-/*////////////////////////////////////////////////////// STYLING FOR HOMEPAGE//////////////////////////////////////////// */
-=======
 .searchModalDisplay {
     display: none;
     position: fixed;
@@ -614,7 +607,6 @@ img.searchImage {
     padding-left: 60px;
 }
 
->>>>>>> master
 
 .title-div {
     padding-top: 10vh;   /* padding-left: 240px; */
@@ -685,12 +677,6 @@ img.searchImage {
 
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-<<<<<<< HEAD
-    width: 100%;
-    padding-bottom: 2%;
-    height: auto;
-    display: block;
-=======
     width: 125px;
     height: auto;
 }
@@ -698,7 +684,6 @@ img.searchImage {
     padding-right: 4vh;
     padding-left: 1vh;
     
->>>>>>> master
 }
 
 .carousel-control-prev{
@@ -728,12 +713,8 @@ nav{
 
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-<<<<<<< HEAD
-    width:120%;
-=======
     width:75px;
 
->>>>>>> master
 }
 .carousel-inner{
     padding-right: 3vh;

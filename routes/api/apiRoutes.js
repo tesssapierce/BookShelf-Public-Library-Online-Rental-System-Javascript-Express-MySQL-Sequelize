@@ -35,7 +35,7 @@ module.exports = function (app) {
         password: req.body.password
       }
     }).then((dbUser) => {
-      // res.json(dbUser)
+      res.json(dbUser)
     })
   })
 
@@ -90,7 +90,11 @@ module.exports = function (app) {
     db.User.findOne({ where: { username: req.body.owner_name } }).then(function (dbUser) {
       // console.log(dbUser);
       console.log("OLD ISBN ARRAY : " + JSON.parse(dbUser.dataValues.books_owned))
-      let userBookArray = JSON.parse(dbUser.dataValues.books_owned);
+      if (!dbUser.dataValues.books_owned){
+        var userBookArray = []
+      } else {
+        var userBookArray = JSON.parse(dbUser.dataValues.books_owned);
+      }
       let newIsbn = req.body.isbn;
       userBookArray.push(newIsbn);
       console.log("New ISBN ARRAY :" + userBookArray)
