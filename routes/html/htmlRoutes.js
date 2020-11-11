@@ -172,7 +172,7 @@ module.exports = function (app) {
         //   // return booksOnloan;
         // Else, Send Owned Books to formatCodeImage()
       } else {
-        booksBorrowed = JSON.parse(dbUser.dataValues.books_owned);
+        booksBorrowed = JSON.parse(dbUser.dataValues.books_onloan);
         formatBorrowedImageCode();
       }
 

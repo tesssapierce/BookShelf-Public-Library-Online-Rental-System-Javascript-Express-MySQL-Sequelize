@@ -88,7 +88,7 @@ body{
 }
 
 .textRowText {
-    color:  #987554;
+    color: whitesmoke;
     background-image: linear-gradient(#130000, #664229);
     padding-top: 10px;
     padding-bottom: 10px;
@@ -706,9 +706,11 @@ img.searchImage {
 
 }
 
-.carouseltit{
-    font-size: 50%;
-    padding-right: 90%;
+.carouseltit {
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 70%;
+    padding-right: 0%;
 }
 
 
