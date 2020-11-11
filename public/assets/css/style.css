@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: #DEDEDE;
+    background-color: whitesmoke;
 }
 
 
@@ -114,13 +114,13 @@ body{
 }
 
 #profileLeftArrow {
-    margin-left: -60%;
-    margin-top: -100%;
+    margin-left: -50%;
+    margin-top: -120%;
 }
 
 #profileRightArrow {
-    margin-right: -60%;
-    margin-top: -100%;
+    margin-right: -50%;
+    margin-top: -120%;
 }
 
 /* .carousel-control-prev{
@@ -463,6 +463,7 @@ footer {
     padding: 20px;
     text-align: center;
     bottom: 0;
+    background-color: whitesmoke;
 }
 
 /*/////////////////////////////////// SEARCH BOOKS ////////////////////////////////////////////////////////////
@@ -636,6 +637,13 @@ img.searchImage {
 
 /*////////////////////////////////////////////////////// STYLING FOR HOMEPAGE//////////////////////////////////////////// */
 
+.carousel-item {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
 .title-div {
     padding-top: 10vh;   /* padding-left: 240px; */
     background-position: center center;
@@ -655,10 +663,10 @@ img.searchImage {
     background-color: #664229;
 
      -webkit-box-shadow: 
-     0px 10px 30px 20px #000, 
+     0px 0px 20px 0px #000, 
      inset 0 0 10px #000;
     -moz-box-shadow: 
-     0px 0px 30px 20px #000, 
+     0px 0px 30px 10px #000, 
      inset 0 0 10px #000;
     -o-box-shadow: 
      0px 0px 30px 20px #000, 
@@ -707,8 +715,9 @@ img.searchImage {
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
     width: 100%;
-    padding-bottom: 2%;
-    height: auto;
+    padding-bottom: 0%;
+    margin-right: 0%;
+    height: 95%;
     display: block;
 }
 
@@ -743,6 +752,8 @@ nav{
 }
 .carousel-inner{
     padding-right: 3vh;
+    padding:10px;
+    
 }
 .bookself{
     border: 2vh solid #987554;
@@ -808,10 +819,12 @@ nav{
 .carousel-control-prev{
     padding-top: 500vh;
     margin-right: 2vh;
+    cursor: pointer;
 }
 .carousel-control-next{
     padding-top: 25%;
     margin-left: 2vh;
+    cursor: pointer;
 }
 
 #userInfo{
