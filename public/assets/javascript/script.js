@@ -31,7 +31,7 @@ $(document).ready(function () {
                 $("#bookDetails-publish").text(ajaxYear)
             })
         getAvailability(isbn)
-      })
+      }) 
       
       function getAvailability(isbn){
         $.get( "/api/availability/"+isbn, function(data)  {
