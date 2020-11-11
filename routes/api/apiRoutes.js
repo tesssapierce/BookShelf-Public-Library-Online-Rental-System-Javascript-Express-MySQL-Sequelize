@@ -228,7 +228,7 @@ module.exports = function (app) {
       if (!dbUser.dataValues.books_onloan) {
         var userBookArray = []
       } else {
-        var userBookArray = (dbUser.dataValues.books_onloan);
+        var userBookArray = JSON.parse(dbUser.dataValues.books_onloan);
       }
       let newIsbn = req.body.isbn;
       userBookArray.push(newIsbn);
