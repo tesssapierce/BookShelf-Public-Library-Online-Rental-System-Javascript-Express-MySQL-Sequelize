@@ -320,7 +320,7 @@ $(document).ready(function () {
                 url: "/api/books",
                 method: "DELETE",
                 data: thisBook
-            }).then(function(res){
+            }).then(function(){
                 location.reload()
             })
         })
