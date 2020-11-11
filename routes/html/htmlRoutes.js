@@ -267,9 +267,7 @@ module.exports = function (app) {
         booksBorrowedThree: borrowedArrayThree
 
       }
-
       res.render("profile", profilePage)
-      
     })
   });
 
