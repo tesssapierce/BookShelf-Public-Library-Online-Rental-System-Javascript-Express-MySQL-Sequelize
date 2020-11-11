@@ -1,4 +1,10 @@
 $(document).ready(function () {
+
+    ///////////////////////////////////////
+    // SIGNING UP & INPUT INTO DB  //
+    ///////////////////////////////////////
+
+
     var signUpForm = $("form.signup");
     var emailInput = $("input#email-input");
     var passwordInput = $("input#pass-input");
@@ -38,6 +44,11 @@ $(document).ready(function () {
             username: username,
             password: password
         })
+        $.post("/api/thirdtable", {
+            username: username,
+            password: password,
+            login: false
+        })
             .then(function (data) {
                 window.location.href = "/user/" + username;
             })
@@ -48,10 +59,10 @@ $(document).ready(function () {
         $("#alert").fadeIn(500);
     }
 
+    ///////////////////////////////////////
+    // LOG IN & INPUT INTO DB  //
+    ///////////////////////////////////////
 
-    //////////////////////////////
-    // LOGIN JAVASCRIPT //
-    //////////////////////////////
     var loginUserName = $("#username-input")
     var loginPassword = $("#password-input")
     var loginForm = $("form.login");
@@ -63,7 +74,6 @@ $(document).ready(function () {
             password: loginPassword.val()
         };
         getLoginInfo(loginProfile)
-        booleanGet(loginProfile)
     });
 
     // PROCEEDING TO THE USER PROFILE PAGE //
@@ -74,12 +84,14 @@ $(document).ready(function () {
             password: loginProfile.password
         }).then((dbUser) => {
             if (!dbUser) {
-                
+                window.location.href = "/login"
+
             }
             else {
                 window.location.href = "/user/" + loginProfile.username
             }
         })
+        booleanGet(loginProfile)
     }
 
     // CHANGING BOOLEAN VALUE IN WORKBENCH //
@@ -90,20 +102,25 @@ $(document).ready(function () {
             password: loginProfile.password,
         }).then((dblogin) => {
             console.log(dblogin);
+            logoutButton(loginProfile)
         })
-
     };
 
+    ///////////////////////////////////////
+    // DISPLAY LOGOUT BUTTON IF LOGGED IN //
+    ///////////////////////////////////////
 
-
-
-
-
-
-
-    // function booleanGet(dblogin) {
-    //     console.log(dblogin);
-    // }
-
-
-})
+    function logoutButton(loginProfile) {
+        $.get("/api/logout/", {
+            username: loginProfile.username,
+            password: loginProfile.password,
+        }).then((userBoolean) => {
+            let isLoggedIn = userBoolean.login;
+            console.log(isLoggedIn);
+            if (userBoolean.login === true){
+                $("#logout").css("display", "block")
+                $("#login").css("display", "none")
+            }
+        });
+    };
+});

@@ -1,13 +1,13 @@
-
 <div class="container" id="profileBackground">
 
-    <!-- Profile -->
+  <!-- Profile -->
 
-    <div id="profileHeaderBlock" class="row">
-        <div class="col-12">
-            <h2 id="profileHeader">{{username}}</h2>
-        </div>
+  {{!-- header --}}
+  <div class="row pageHead">
+    <div class="col-12">
+      <h2 id="profileHeader">{{username}}</h2>
     </div>
+<<<<<<< HEAD
     <div id="userInfo" class="row">
         <div class="col-6">
             <img id="userImage" class="profilePic" src="../assets/images/profile-placeholder-pic2.jpg">
@@ -16,18 +16,73 @@
             
         </div>
         <div class="col-6">
+=======
+  </div>
+>>>>>>> master
 
-            <h3 id="bioHeadline">About Me</h3>
-            <p id="userBio">{{about_me}}</p>
-            <p id="userId">{{user_id}}</p>
-            
-        </div>
-    </div>
+  {{!-- body --}}
+  <div class="pageBody profileBody">
     <div id="userInfo" class="row">
-        <div class="col-12">
-            <h3 id="userLocation">Zip Code: {{zipcode}}</h3>
+      <div class="col-12 col-md-6">
+        <img id="userImage" class="profilePic" src="../assets/images/profile-placeholder-pic.jpg">
+        <h3 id="userLocation">Zip Code: {{zipcode}}</h3>
+      </div>
+      <div class="col-12 col-md-6">
+        <h3 id="bioHeadline">About Me</h3>
+        <div id="userBio">
+          <p>{{about_me}}</p>
+          <button type="button" class="btn btn-outline-primary pencilBtn">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"></path>
+            </svg>
+          </button>
         </div>
+        <p id="userId">{{user_id}}</p>
+      </div>
     </div>
+  </div>
+
+  <!-- Book Section -->
+
+  <div class="bookself" id="bookshelf_container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="textRowText">Owned Books</h2>
+        <button class="addButton" style="display:inline">Add Book</button>
+        <!--slider newarivals-->
+
+        <a class="carousel-control-prev" href="#carouselNewArivalsControls" role="button" data-slide="prev">
+          <span id="profileLeftArrow" class="carousel-control-prev-icon " aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next" href="#carouselNewArivalsControls" role="button" data-slide="next">
+          <span id="profileRightArrow" class="carousel-control-next-icon " aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+        <div id="carouselNewArivalsControls" class="carousel  slide" data-ride="carousel">
+
+          <div class="carousel-inner">
+            <!--Slider Owned 1-->
+            <div class="carousel-item active">
+              <div class="row">
+
+                {{#each books_owned}}
+                <div class="col-lg-2"> <img src="{{this}}" class="d-block" alt="first slide"></div>
+                {{/each}}
+
+              </div>
+            </div>
+            <!-- End Owned 1 -->
+
+            <!--Slider Owned 2-->
+            <div class="carousel-item">
+              <div class="row">
+                {{#each books_owned}}
+                <div class="col-lg-2"> <img src="{{this}}" class="d-block" alt="first slide"></div>
+                {{/each}}+
+              </div>
 
     <!-- Book Section -->
 
@@ -145,20 +200,86 @@
                             </div>
                     </div>
             </div>
+            <!-- End Owned 2-->
+
+            <!--Slider Owned 3-->
+            <div class="carousel-item">
+              <div class="row">
+                {{#each books_owned}}
+                <div class="col-lg-2"> <img src="{{this}}" class="d-block" alt="first slide"></div>
+                {{/each}}
+              </div>
+            </div>
+            <!-- End Owned 3-->
+
+
+          </div>
         </div>
+      </div>
     </div>
-    {{!-- Add Book Module --}}
-    <div id="modalDisplay">
-        {{>addmodal-block}}
+    <div class="row">
+      <div class="col-12">
+        <h2 class="textRowText">Borrowed Books</h2>
+        <!--popular slider-->
+
+        <a class="carousel-control-prev" href="#carouselPopularControls" role="button" data-slide="prev">
+          <span id="profileLeftArrow" class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselPopularControls" role="button" data-slide="next">
+          <span id="profileRightArrow" class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+        <div id="carouselPopularControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <!--Slider popular part 1"public/assets -->
+            <div class="carousel-item active">'
+              <div class="row">
+
+                {{#each books_onloan}}
+                <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}" class="d-block" alt="first slide"></div>
+                {{/each}}
+
+              </div>
+            </div>
+            <!--End of slider popular part 1-->
+
+            <!--Slider popular part 2 random-->
+            <div class="carousel-item">
+              <div class="row">
+                {{#each books_onloan}}
+                <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}" class="d-block" alt="first slide"></div>
+                {{/each}}
+              </div>
+            </div>
+            <!-- end of slider popular part 2-->
+            <!--Slider popular part 3 random-->
+            <div class="carousel-item">
+              <div class="row">
+                {{#each books_onloan}}
+                <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}" class="d-block" alt="first slide"></div>
+                {{/each}}
+              </div>
+            </div>
+            <!-- end of slider popular part 3-->
+
+
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  {{!-- Add Book Module --}}
+  <div id="modalDisplay">
+    {{>addmodal-block}}
+  </div>
 </div>
 
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="../assets/javascript/script.js"></script>

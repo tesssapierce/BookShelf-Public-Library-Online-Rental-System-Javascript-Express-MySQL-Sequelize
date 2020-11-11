@@ -1,42 +1,24 @@
-/* ///////////////
+/* BODY ///////////////////////////////////////////////////////////////////////////////////////*/
+
+
+
+body{
+    background-color: #DEDEDE;
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* PROFILE PAGE */
-/* ///////////////
-
-/* PROFILE BOOKCASE DESIGN */
-/* .text{
-    font-size:8vw;
-} */
-
-/* Profile Bookcase Outline: Container Div */
-#profileBackground {
-    background-color: rgb(70,94,68);
-    border-radius: 5px 5px 0px 0px;
-    /* box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45);
-    border-top: 20px solid rgb(150,118,79);
-    border-left: 10px solid rgb(150,118,79);
-    border-right: 10px solid rgb(150,118,79);
-    border-bottom: 20px solid rgb(150,118,79); */
-    /* margin:auto; */
-}
-
-/* Profile Header Row: Contains Username */
-#profileHeaderBlock {
-    color: white;
-    background-color: rgba(0,0,0,0.45);
-    box-shadow: inset 0 3px 1px rgba(0,0,0,0.16), 0 4px 1px rgba(0,0,0,0.45);
-    font-size: 36px;
-    text-align: center;
-    padding:15px;
-    border-radius: 5px 5px 0px 0px;
-}
-
-/* ////////////////////////// */
-/* PROFILE HANDLEBARS ENTRIES */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Profile: Info Row Block */
 #userInfo {
-    color: white;
-    padding-top:30px;
+    margin: 0 auto;
+    width: 75%;
+    text-align: center;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Profile: Username Entry Display */
@@ -50,6 +32,7 @@
 
 /* Profile: Bio Headline "About Me" */
 #bioHeadline {
+    padding: 20px;
     font-size: 36px;
     /* margin-left: -150px; */
 }
@@ -60,6 +43,15 @@
     margin-top: 20px;
     margin-bottom: 10px;
     margin-left: 20px;
+    margin-right: 20px;
+    height: 200px;
+    border: 5px black dotted;
+    padding: 10px;
+}
+
+.pencilBtn {
+    margin-top: 30%;
+    margin-left: 85%;
 }
 
 /* Profile: Location Entry Display */
@@ -74,12 +66,12 @@
     display:block;
     box-shadow: inset 0px 0px 5px rgba(0,0,0,0.16), 0px 0px 5px rgba(0,0,0,0.45);
     border-radius: 300px 300px 300px 300px;
-    border: 10px solid rgb(150,120,80);
+    border: 5px#6a6866 solid;
     object-fit: cover;
     width:300px;
     height:300px;
-    margin-left: auto;
-    margin-right: 50px;
+    margin: 25px;
+
 }
 
 
@@ -298,7 +290,7 @@
 }
 
 
-#confirmButton {
+#confirm-button {
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left:auto;
@@ -343,7 +335,15 @@
 }
 } */
 
-/* NAVIGATION CSS */
+/*/////////////////////////////////////////// NAVIGATION CSS////////////////////////////////// */
+
+
+#titleLogo{
+    width: 50%;
+    height: auto;
+    padding-bottom: 1%;
+
+}
 
 .searchBtn {
   background-color: #473335;
@@ -356,26 +356,46 @@
 }
 
 nav {
-  background-color: #473335 !important;
+  background-color:#aaa9a8 !important;
+  
+  
+}
+/* white lettering on nav bar if we want it */
+.nav-link {
+    color: white !important;
+
+
 }
 
+#logout {
+    display: none;
+}
+
+
 .navSection {
-  background-color: #473335;
+  background-color: #959392;
   font-family: 'Poppins', sans-serif;
   border-radius: 5px;
-  color: #FFFFFF !important;;
+  margin-bottom: 2%;
+  height: 20%;
+  width: auto;
+  
+  /* color: #FFFFFF !important;; */
 }
 
 
 .mainHead{
   text-align: center;
-  font-family: 'Gentium Book Basic', serif;
+  font-family:'Mukta', sans-serif;;
   font-weight: 700;
   font-size: 50px;
-  padding: 25px;
+  padding-top:2%;
   border-radius: 5px;
 }
 
+.nav-link{
+    font-family:'Mukta', sans-serif;;
+}
 
 
 
@@ -443,15 +463,18 @@ footer {
     bottom: 0;
 }
 
-
+/*/////////////////////////////////// SEARCH BOOKS ////////////////////////////////////////////////////////////
 /* Searhc Results CSS */
-.searchHead {
+.pageHead {
+    background-image: url("../images/antique.JPG");
+    background-repeat: no-repeat;
+    background-size: 100%;
     text-align: center;
-    background-color: #987554;
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
     margin: 20px 0px;
     font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 span.searchQuery {
@@ -463,25 +486,36 @@ h3.searchQuery {
 }
 
 img.searchImage {
-    height: 200px;
+    height: 300px;
     width: auto;
 }
 
 .searchTitle {
     font-family: 'Poppins', sans-serif;
-    font-size: 12px;
+    font-size: 18px;
+    padding: 10px
 }
 
-.searchResults {
+.pageBody {
     margin: 0 auto;
-    background-color: #987554;
+    background-image: url("../images/antique.JPG");
+    /* background-repeat: no-repeat; */
+    background-size: 100%;
     border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profileBody {
+    padding: 50px;
 }
 
 .searchResultCard {
-    margin: 0 auto;
+    margin: 45px;
     text-align: center;
-    padding: 20px;
+    padding: 40px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .searchModalDisplay {
@@ -499,6 +533,37 @@ img.searchImage {
     width: 500px;
     border-radius: 25px;
     padding:30px;
+}
+
+.closeY {
+    text-align: right;
+    color:rgb(91,123,122);
+    font-size: 18px;;
+    font-family: 'Lucida Sans Unicode';
+    margin-top: -5px;
+    margin-right: -5px;
+    cursor: pointer;
+}
+
+#availableButton {
+    margin-bottom: 10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    height: 30px;
+    width: 100px;
+    border-style: none;
+    background: #5B7B7A;
+    color: whitesmoke;
+    border-radius: 25px;
+}
+
+.availableUsername{
+    font-size: 12px;
+}
+
+.availableZipcode{
+    font-size: 12px;
 }
 
 #booksDetails-img{
@@ -534,6 +599,20 @@ img.searchImage {
 
 } 
 
+#login-submit, #signup-submit{
+    margin-bottom: 10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    height: 30px;
+    width: 100px;
+    border-style: none;
+    background: #5B7B7A;
+    color: whitesmoke;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 .form-group {
     margin-top: 18px;
@@ -543,19 +622,17 @@ img.searchImage {
 }
 
 #login-form {
-   
+    font-family: 'Poppins', sans-serif;
     background-image: url("../images/antique.JPG");
     margin-top: 30px;
-    box-shadow: 0 0 10px 2px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 15px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
 
-#logtitle {
-    padding-left: 60px;
-}
 
+/*////////////////////////////////////////////////////// STYLING FOR HOMEPAGE//////////////////////////////////////////// */
 
 .title-div {
     padding-top: 10vh;   /* padding-left: 240px; */
@@ -563,10 +640,9 @@ img.searchImage {
 }
 
 
-#bookshelf_container {
+.bookself {
+    border: 4vh solid #987554;
 
-    border: 5vh solid #987554;
-    border-top: 7vh solid #987554;
     border-bottom: none;
     border-image:url("../images/wood.jpg") 50 50 stretch;
     margin: auto;
@@ -601,24 +677,22 @@ img.searchImage {
     padding-top: 10px;
     padding-bottom: 10px;
     padding: 10px 10px 0px 20px;
+    font-family:'Mukta', sans-serif;;
     font-size: 3vw;
     background-position: center center;
     width:100%;
 }
 
-
 .carousel{
-
+    box-sizing: content-box;
     border-bottom: 30px solid #987554;;
-    padding-left: 5vh;
-    padding-right: 5vh;
+    padding-left: 4%;
+    padding-right: 4%;
 	-webkit-box-shadow: 0 8px 6px -6px  #361a00;
 	-moz-box-shadow: 0 8px 6px -6px  #361a00;
     box-shadow: 0 8px 6px -6px  #361a00;
     border-image:url("../images/wood.jpg") 50 50 stretch;
     border: 15px solid transperant;
-    
-
 
 }
 
@@ -627,82 +701,91 @@ img.searchImage {
     padding-right: 90%;
 }
 
+
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-    width: 125px;
+    width: 100%;
+    padding-bottom: 2%;
     height: auto;
+    display: block;
 }
-.carousel-inner {
-    padding-right: 4vh;
-    padding-left: 1vh;
-    
-}
+
 .carousel-control-prev{
-    padding-top: 35vh;
+    padding-top: 25%;
     margin-right: 2vh;
 }
 .carousel-control-next{
-    padding-top: 35vh;
+    padding-top: 25%;
     margin-left: 2vh;
 }
 
-
+/* ////////////////////////////////////////// Responsive ///////////////////////////////////////////////// */
 
 @media only screen and (max-width: 991px){
 
-#nameLogo{
-    width: 30%;
+nav{
+    display: inline;
 }
+
+#tilteLogo{
+    display: none;
+}
+      
 .carousel{
     border-bottom: 20px solid #987554;;
 }
-#bookshelf_container {
-    width: 80%;
-    border: 4vh solid #987554;
-    border-bottom: none;
-    border-image:url("../images/wood.jpg") 50 50 stretch;
 
-}
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-    width:75px;
+    width:120%;
+}
+.carousel-inner{
+    padding-right: 3vh;
+}
+.bookself{
+    border: 2vh solid #987554;
+
+    border-bottom: none;
+    border-image:url("../images/wood.jpg") 50 50 stretch;
+}
+
+#userInfo{
+    width: 100%
+}
+
+.profilePic{
+    width: 200px;
+    height: 200px;
+}
+
+.userBio{
+    margin-top: 0px;
+}
+
+.pencilBtn{
+    margin-top: 45%;
+    margin-left: 80%
+}
 
 }
-.carousel-control-prev{
-    padding-top: 28vh;
-    margin-right: 2vh;
-}
-.carousel-control-next{
-    padding-top: 28vh;
-    margin-left: 2vh;
-}
 
 
-
-}
 @media only screen and (max-width: 767px){
-
-    .carousel-control-prev{
-        padding-top: 20vh;
-        margin-right: 1vh;
-    }
-    .carousel-control-next{
-        padding-top: 20vh;
-        margin-left: 1vh;
-    }
-    .d-block{
-        width: 160%;
-    }
-    .carousel-inner {
-        padding-right: 4vh;
-        padding-left: 1vh;
-        
-    }
-
-    
-    
+#titleLogo{
+    height:50%;
+}
+.d-block{
+    width: 140%;
+}
+.carousel-inner{
+    padding-right: 3vh;
+}
 
 }
+
+
+
+
 @media only screen and (max-width: 575px){
 #titleLogo{
     height:70%;
@@ -712,14 +795,45 @@ img.searchImage {
 }
 #bookshelf_container {
     width: 100%;
-    border: 4vh solid #987554;
+    border: 2vh solid #987554;
     border-bottom: none;
     border-image:url("../images/wood.jpg") 50 50 stretch;
 }
 .d-block{
-    max-width: 30%;
+    width:100%;
+    height:auto;
+}
+.carousel-control-prev{
+    padding-top: 500vh;
+    margin-right: 2vh;
+}
+.carousel-control-next{
+    padding-top: 25%;
+    margin-left: 2vh;
 }
 
+#userInfo{
+    width: 100%
+}
+
+#userBio{
+    margin: 30px;
+}
+
+.profilePic{
+    margin: 15px auto;
+    width: 200px;
+    height: 200px;
+}
+
+#bioHeadline{
+   padding: 0px;
+}
+
+.pencilBtn{
+    margin-top: 50%;
+    margin-left: 75%;
+}
 }
 
     

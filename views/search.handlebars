@@ -1,12 +1,12 @@
 <div class="searchPage container">
   <div class="row">
-    <div class="col-12 searchHead">
+    <div class="col-12 pageHead">
       <h1>Search Results</h1>
       <h3 class="searchQuery">results for <span class="searchQuery">"{{searchQuery}}"</span></h3>
     </div>
   </div>
 
-  <div class="row searchResults">
+  <div class="row pageBody">
     {{#each books}}
     <div class="col-3 searchResultCard" data-id="{{this.isbn}}">
       <img src="http://covers.openlibrary.org/b/isbn/{{this.isbn}}.jpg" class="img-fluid searchImage">
@@ -19,4 +19,3 @@
     {{>querymodal-block}}
   </div>
 </div>
-
