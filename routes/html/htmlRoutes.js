@@ -188,15 +188,7 @@ module.exports = function (app) {
         books_onloan: borrowedCoverImg
 
       }
-
-      db.login.findOne({
-        where: {
-          login: true
-        }
-      }).then((userBoolean) => {
-        res.render("profile", profilePage)
-      });
-
+      res.render("profile", profilePage)
     })
   });
 
