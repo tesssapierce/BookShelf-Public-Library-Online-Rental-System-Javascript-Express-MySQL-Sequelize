@@ -307,7 +307,7 @@ body{
 }
 
 
-#confirmButton {
+#confirm-button {
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left:auto;
@@ -374,8 +374,15 @@ body{
 
 nav {
   background-color:#aaa9a8 !important;
+  
+  
 }
+/* white lettering on nav bar if we want it */
+.nav-link {
+    color: white !important;
 
+
+}
 .navSection {
   background-color: #959392;
   font-family: 'Poppins', sans-serif;
@@ -383,19 +390,23 @@ nav {
   margin-bottom: 2%;
   height: 20%;
   width: auto;
+  
   /* color: #FFFFFF !important;; */
 }
 
 
 .mainHead{
   text-align: center;
-  font-family: 'Gentium Book Basic', serif;
+  font-family:'Mukta', sans-serif;;
   font-weight: 700;
   font-size: 50px;
   padding-top:2%;
   border-radius: 5px;
 }
 
+.nav-link{
+    font-family:'Mukta', sans-serif;;
+}
 
 
 
@@ -486,7 +497,7 @@ h3.searchQuery {
 }
 
 img.searchImage {
-    height: 200px;
+    height: 300px;
     width: auto;
 }
 
@@ -627,10 +638,8 @@ img.searchImage {
     background-size: 100% 100%;
 }
 
-#logtitle {
-    padding-left: 60px;
-}
 
+/*////////////////////////////////////////////////////// STYLING FOR HOMEPAGE//////////////////////////////////////////// */
 
 .title-div {
     padding-top: 10vh;   /* padding-left: 240px; */
@@ -675,6 +684,7 @@ img.searchImage {
     padding-top: 10px;
     padding-bottom: 10px;
     padding: 10px 10px 0px 20px;
+    font-family:'Mukta', sans-serif;;
     font-size: 3vw;
     background-position: center center;
     width:100%;
@@ -701,13 +711,10 @@ img.searchImage {
 
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-    width: 125px;
+    width: 100%;
+    padding-bottom: 2%;
     height: auto;
-}
-.carousel-inner {
-    padding-right: 4vh;
-    padding-left: 1vh;
-    
+    display: block;
 }
 
 .carousel-control-prev{
@@ -726,6 +733,7 @@ img.searchImage {
 nav{
     display: inline;
 }
+
 #tilteLogo{
     display: none;
 }
@@ -737,8 +745,7 @@ nav{
 
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-    width:75px;
-
+    width:120%;
 }
 .carousel-inner{
     padding-right: 3vh;

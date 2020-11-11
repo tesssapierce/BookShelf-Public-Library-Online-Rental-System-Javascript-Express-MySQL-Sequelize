@@ -38,6 +38,11 @@ $(document).ready(function () {
             username: username,
             password: password
         })
+        $.post("/api/thirdtable", {
+            username: username,
+            password: password,
+            login: false
+        })
             .then(function (data) {
                 window.location.href = "/user/" + username;
             })
@@ -74,7 +79,7 @@ $(document).ready(function () {
             password: loginProfile.password
         }).then((dbUser) => {
             if (!dbUser) {
-                
+
             }
             else {
                 window.location.href = "/user/" + loginProfile.username
