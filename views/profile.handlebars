@@ -64,7 +64,7 @@
                                         <div class="row">
                                             
                                             {{#each booksOwnedOne}}
-                                                <div class="col-lg-2"> <img src="{{this}}" class="d-block" alt=" slide">
+                                                <div class="col-lg-2"> <img src="{{this}}" class="d-block deleteModalImg" alt="slide">
                                                 </div>
                                             {{/each}}
 
@@ -156,6 +156,11 @@
     {{!-- Add Book Module --}}
     <div id="modalDisplay">
       {{>addmodal-block}}
+    </div>
+
+    {{!-- Delete Book Module --}}
+    <div id="deleteModalDisplay">
+      {{>deletemodal-block}}
     </div>
   </div>
 

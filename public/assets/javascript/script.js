@@ -95,7 +95,7 @@ $(document).ready(function () {
         }).then((dblogger) => {
             let loggedUser = dblogger
             updateUsersOnLoan(borrowedBookInfo, loggedUser)
-            window.reload.href="/user/" + loggedUser.username
+            window.location.href="/user/" + loggedUser.username
         })
     }
 
@@ -298,4 +298,15 @@ $(document).ready(function () {
         $("#alert .msg").text(err.responseJSON);
         $("#alert").fadeIn(500);
     }
+
+    $(".deleteModalImg").off().on("click", function(){
+        $("#deleteModalDisplay").css("display", "block")
+        var username = $("#profileHeader").text()
+        console.log(username)
+        $("#deleteConfirm").attr("data-username",username)
+        var imgLink = $(this).attr("src")
+        var isbn = imgLink.split("http://covers.openlibrary.org/b/isbn/")
+        var newisbn = isbn[1].split(".jpg")
+        $("#deleteConfirm").attr("data-isbn",newisbn[0])
+    })
 });
