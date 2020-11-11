@@ -102,8 +102,6 @@ body{
     margin-bottom:10px;
 }
 
-<<<<<<< HEAD
-=======
 .textRowText {
     color:  #987554;
     background-image: linear-gradient(#130000, #664229);
@@ -114,7 +112,6 @@ body{
     font-size: 150%;
 }
 
->>>>>>> master
 /* Profile: Books Owned Headline */
 #booksToLoanHeadline {
     color: white;
@@ -386,6 +383,12 @@ nav {
 
 
 }
+
+#logout {
+    display: none;
+}
+
+
 .navSection {
   background-color: #959392;
   font-family: 'Poppins', sans-serif;
