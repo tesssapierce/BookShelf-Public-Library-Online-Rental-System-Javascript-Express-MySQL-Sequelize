@@ -132,7 +132,7 @@ $(document).ready(function () {
         // SUBMIT BUTTON CLICK
         $("#isbn-submit").on("click", function () {
             var isbnNumber = $("#isbn-val").val().trim()
-            var queryURL = "http://openlibrary.org/api/books?bibkeys=ISBN:" + isbnNumber + "&jscmd=details&format=json"
+            var queryURL = "https://openlibrary.org/api/books?bibkeys=ISBN:" + isbnNumber + "&jscmd=details&format=json"
 
             $.ajax({
                 url: queryURL,
