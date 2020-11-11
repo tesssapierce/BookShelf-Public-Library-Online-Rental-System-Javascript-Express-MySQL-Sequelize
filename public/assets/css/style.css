@@ -102,6 +102,19 @@ body{
     margin-bottom:10px;
 }
 
+<<<<<<< HEAD
+=======
+.textRowText {
+    color:  #987554;
+    background-image: linear-gradient(#130000, #664229);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding: 10px 10px 0px 20px;
+    text-align: left;
+    font-size: 150%;
+}
+
+>>>>>>> master
 /* Profile: Books Owned Headline */
 #booksToLoanHeadline {
     color: white;
@@ -498,12 +511,99 @@ img.searchImage {
 .searchResultCard {
     margin: 0 auto;
     text-align: center;
-    padding-top: 20px;
-    padding-bottom: 10px;
-
-    background-color: #6a6866;
-    border: 2vh solid #959392;
+    padding: 20px;
 }
+
+.searchModalDisplay {
+    display: none;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    font-family: 'Poppins', sans-serif;
+}
+
+.queryModal {
+    background-color: rgb(245,245,245,0.9);
+    height: 100%;
+    width: 500px;
+    border-radius: 25px;
+    padding:30px;
+}
+
+.closeY {
+    text-align: right;
+    color:rgb(91,123,122);
+    font-size: 18px;;
+    font-family: 'Lucida Sans Unicode';
+    margin-top: -5px;
+    margin-right: -5px;
+    cursor: pointer;
+}
+
+#availableButton {
+    margin-bottom: 10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    height: 30px;
+    width: 100px;
+    border-style: none;
+    background: #5B7B7A;
+    color: whitesmoke;
+    border-radius: 25px;
+}
+
+.availableUsername{
+    font-size: 12px;
+}
+
+.availableZipcode{
+    font-size: 12px;
+}
+
+#booksDetails-img{
+    height: 200px;
+    width: auto;
+}
+
+#bookDetails-title{
+    font-size: 22px;
+}
+
+#bookDetails-author{
+    font-size: 14px;
+}
+
+#bookDetails-publish{
+    font-size: 14px;
+}
+
+#bookDetails-availTitle{
+    font-size: 22px;
+    border-bottom: 8px black solid
+}
+
+/* Login page */
+
+.login {
+    /* object-fit: cover; */
+    width: 100%;  
+    padding-left: 60px;
+    padding-right: 35px;
+    
+
+} 
+
+
+.form-group {
+    margin-top: 18px;
+    border-radius: 25px;
+    padding-right: 65px;
+    
+}
+
+
 
 
 /*////////////////////////////////////////////////////// STYLING FOR HOMEPAGE//////////////////////////////////////////// */
