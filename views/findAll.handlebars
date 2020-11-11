@@ -1,6 +1,6 @@
 <div class="searchPage container">
   <div class="row">
-    <div class="col-12 searchHead">
+    <div class="col-12 pageHead">
       <h1>View All Books</h1>
     </div>
   </div>
@@ -8,7 +8,7 @@
     {{>querymodal-block}}
   </div>
 
-  <div class="row searchResults">
+  <div class="row pageBody">
     {{#each books}}
     <div class="col-3 searchResultCard" data-id="{{this.isbn}}">
       <img src="http://covers.openlibrary.org/b/isbn/{{this.isbn}}.jpg" class="img-fluid searchImage">
