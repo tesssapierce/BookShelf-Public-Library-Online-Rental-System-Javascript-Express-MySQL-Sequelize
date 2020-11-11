@@ -14,19 +14,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
-    user_id:       
-      {type: DataTypes.INTEGER,
-      primaryKey: true},
+    user_id:
+    {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     username: DataTypes.STRING,
     email: DataTypes.STRING,
     zipcode: DataTypes.INTEGER,
     about_me: DataTypes.STRING,
     password: DataTypes.STRING,
     books_owned: DataTypes.STRING,
-    books_onloan: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'User',
-  });
+    books_onloan: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      default: "[]"
+    }
+  },
+    {
+      sequelize,
+      modelName: 'User',
+    });
   return User;
 };
