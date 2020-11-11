@@ -488,7 +488,7 @@ h3.searchQuery {
 }
 
 img.searchImage {
-    height: 300px;
+    height: auto;
     width: auto;
 }
 
@@ -647,7 +647,7 @@ img.searchImage {
 
     border-bottom: none;
     border-image:url("../images/wood.jpg") 50 50 stretch;
-    margin: auto;
+    margin: 50px auto;
     width: 85%;
     position: relative;
  
@@ -723,7 +723,7 @@ img.searchImage {
 
 /* ////////////////////////////////////////// Responsive ///////////////////////////////////////////////// */
 
-@media only screen and (max-width: 991px){
+@media only screen and (max-width: 1300px){
 
 nav{
     display: inline;
@@ -769,6 +769,16 @@ nav{
     margin-left: 80%
 }
 
+.searchResultCard{
+    width: 100%;
+    margin: 4%;
+}
+
+img.searchImage{
+    height: auto;
+    width: auto;
+}
+
 }
 
 
@@ -781,6 +791,16 @@ nav{
 }
 .carousel-inner{
     padding-right: 3vh;
+}
+
+.searchResultCard{
+    width: 100%;
+    margin: 6%;
+}
+
+img.searchImage{
+    height: auto;
+    width: auto;
 }
 
 }
@@ -836,6 +856,28 @@ nav{
     margin-top: 50%;
     margin-left: 75%;
 }
+
+/* search results and view all books*/
+
+.searchResultCard{
+    width: 100%;
+    margin: 9%;
+}
+
+.pageBody{
+    margin: 0px;
+}
+
+.searchModalDisplay{
+    width: 50px;
+    left: 0%
+}
+
+img.searchImage{
+    height: auto;
+    width: auto;
+}
+
 }
 
     
