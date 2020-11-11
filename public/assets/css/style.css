@@ -102,8 +102,6 @@ body{
     margin-bottom:10px;
 }
 
-<<<<<<< HEAD
-=======
 .textRowText {
     color:  #987554;
     background-image: linear-gradient(#130000, #664229);
@@ -114,7 +112,6 @@ body{
     font-size: 150%;
 }
 
->>>>>>> master
 /* Profile: Books Owned Headline */
 #booksToLoanHeadline {
     color: white;
@@ -480,14 +477,15 @@ footer {
 /*/////////////////////////////////// SEARCH BOOKS ////////////////////////////////////////////////////////////
 /* Searhc Results CSS */
 .searchHead {
+    background-image: url("../images/antique.JPG");
+    background-repeat: no-repeat;
+    background-size: 100%;
     text-align: center;
-    background-color: #959392;
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
     margin: 20px 0px;
-    font-family: 'Mukta', sans-serif;
-    color: #F5F5F5 ;
-    
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 span.searchQuery {
@@ -504,22 +502,27 @@ img.searchImage {
 }
 
 .searchTitle {
-    padding-top:10px;
-    font-family: 'Mukta', sans-serif;
-    font-size: 20px;
-    color: #F5F5F5;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    padding: 10px
 }
 
 .searchResults {
     margin: 0 auto;
-    background-color: none;
+    background-image: url("../images/antique.JPG");
+    /* background-repeat: no-repeat; */
+    background-size: 100%;
     border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .searchResultCard {
-    margin: 0 auto;
+    margin: 45px;
     text-align: center;
-    padding: 20px;
+    padding: 40px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .searchModalDisplay {
@@ -603,6 +606,20 @@ img.searchImage {
 
 } 
 
+#login-submit, #signup-submit{
+    margin-bottom: 10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    height: 30px;
+    width: 100px;
+    border-style: none;
+    background: #5B7B7A;
+    color: whitesmoke;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 .form-group {
     margin-top: 18px;
@@ -611,6 +628,15 @@ img.searchImage {
     
 }
 
+#login-form {
+    font-family: 'Poppins', sans-serif;
+    background-image: url("../images/antique.JPG");
+    margin-top: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
 
 
 /*////////////////////////////////////////////////////// STYLING FOR HOMEPAGE//////////////////////////////////////////// */
