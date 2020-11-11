@@ -9,7 +9,6 @@ module.exports = function (app) {
   /////////////////////////
 
   app.post("/api/signup", function (req, res) {
-    console.log(req.body);
     db.User.create({
       email: req.body.email,
       zipcode: req.body.zipcode,
@@ -23,7 +22,6 @@ module.exports = function (app) {
   });
 
   app.post("/api/thirdtable", function (req, res) {
-    console.log(req.body);
     db.login.create({
       username: req.body.username,
       password: req.body.password,
@@ -186,11 +184,59 @@ module.exports = function (app) {
   })
 
   app.get("/api/user/:username", (req, res) => {
-    console.log("user lookup")
     db.User.username({
       where: { username: req.params.username }
     });
   });
+
+
+  /////////////////////////
+  // CHANGE BOOKS.DB - ON LOAN VALUE
+  /////////////////////////
+
+  // BORROWING BOOK //
+
+  app.post("/api/onloan/", function (req, res) {
+    db.Books.update({ on_loan: true }, {
+      where: {
+        book_id: req.body.book_id
+      }
+    }).then((dbloan) => {
+      db.login.findOne({
+        where: {
+          login: true
+        }
+      }).then((loginObj) => {
+        db.User.update({ books_onloan: req.body.isbn }, {
+          where: {
+            username: loginObj.dataValues.username
+          }
+        })
+      })
+      res.json(dbloan)
+     
+    })
+  })
+
+
+
+
+
+
+
+  // RETURNING BOOK //
+
+  app.post("/api/return/", function (req, res) {
+    db.Books.update({ on_loan: false }, {
+      where: {
+        book_id: req.body.book_id
+      }
+    }).then((dbreturn) => {
+      res.json(dbreturn)
+    })
+  })
+
+
 
 };
 
