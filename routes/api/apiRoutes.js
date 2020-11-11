@@ -87,9 +87,9 @@ module.exports = function (app) {
   /////////////////////////
 
   app.post("/api/books", function (req, res) {
-    console.log("ISBN POST:" + req.body.isbn)
-    console.log("TITLE POST:" + req.body.title)
-    console.log("OWNER ID:" + req.body.owner_id)
+    // console.log("ISBN POST:" + req.body.isbn)
+    // console.log("TITLE POST:" + req.body.title)
+    // console.log("OWNER ID:" + req.body.owner_id)
     ////////////////////////////
     db.Books.create({
       isbn: req.body.isbn,
@@ -170,15 +170,15 @@ module.exports = function (app) {
     res.json("/user/profile");
   });
 
-  app.post("/api/logout", function(req,res){
+  app.post("/api/logout", function (req, res) {
     var username = req.body.username
     console.log(username)
-    db.login.update({login: false},
+    db.login.update({ login: false },
       {
         where: {
           username: req.body.username
         }
-      }).then(function(){
+      }).then(function () {
         res.json("success")
       })
   })
@@ -194,30 +194,69 @@ module.exports = function (app) {
   // CHANGE BOOKS.DB - ON LOAN VALUE
   /////////////////////////
 
-  // BORROWING BOOK //
+  // UPDATING BOOLEAN VALUE TO 1 ON BOOKS.DB WHEN ON LOAN - DONE//
 
   app.post("/api/onloan/", function (req, res) {
     db.Books.update({ on_loan: true }, {
       where: {
         book_id: req.body.book_id
       }
-    }).then((dbloan) => {
-      db.login.findOne({
-        where: {
-          login: true
-        }
-      }).then((loginObj) => {
-        db.User.update({ books_onloan: req.body.isbn }, {
-          where: {
-            username: loginObj.dataValues.username
-          }
-        })
-      })
-      res.json(dbloan)
-     
+    }).then((borrBook) => {
+      res.json(borrBook)
     })
   })
 
+  // GETTING USERNAME OF PERSON LOGGED IN //
+
+  app.get("/api/loggedloaner", function (req, res) {
+    db.login.findOne({
+      where: {
+        login: true
+      }
+    }).then((dblogger) => {
+      res.json(dblogger)
+    })
+  })
+
+  // ADDING THE ISBN TO BOOKS_ONLOAN IN USERS //
+
+  app.post("/api/updateloan", function (req, res) {
+    console.log(req.body.username);
+    console.log(req.body.isbn);
+    db.User.findOne({ where: { username: req.body.username } }).then(function (dbUser) {
+      console.log("OLD ISBN ARRAY : " + (dbUser.dataValues.books_onloan))
+      if (!dbUser.dataValues.books_onloan) {
+        var userBookArray = []
+      } else {
+        var userBookArray = (dbUser.dataValues.books_onloan);
+      }
+      let newIsbn = req.body.isbn;
+      userBookArray.push(newIsbn);
+      console.log("New ISBN ARRAY :" + userBookArray)
+
+      newUserArray = JSON.stringify(userBookArray)
+
+      db.User.update({ books_onloan: newUserArray }, {
+        where: {
+          username: req.body.username
+        }
+      })
+    })
+
+  })
+
+  // CHANGING BOOLEAN VALUE IN WORKBENCH FOR LOGIN DATABASE //
+
+  app.post("/api/authenticate/", function (req, res) {
+    db.login.update({ login: true }, {
+      where: {
+        username: req.body.username,
+        password: req.body.password
+      }
+    }).then((dblogin) => {
+      res.json(dblogin)
+    })
+  })
 
 
 
