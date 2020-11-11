@@ -75,13 +75,13 @@ module.exports = function (app) {
   /////////////////////////
 
   app.get("/api/logout/", function (req, res) {
-    db.login.findOne({
-      where: {
-        login: true
-      }
-    }).then((userBoolean) => {
-      res.json(userBoolean)
-    });
+    // db.login.findOne({
+    //   where: {
+    //     login: true
+    //   }
+    // }).then((userBoolean) => {
+    //   res.json(userBoolean)
+    // });
   })
 
   /////////////////////////

@@ -74,7 +74,6 @@ $(document).ready(function () {
             password: loginPassword.val()
         };
         getLoginInfo(loginProfile)
-        booleanGet(loginProfile)
     });
 
     // PROCEEDING TO THE USER PROFILE PAGE //
@@ -92,6 +91,7 @@ $(document).ready(function () {
                 window.location.href = "/user/" + loginProfile.username
             }
         })
+        booleanGet(loginProfile)
     }
 
     // CHANGING BOOLEAN VALUE IN WORKBENCH //
@@ -101,8 +101,9 @@ $(document).ready(function () {
             username: loginProfile.username,
             password: loginProfile.password,
         }).then((dblogin) => {
-            logoutButton(dblogin)
-        });
+            console.log(dblogin);
+            logoutButton(loginProfile)
+        })
     };
 
     ///////////////////////////////////////
@@ -114,22 +115,12 @@ $(document).ready(function () {
             username: loginProfile.username,
             password: loginProfile.password,
         }).then((userBoolean) => {
-            console.log(userBoolean);
-            // let isLoggedIn = userBoolean.login;
-            // while (isLoggedIn === true){
-            //     $("#logout").css("display", "block")
-            //     $("#login").css("display", "none")
-            // }
+            let isLoggedIn = userBoolean.login;
+            console.log(isLoggedIn);
+            if (userBoolean.login === true){
+                $("#logout").css("display", "block")
+                $("#login").css("display", "none")
+            }
         });
     };
-
-
-
-
-
-
-
-
-
-
 });
