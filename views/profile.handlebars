@@ -10,7 +10,7 @@
     </div>
     <div id="userInfo" class="row">
         <div class="col-6">
-            <img id="userImage" class="profilePic" src="../assets/images/profile-placeholder-pic.jpg">
+            <img id="userImage" class="profilePic" src="../assets/images/profile-placeholder-pic2.jpg">
                 
             
             
@@ -50,15 +50,16 @@
                             <span class="sr-only">Next</span>
                     </a>
 
-                    <div id="carouselNewArivalsControls" class="carousel  slide" data-ride="carousel">
+                    <div id="carouselNewArivalsControls" class="carousel  slide" data-interval="false">
 
                             <div class="carousel-inner">
                                     <!--Slider Owned 1-->
                                     <div class="carousel-item active">
                                         <div class="row">
                                             
-                                            {{#each books_owned}}
-                                                <div class="col-lg-2"> <img src="{{this}}" class="d-block" alt="first slide"></div>
+                                            {{#each booksOwnedOne}}
+                                                <div class="col-lg-2"> <img src="{{this}}" class="d-block" alt=" slide">
+                                                </div>
                                             {{/each}}
 
                                         </div>
@@ -68,8 +69,8 @@
                                     <!--Slider Owned 2-->
                                     <div class="carousel-item">
                                         <div class="row">
-                                            {{#each books_owned}}
-                                                <div class="col-lg-2"> <img src="{{this}}" class="d-block" alt="first slide"></div>
+                                            {{#each booksOwnedTwo}}
+                                                <div class="col-lg-2"> <img src="{{this}}" class="d-block" alt="slide"></div>
                                             {{/each}}+
                                         </div>
 
@@ -79,8 +80,8 @@
                                     <!--Slider Owned 3-->
                                     <div class="carousel-item">
                                         <div class="row">
-                                            {{#each books_owned}}
-                                                <div class="col-lg-2"> <img src="{{this}}" class="d-block" alt="first slide"></div>
+                                            {{#each booksOwnedThree}}
+                                                <div class="col-lg-2"> <img src="{{this}}" class="d-block" alt="slide"></div>
                                             {{/each}}
                                         </div>
                                     </div>
@@ -107,14 +108,14 @@
                             <span class="sr-only">Next</span>
                     </a>
 
-                    <div id="carouselPopularControls" class="carousel slide" data-ride="carousel">
+                    <div id="carouselPopularControls" class="carousel slide" data-interval="false">
                             <div class="carousel-inner">
                                     <!--Slider popular part 1"public/assets -->
                                     <div class="carousel-item active">'
                                         <div class="row">
                                             
                                         {{#each books_onloan}}
-                                            <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}" class="d-block" alt="first slide"></div>
+                                            <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}" class="d-block" alt="slide"></div>
                                         {{/each}}
 
                                         </div> 
@@ -125,7 +126,7 @@
                                     <div class="carousel-item">
                                         <div class="row">
                                             {{#each books_onloan}}
-                                                <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}"class="d-block" alt="first slide"></div>
+                                                <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}"class="d-block" alt="slide"></div>
                                             {{/each}}
                                         </div>
                                     </div>
@@ -134,7 +135,7 @@
                                     <div class="carousel-item">
                                          <div class="row">
                                             {{#each books_onloan}}
-                                                <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}"class="d-block" alt="first slide"></div>
+                                                <div class="col-lg-2"> <img id="#addImgFormat" src="{{this}}"class="d-block" alt="slide"></div>
                                             {{/each}}
                                         </div>
                                     </div>
