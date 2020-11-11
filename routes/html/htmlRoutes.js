@@ -123,32 +123,42 @@ module.exports = function (app) {
 
     // Match username with Database and make dbUser the user's data Object
     db.User.findOne({ where: { username: username } }).then(function (dbUser) {
-      // console.log("MAIN TARGET: "+ dbUser.dataValues)
       console.log("RAW ISBN: " + JSON.parse(dbUser.dataValues.books_owned))
 
 
       // Set Up Images - for Instances Where Array Are Empty
-      let emptyCover = "../assets/images/emptycover-placeholder.jpg";
-      let emptyArray = [emptyCover];
+      let emptyOwned = "../assets/images/emptycover-add-book-placeholder.jpg";
+      let emptyBorrowed = "../assets/images/emptycover-borrow-book-placeholder.jpg";
+      let emptyGeneric = "../assets/images/generic-placeholder.jpg"
 
       // Set Up Arrays for Books and Cover Image Code - for Instances When Arrays Are Full
+
+      // Books Owned
       let booksOwned = [];
-      let placeholderArrayOwned = [];
-      let almostFinalOwnedArray = [];
-      let ugh = [];
-      let finalOwnedArray = [];
       let ownedCoverImg = [];
+      let almostFinalOwnedArray = [];
+      
+      
       let booksBorrowed = [];
       let borrowedCoverImg = [];
+      let almostFinalBorrowedArray = [];
 
       // Separating Carousel Slides
-      var ownedArrayOne = [];
-      var ownedArrayTwo = [];
-      var ownedArrayThree = [];
-      
+      let ownedArrayOne = [];
+      let ownedArrayTwo = [];
+      let ownedArrayThree = [];
+
+      let borrowedArrayOne = [];
+      let borrowedArrayTwo = [];
+      let borrowedArrayThree = [];
+
+      let placeholderArrayOwned = [];
+      //////////////////////////////////
+
       // If User Has No Owned Books, Feed Placeholder Image
       if (!dbUser.dataValues.books_owned) {
-        ownedCoverImg = emptyArray;
+        ownedCoverImg = [emptyOwned];
+        formatOwnedImageCode();
         // Else, Send Owned Books to formatCodeImage()
       } else {
         booksOwned = JSON.parse(dbUser.dataValues.books_owned);
@@ -157,11 +167,12 @@ module.exports = function (app) {
 
       // If User Has No Borrowed Books, Feed Placeholder Image
       if (!dbUser.dataValues.books_onloan) {
-        borrowedCoverImg = emptyArray;
+        borrowedCoverImg = [emptyBorrowed];
+        formatBorrowedImageCode();
         //   // return booksOnloan;
         // Else, Send Owned Books to formatCodeImage()
       } else {
-        booksOnloan = JSON.parse(dbUser.dataValues.books_owned);
+        booksBorrowed = JSON.parse(dbUser.dataValues.books_owned);
         formatBorrowedImageCode();
       }
 
@@ -170,18 +181,14 @@ module.exports = function (app) {
         console.log("Formatting Owned Image code")
 
         // Loop imageSrc Code with ISBN Number
-        for (var i = 0; i < 18; i++) {
+        for (var i = 0; i < 19; i++) {
           if(i < booksOwned.length){
-            // imageSrc = "http://covers.openlibrary.org/b/isbn/" + booksOwned[i] + ".jpg";
             ownedCoverImg.push("http://covers.openlibrary.org/b/isbn/" + booksOwned[i] + ".jpg");
     
             // Fill Empty Sections with Placeholder for now
             } else {            
-            // imageSrcTwo = "../assets/images/emptycover-placeholder.jpg"
-            placeholderArrayOwned.push("../assets/images/emptycover-add-book-placeholder.jpg");
-
+            placeholderArrayOwned.push(emptyGeneric);
           }
-
             almostFinalOwnedArray = ownedCoverImg.concat(placeholderArrayOwned);
 
         }
@@ -192,25 +199,24 @@ module.exports = function (app) {
         console.log("Formatting Borrowed code")
 
         // Loop imageSrc Code with ISBN Number
-        for (var i = 0; i < 18; i++) {
+        for (var i = 0; i < 19; i++) {
           if(i < booksBorrowed.length){
-          imageSrc = "http://covers.openlibrary.org/b/isbn/" + booksBorrowed[i] + ".jpg";
-          borrowedCoverImg.push(imageSrc);
+          borrowedCoverImg.push("http://covers.openlibrary.org/b/isbn/" + booksBorrowed[i] + ".jpg");
   
           // Fill Empty Sections with Placeholder for now
           } else {
-          imageSrcTwo = "../assets/images/emptycover-add-placeholder.jpg"
-          borrowedCoverImg.push(imageSrcTwo);
+            placeholderArrayOwned.push(emptyGeneric);
           }
+          almostFinalBorrowedArray = borrowedCoverImg.concat(placeholderArrayOwned);
         }
       }
       
-      // Split Images Into Separate Arrays for the Carousel
-      splitImagesForCarousel();
-      function splitImagesForCarousel() {
+      // Split Owned Images Into Separate Arrays for the Carousel
+      splitOwnedImagesForCarousel();
+      function splitOwnedImagesForCarousel() {
         // If User Owns Less than 7 Books
 
-        for(var i = 0; i < 18; i++){
+        for(var i = 0; i < 19; i++){
 
           if(i < 6){
             ownedArrayOne.push(almostFinalOwnedArray[i])
@@ -219,17 +225,33 @@ module.exports = function (app) {
           } else if (i > 12) {
             ownedArrayThree.push(almostFinalOwnedArray[i])
           }
-
         }
         console.log(ownedArrayOne)
         console.log(ownedArrayTwo)
         console.log(ownedArrayThree)
       }
-      
-      
 
-      
+      // Split Borrowed Images Into Separate Arrays for the Carousel
+      splitBorrowedImagesForCarousel();
+      function splitBorrowedImagesForCarousel() {
+        // If User Owns Less than 7 Books
 
+        for(var i = 0; i < 19; i++){
+
+          if(i < 6){
+            borrowedArrayOne.push(almostFinalBorrowedArray[i])
+          } else if (5 > i || i < 12){
+            borrowedArrayTwo.push(almostFinalBorrowedArray[i])
+          } else if (i > 12) {
+            borrowedArrayThree.push(almostFinalBorrowedArray[i])
+          }
+        }
+        console.log(borrowedArrayOne)
+        console.log(borrowedArrayTwo)
+        console.log(borrowedArrayThree)
+      }
+      
+      
       // Reformat profilePage Object
       let profilePage = {
 
@@ -240,7 +262,9 @@ module.exports = function (app) {
         booksOwnedOne: ownedArrayOne,
         booksOwnedTwo: ownedArrayTwo,
         booksOwnedThree: ownedArrayThree,
-        books_onloan: borrowedCoverImg
+        booksBorrowedOne: borrowedArrayOne,
+        booksBorrowedTwo: borrowedArrayTwo,
+        booksBorrowedThree: borrowedArrayThree
 
       }
 
