@@ -16,10 +16,10 @@ module.exports = function (app) {
       for (var i = 0; i < data.length; i++) {
         isbnArr.push(data[i].isbn)
       };
-    //   console.log(isbnArr)
+      //   console.log(isbnArr)
 
-      var isbnArry_filtered = isbnArr.filter((value, index)=> isbnArr.indexOf(value) === index);
-    //   console.log(isbnArry_filtered)
+      var isbnArry_filtered = isbnArr.filter((value, index) => isbnArr.indexOf(value) === index);
+      //   console.log(isbnArry_filtered)
 
 
       var recent_one = []
@@ -34,37 +34,36 @@ module.exports = function (app) {
       for (var i = isbnArry_filtered.length - 18; i < isbnArry_filtered.length - 12; i++) {
         recent_three.push(isbnArry_filtered[i])
       };
-    //Logic for popular
+      //Logic for popular
       var uniqueIsbn = [];
       var isbnCount = [];
       var prev;
-      
-      var isbnPop = isbnArr.sort();
-    //   console.log(isbnPop) and unique array;
-      for(var i = 0; i < isbnPop.length;i++) {
-          if(isbnPop[i] !== prev){
-              uniqueIsbn.push(isbnPop[i]);
-              isbnCount.push(1);
-          }else{
-              isbnCount[isbnCount.length - 1]++; 
-          }
-          prev = isbnArr[i];
-      }
-    // console.log(uniqueIsbn);
-    //   console.log(isbnCount)
-    popularity = [];
-    for (var i=0; i<uniqueIsbn.length;i++){
-        popularity.push({"isbn":uniqueIsbn[i], "count":isbnCount[i]});
-    }
-    // console.log(popularity[0].count)
 
-    popular_arr = [];
-    for( var i=0;i<popularity.length; i++){
-        if(popularity[i].count >= 2){
-            popular_arr.push(popularity[i].isbn)
+      var isbnPop = isbnArr.sort();
+      //   console.log(isbnPop) and unique array;
+      for (var i = 0; i < isbnPop.length; i++) {
+        if (isbnPop[i] !== prev) {
+          uniqueIsbn.push(isbnPop[i]);
+          isbnCount.push(1);
+        } else {
+          isbnCount[isbnCount.length - 1]++;
         }
-    }
-      
+        prev = isbnArr[i];
+      }
+      // console.log(uniqueIsbn);
+      //   console.log(isbnCount)
+      popularity = [];
+      for (var i = 0; i < uniqueIsbn.length; i++) {
+        popularity.push({ "isbn": uniqueIsbn[i], "count": isbnCount[i] });
+      }
+      // console.log(popularity[0].count)
+
+      popular_arr = [];
+      for (var i = 0; i < popularity.length; i++) {
+        if (popularity[i].count >= 2) {
+          popular_arr.push(popularity[i].isbn)
+        }
+      }
 
       var popular_one = []
       for (var i = 0; i < 6; i++) {
@@ -80,7 +79,7 @@ module.exports = function (app) {
       };
       //for randoms
       var isbnArrRan = isbnArry_filtered.sort(() => Math.random() - 0.5);
-    //   console.log(isbnArrRan)
+      //   console.log(isbnArrRan)
       var random_one = [];
       for (var i = 0; i < 6; i++) {
         random_one.push(isbnArrRan[i])
@@ -177,7 +176,7 @@ module.exports = function (app) {
         booksOnloan = JSON.parse(dbUser.dataValues.books_owned);
         formatBorrowedImageCode();
       }
-      
+
       // Reformat profilePage Object
       let profilePage = {
 
@@ -190,7 +189,14 @@ module.exports = function (app) {
 
       }
 
-      res.render("profile", profilePage)
+      db.login.findOne({
+        where: {
+          login: true
+        }
+      }).then((userBoolean) => {
+        res.render("profile", profilePage)
+      });
+
     })
   });
 
@@ -231,13 +237,14 @@ module.exports = function (app) {
         books.push(thisBook)
       })
       console.log(books)
-      res.render("search", {books: books, searchQuery: searchVal})
+      res.render("search", { books: books, searchQuery: searchVal })
     })
   })
 
   //Without Search Value
   app.get("/search/", function (req, res) {
     res.redirect("/view-all")
+    booleanGet(loginProfile)
   })
   ///////////////////////////////////////
   // GET ROUTE: VIEW ALL PAGE  //
@@ -258,22 +265,8 @@ module.exports = function (app) {
           }
           books.push(thisBook)
         })
-        res.render("findAll", {books: books})
+        res.render("findAll", { books: books })
       })
   });
 
-  ///////////////////////////////////////
-  // LOGIN  //
-  ///////////////////////////////////////
-
-  app.get("/user/:username", function (req, res) {
-    var UsernameValue = req.params.val
-    console.log(UsernameValue)
-
-    db.Books.findAll({
-      where: {
-        username: UsernameValue
-      }
-    })
-  })
 }

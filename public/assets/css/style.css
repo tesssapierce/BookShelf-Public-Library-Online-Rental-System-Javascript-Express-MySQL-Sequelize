@@ -366,6 +366,12 @@ nav {
 
 
 }
+
+#logout {
+    display: none;
+}
+
+
 .navSection {
   background-color: #959392;
   font-family: 'Poppins', sans-serif;
