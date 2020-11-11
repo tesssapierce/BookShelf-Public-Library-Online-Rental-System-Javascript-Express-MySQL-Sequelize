@@ -102,19 +102,6 @@ body{
     margin-bottom:10px;
 }
 
-<<<<<<< HEAD
-=======
-.textRowText {
-    color:  #987554;
-    background-image: linear-gradient(#130000, #664229);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding: 10px 10px 0px 20px;
-    text-align: left;
-    font-size: 150%;
-}
-
->>>>>>> master
 /* Profile: Books Owned Headline */
 #booksToLoanHeadline {
     color: white;
@@ -310,7 +297,7 @@ body{
 }
 
 
-#confirmButton {
+#confirm-button {
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left:auto;
@@ -392,13 +379,16 @@ nav {
 
 .mainHead{
   text-align: center;
-  font-family: 'Gentium Book Basic', serif;
+  font-family:'Mukta', sans-serif;;
   font-weight: 700;
   font-size: 50px;
   padding-top:2%;
   border-radius: 5px;
 }
 
+.nav-link{
+    font-family:'Mukta', sans-serif;;
+}
 
 
 
@@ -470,11 +460,13 @@ footer {
 /* Searhc Results CSS */
 .searchHead {
     text-align: center;
-    background-color: #987554;
+    background-color: #959392;
     border-radius: 5px;
     padding: 10px;
     margin: 20px 0px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Mukta', sans-serif;
+    color: #F5F5F5 ;
+    
 }
 
 span.searchQuery {
@@ -486,135 +478,35 @@ h3.searchQuery {
 }
 
 img.searchImage {
-    height: 200px;
+    height: 300px;
     width: auto;
 }
 
 .searchTitle {
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
+    padding-top:10px;
+    font-family: 'Mukta', sans-serif;
+    font-size: 20px;
+    color: #F5F5F5;
 }
 
 .searchResults {
     margin: 0 auto;
-    background-color: #987554;
+    background-color: none;
     border-radius: 5px;
 }
 
 .searchResultCard {
     margin: 0 auto;
     text-align: center;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+    background-color: #6a6866;
+    border: 2vh solid #959392;
 }
 
-<<<<<<< HEAD
 
 /*////////////////////////////////////////////////////// STYLING FOR HOMEPAGE//////////////////////////////////////////// */
-=======
-.searchModalDisplay {
-    display: none;
-    position: fixed;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    font-family: 'Poppins', sans-serif;
-}
-
-.queryModal {
-    background-color: rgb(245,245,245,0.9);
-    height: 100%;
-    width: 500px;
-    border-radius: 25px;
-    padding:30px;
-}
-
-.closeY {
-    text-align: right;
-    color:rgb(91,123,122);
-    font-size: 18px;;
-    font-family: 'Lucida Sans Unicode';
-    margin-top: -5px;
-    margin-right: -5px;
-    cursor: pointer;
-}
-
-#availableButton {
-    margin-bottom: 10px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align: center;
-    height: 30px;
-    width: 100px;
-    border-style: none;
-    background: #5B7B7A;
-    color: whitesmoke;
-    border-radius: 25px;
-}
-
-.availableUsername{
-    font-size: 12px;
-}
-
-.availableZipcode{
-    font-size: 12px;
-}
-
-#booksDetails-img{
-    height: 200px;
-    width: auto;
-}
-
-#bookDetails-title{
-    font-size: 22px;
-}
-
-#bookDetails-author{
-    font-size: 14px;
-}
-
-#bookDetails-publish{
-    font-size: 14px;
-}
-
-#bookDetails-availTitle{
-    font-size: 22px;
-    border-bottom: 8px black solid
-}
-
-/* Login page */
-
-.login {
-    /* object-fit: cover; */
-    width: 100%;  
-    padding-left: 60px;
-    padding-right: 35px;
-    
-
-} 
-
-
-.form-group {
-    margin-top: 18px;
-    border-radius: 25px;
-    padding-right: 65px;
-    
-}
-
-#login-form {
-   
-    background-image: url("../images/antique.JPG");
-    margin-top: 30px;
-    box-shadow: 0 0 10px 2px;
-    border-radius: 15px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-#logtitle {
-    padding-left: 60px;
-}
-
->>>>>>> master
 
 .title-div {
     padding-top: 10vh;   /* padding-left: 240px; */
@@ -659,6 +551,7 @@ img.searchImage {
     padding-top: 10px;
     padding-bottom: 10px;
     padding: 10px 10px 0px 20px;
+    font-family:'Mukta', sans-serif;;
     font-size: 3vw;
     background-position: center center;
     width:100%;
@@ -685,20 +578,10 @@ img.searchImage {
 
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-<<<<<<< HEAD
     width: 100%;
     padding-bottom: 2%;
     height: auto;
     display: block;
-=======
-    width: 125px;
-    height: auto;
-}
-.carousel-inner {
-    padding-right: 4vh;
-    padding-left: 1vh;
-    
->>>>>>> master
 }
 
 .carousel-control-prev{
@@ -717,6 +600,7 @@ img.searchImage {
 nav{
     display: inline;
 }
+
 #tilteLogo{
     display: none;
 }
@@ -728,12 +612,7 @@ nav{
 
 .d-block {
     box-shadow: 0px 0px 5px 5px  #361a00;
-<<<<<<< HEAD
     width:120%;
-=======
-    width:75px;
-
->>>>>>> master
 }
 .carousel-inner{
     padding-right: 3vh;
