@@ -242,7 +242,6 @@ module.exports = function (app) {
         }
       })
     })
-
   })
 
   // CHANGING BOOLEAN VALUE IN WORKBENCH FOR LOGIN DATABASE //
