@@ -231,7 +231,7 @@ module.exports = function (app) {
         books.push(thisBook)
       })
       console.log(books)
-      res.render("search", { books: books, searchQuery: searchVal })
+      res.render("search", {books: books, searchQuery: searchVal})
     })
   })
 
@@ -258,7 +258,7 @@ module.exports = function (app) {
           }
           books.push(thisBook)
         })
-        res.render("findAll", { books: books })
+        res.render("findAll", {books: books})
       })
   });
 
