@@ -4,7 +4,6 @@ $(document).ready(function () {
     // SIGNING UP & INPUT INTO DB  //
     ///////////////////////////////////////
 
-
     var signUpForm = $("form.signup");
     var emailInput = $("input#email-input");
     var passwordInput = $("input#pass-input");

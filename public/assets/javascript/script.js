@@ -17,7 +17,6 @@ $(document).ready(function () {
 
     $(".searchResultCard").on("click", function (e) {
         var isbn = $(this).attr("data-id")
-        console.log(isbn)
         $(".searchModalDisplay").css("display", "block")
         var queryURL = "https://openlibrary.org/api/books?bibkeys=ISBN:" + isbn + "&jscmd=details&format=json"
         $.ajax({
@@ -38,7 +37,6 @@ $(document).ready(function () {
 
     function getAvailability(isbn) {
         $.get("/api/availability/" + isbn, function (data) {
-            console.log(data)
             $("#availableUsers").empty()
             data.forEach(user => {
                 var newUser = $("<div>")
@@ -61,14 +59,58 @@ $(document).ready(function () {
                     .append(button)
                 $("#availableUsers").append(newUser)
                 $(".availableButton" + user.book_id).click(function () {
-                    console.log("book_id: " + $(this).attr("data-bookid"))
-                    console.log("isbn: " + $(this).attr("data-isbn"))
-                    console.log("owner_id: " + $(this).attr("data-ownerid"))
+                    // console.log("book_id: " + $(this).attr("data-bookid"))
+                    // console.log("isbn: " + $(this).attr("data-isbn"))
+                    // console.log("owner_id: " + $(this).attr("data-ownerid"))
+
+                    let book_id = $(this).attr("data-bookid")
+                    let book_isbn = $(this).attr("data-isbn")
+                    // let book_ownder_id = $(this).attr("data-bookid")
+
+                    var borrowedBookInfo = {
+                        book_id: book_id,
+                        isbn: book_isbn
+                    }
+                    updateOnLoan(borrowedBookInfo)
                 })
             })
 
         })
     }
+
+    // UPDATING BOOLEAN VALUE TO 1 ON BOOKS.DB WHEN ON LOAN - DONE //
+
+    function updateOnLoan(borrowedBookInfo) {
+        $.post("/api/onloan", {
+            book_id: borrowedBookInfo.book_id,
+            isbn: borrowedBookInfo.book_isbn
+        })
+        getLoggedInUser(borrowedBookInfo)
+    }
+
+    // GETTING WHOEVER IS LOGGED IN TO UPDATE THE USER.DB BOOKS_ONLOAN AREA - DONE //
+
+    function getLoggedInUser(borrowedBookInfo) {
+        $.get("/api/loggedloaner", function () {
+        }).then((dblogger) => {
+            let loggedUser = dblogger
+            updateUsersOnLoan(borrowedBookInfo, loggedUser)
+        })
+    }
+
+    function updateUsersOnLoan(borrowedBookInfo, loggedUser) {
+        console.log(borrowedBookInfo.isbn);
+        console.log(loggedUser.username);
+        $.post("/api/updateloan", {
+            isbn: borrowedBookInfo.isbn,
+            username: loggedUser.username
+        })
+    }
+
+
+
+
+
 
     ///////////////////////////////////////
     // PROFILE PAGE FUNCTIONALITY   //
