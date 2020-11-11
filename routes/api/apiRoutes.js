@@ -3,6 +3,7 @@ const db = require("../../models");
 const { QueryTypes } = require('sequelize');
 const { sequelize } = require("../../models");
 module.exports = function (app) {
+  
   /////////////////////////
   // Sign Up - Original Users Table //
   /////////////////////////
@@ -87,11 +88,10 @@ module.exports = function (app) {
       createdAt: new Date(),
       updatedAt: new Date()
     }).then(function () {
-      //REDIRECT TO USER'S PAGE
       res.redirect("/user/" + req.body.owner_name);
     })
       .catch(function (err) {
-        // res.status(401).json(err);
+        res.status(401).json(err);
       });
   });
 
@@ -158,7 +158,7 @@ module.exports = function (app) {
   app.post("/api/login", function (req, res) {
     res.json("/user/profile");
   });
-  
+
   app.get("/api/user/:username", (req, res) => {
     console.log("user lookup")
     db.User.username({
